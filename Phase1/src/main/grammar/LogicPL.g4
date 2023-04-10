@@ -1,8 +1,9 @@
 grammar LogicPL;
 
 LogicPL
-:
-;
+    :
+
+    ;
 
 // Tokens:
 // Keywords:
@@ -45,18 +46,17 @@ IDENTIFIER
     ;
 PRIDICATE
     :
-        [A-Z][a-zA-Z0-9_]* '(' IDENTIFIER ')'
+        [A-Z][a-zA-Z0-9_]*
     ;
 
 QUERY_1
     :
-        '[' '?' PRIDICATE '(' (IDENTIFIER | VALUE) ')' ']'
+        '[' '?' PRIDICATE '(' IDENTIFIER ')' ']'
     ;
 QUERY_2
     :
         '[' PRIDICATE '(' '?' ')' ']'
     ;
-
 
 //Operator:
 UNARY_OP
@@ -97,7 +97,8 @@ OPERATORS
         | RELATIONAL_OP2 | LOGICAL_AND_OP | LOGICAL_OR_OP | ASSIGNMENT_OP
     ;
 
-// Datas:
+// Numbers:
+
 FLOAT
     :
         [0-9]*[.][0-9]+
