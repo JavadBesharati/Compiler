@@ -23,9 +23,63 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMain(LogicPLParser.MainContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#line}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLine(LogicPLParser.LineContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#function}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFunction(LogicPLParser.FunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#argument}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArgument(LogicPLParser.ArgumentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#variable_declare}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariable_declare(LogicPLParser.Variable_declareContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#return}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReturn(LogicPLParser.ReturnContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrint(LogicPLParser.PrintContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#functionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(LogicPLParser.FunctionCallContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#for}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFor(LogicPLParser.ForContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#predicate}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPredicate(LogicPLParser.PredicateContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#implication}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImplication(LogicPLParser.ImplicationContext ctx);
 }

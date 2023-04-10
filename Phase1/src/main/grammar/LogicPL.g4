@@ -7,44 +7,61 @@ logicPL
 
 main
     :
-        MAIN { System.out.println("Main"); } '{' (...) '}'
+        MAIN '{' (line)* '}'
     ;
-
+line
+    :
+        variable_declare | return
+        // retun
+        //anything that end  with ;  or  implication
+        //add some rule ...
+    ;
 function
     :
-        FUNCTION { System.out.printIn(); }'(' ')' ':'  '{'  '}'
+        //edit ... daneshvar
+        // check if we can have void func.
+        // retun ham check she
+        FUNCTION IDENTIFIER  '(' (argument) ')' ':' TYPE '{' (line)* '}'
     ;
 argument
     :
-        { System.out.printIn(); }
+        // edit  type name,
+        // (Type Identifier)(, type id)*
+        //{ System.out.println(); }
     ;
 variable_declare
     :
+        // ADD ARRAY...
+        //PRINT OUT
+        TYPE IDENTIFIER ASSIGNMENT_OP VALUE SEMICOLON
     ;
 return
     :
-        RETURN { system.out.printIn("Return"); }
+        //EDIT ...
+        RETURN //{ system.out.println("Return"); }
     ;
 print
     :
-        PRINT { system.out.printIn("Built-in: print"); }
+        // EDIT...
+        PRINT //{ system.out.println("Built-in: print"); }
     ;
 functionCall
     :
-
+        //EDIT...
     ;
 for
     :
-        FOR { system.out.printIn("Loop: for"); }
+        //edit ...
+        FOR //{ system.out.println("Loop: for"); }
     ;
 predicate
     :
-        PRIDICATE { system.out.printIn("Predicare: "); }
+        PRIDICATE //{ system.out.println("Predicare: "); }
     ;
 
 implication
     :
-
+        //WE CAN HAVE FUNCTIONCALL
     ;
 
 
@@ -170,6 +187,11 @@ ARRAY_VALUE
 ARRAY_ELEMENT
     :
        IDENTIFIER '[' NATURAL_NUMBERS ']'
+    ;
+
+SEMICOLON
+    :
+        ';'
     ;
 
 // WhiteSpaces:
