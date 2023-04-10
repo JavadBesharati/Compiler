@@ -1,5 +1,7 @@
 grammar LogicPL;
 
+// SKIP COMMA AND SEMICOLON AND .....
+
 logicPL
     :
         (function)* main EOF
@@ -26,7 +28,7 @@ function
 argument
     :
         // edit  type name,
-        // (Type Identifier)(, type id)*
+       (TYPE IDENTIFIER (COMMA TYPE IDENTIFIER)*)
         //{ System.out.println(); }
     ;
 variable_declare
@@ -66,7 +68,23 @@ implication
 
 
 // Tokens:
-// Keywords:
+// Keywords and Datas:
+VALUE
+    :
+        INT | FLOAT | BOOLEAN
+    ;
+FLOAT
+    :
+        [0-9]*[.][0-9]+
+    ;
+INT
+    :
+        [1-9][0-9]* | '0'
+    ;
+NATURAL_NUMBERS
+    :
+        [1-9][0-9]*
+    ;
 FUNCTION
     :
         'function'
@@ -157,36 +175,23 @@ OPERATORS
         | RELATIONAL_OP2 | LOGICAL_AND_OP | LOGICAL_OR_OP | ASSIGNMENT_OP
     ;
 
-// Numbers:
 
-FLOAT
-    :
-        [0-9]*[.][0-9]+
-    ;
-INT
-    :
-        [1-9][0-9]* | '0'
-    ;
-NATURAL_NUMBERS
-    :
-        [1-9][0-9]*
-    ;
-
-VALUE
-    :
-        INT | FLOAT | BOOLEAN
-    ;
 ARRAY_TYPE
     :
         TYPE '[' NATURAL_NUMBERS ']' ' ' IDENTIFIER
     ;
 ARRAY_VALUE
     :
-        '[' VALUE (',' VALUE)* ']'
+        '[' VALUE (COMMA VALUE)* ']'
     ;
 ARRAY_ELEMENT
     :
        IDENTIFIER '[' NATURAL_NUMBERS ']'
+    ;
+
+COMMA
+    :
+        (',')
     ;
 
 SEMICOLON
