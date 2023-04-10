@@ -18,7 +18,7 @@ TYPE
     :
         'int' | 'float' | 'boolean'
     ;
-LOGICAL_VALUE
+BOOLEAN
     :
         'true' | 'false'
     ;
@@ -36,7 +36,7 @@ RETURN
     ;
 KEYWORDS
     :
-        FUNCTION | MAIN | TYPE | LOGICAL_VALUE | PRINT | FOR | RETURN
+        FUNCTION | MAIN | TYPE | BOOLEAN | PRINT | FOR | RETURN
     ;
 
 IDENTIFIER
@@ -45,7 +45,16 @@ IDENTIFIER
     ;
 PRIDICATE
     :
-        [A-Z][a-zA-Z0-9_]*
+        [A-Z][a-zA-Z0-9_]* '(' IDENTIFIER ')'
+    ;
+
+QUERY_1
+    :
+        '[' '?' PRIDICATE '(' (IDENTIFIER | VALUE) ')' ']'
+    ;
+QUERY_2
+    :
+        '[' PRIDICATE '(' '?' ')' ']'
     ;
 
 
@@ -89,17 +98,34 @@ OPERATORS
     ;
 
 // Datas:
+FLOAT
+    :
+        [0-9]*[.][0-9]+
+    ;
 INT
     :
         [1-9][0-9]* | '0'
     ;
-FLOAT
+NATURAL_NUMBERS
     :
-    [0-9]*[.][0-9]+
+        [1-9][0-9]*
     ;
-BOOLEAN
+
+VALUE
     :
-        'true' | 'false'
+        INT | FLOAT | BOOLEAN
+    ;
+ARRAY_TYPE
+    :
+        TYPE '[' NATURAL_NUMBERS ']' ' ' IDENTIFIER
+    ;
+ARRAY_VALUE
+    :
+        '[' VALUE (',' VALUE)* ']'
+    ;
+ARRAY_ELEMENT
+    :
+       IDENTIFIER '[' NATURAL_NUMBERS ']'
     ;
 
 // WhiteSpaces:
