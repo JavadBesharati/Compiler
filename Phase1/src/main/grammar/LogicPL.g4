@@ -4,64 +4,79 @@ grammar LogicPL;
 
 logicPL
     :
-        (function)* main EOF
+        (function_declare)* main_call EOF
     ;
 
-main
+main_call
     :
         MAIN '{' (line)* '}'
     ;
+/*body
+    :
+        (line* return line*)
+    ;*/
 line
     :
-        variable_declare | return
+        ((variable_declare | predicate_statement | return) SEMICOLON) | implication_statement
         // retun
         //anything that end  with ;  or  implication
         //add some rule ...
     ;
-function
+function_declare
     :
         //edit ... daneshvar
         // check if we can have void func.
         // retun ham check she
-        FUNCTION IDENTIFIER  '(' (argument) ')' ':' TYPE '{' (line)* '}'
+        FUNCTION IDENTIFIER  '(' (arguments) ')' ':' TYPE '{' (line)* '}'
     ;
 argument
     :
-        // edit  type name,
-       (TYPE IDENTIFIER (COMMA TYPE IDENTIFIER)*)
+        TYPE IDENTIFIER
+    ;
+arguments
+    :
+        // edit  ...
+       (argument (COMMA argument)*)
         //{ System.out.println(); }
     ;
 variable_declare
     :
-        // ADD ARRAY...
+        // ADD ARRAY...SEMICOLON
         //PRINT OUT
-        TYPE IDENTIFIER ASSIGNMENT_OP VALUE SEMICOLON
+        (TYPE IDENTIFIER ASSIGNMENT_OP (function_call | VALUE | IDENTIFIER ) )
     ;
 return
     :
-        //EDIT ...
-        RETURN //{ system.out.println("Return"); }
+        //EDIT ...SEMICOLON
+        RETURN (VALUE | IDENTIFIER | function_call)
+        //{ system.out.println("Return"); }
     ;
-print
+print_call
     :
         // EDIT...
         PRINT //{ system.out.println("Built-in: print"); }
     ;
-functionCall
+inputs
     :
-        //EDIT...
+        (VALUE | IDENTIFIER | function_call) (COMMA (VALUE | IDENTIFIER | function_call))*
+    ;
+function_call
+    :
+        IDENTIFIER '(' inputs ')'
     ;
 for
     :
         //edit ...
         FOR //{ system.out.println("Loop: for"); }
     ;
-predicate
+predicate_statement
     :
-        PRIDICATE //{ system.out.println("Predicare: "); }
+        // SEMICOLON
+        PRIDICATE '(' IDENTIFIER ')'
+        //{ system.out.println("Predicare: "); }
     ;
 
-implication
+implication_statement
     :
         //WE CAN HAVE FUNCTIONCALL
     ;

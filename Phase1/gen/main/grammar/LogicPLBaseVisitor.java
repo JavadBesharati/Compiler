@@ -25,7 +25,14 @@ public class LogicPLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMain(LogicPLParser.MainContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMain_call(LogicPLParser.Main_callContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitBody(LogicPLParser.BodyContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -39,7 +46,7 @@ public class LogicPLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunction(LogicPLParser.FunctionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunction_declare(LogicPLParser.Function_declareContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -47,6 +54,13 @@ public class LogicPLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitArgument(LogicPLParser.ArgumentContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitArguments(LogicPLParser.ArgumentsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -67,14 +81,21 @@ public class LogicPLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrint(LogicPLParser.PrintContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPrint_call(LogicPLParser.Print_callContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunctionCall(LogicPLParser.FunctionCallContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInputs(LogicPLParser.InputsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitFunction_call(LogicPLParser.Function_callContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -88,12 +109,12 @@ public class LogicPLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPredicate(LogicPLParser.PredicateContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPredicate_statement(LogicPLParser.Predicate_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitImplication(LogicPLParser.ImplicationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitImplication_statement(LogicPLParser.Implication_statementContext ctx) { return visitChildren(ctx); }
 }

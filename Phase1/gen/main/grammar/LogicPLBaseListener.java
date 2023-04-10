@@ -29,13 +29,25 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMain(LogicPLParser.MainContext ctx) { }
+	@Override public void enterMain_call(LogicPLParser.Main_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMain(LogicPLParser.MainContext ctx) { }
+	@Override public void exitMain_call(LogicPLParser.Main_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBody(LogicPLParser.BodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBody(LogicPLParser.BodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -53,13 +65,13 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunction(LogicPLParser.FunctionContext ctx) { }
+	@Override public void enterFunction_declare(LogicPLParser.Function_declareContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunction(LogicPLParser.FunctionContext ctx) { }
+	@Override public void exitFunction_declare(LogicPLParser.Function_declareContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -72,6 +84,18 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArgument(LogicPLParser.ArgumentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArguments(LogicPLParser.ArgumentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArguments(LogicPLParser.ArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -101,25 +125,37 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrint(LogicPLParser.PrintContext ctx) { }
+	@Override public void enterPrint_call(LogicPLParser.Print_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrint(LogicPLParser.PrintContext ctx) { }
+	@Override public void exitPrint_call(LogicPLParser.Print_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionCall(LogicPLParser.FunctionCallContext ctx) { }
+	@Override public void enterInputs(LogicPLParser.InputsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionCall(LogicPLParser.FunctionCallContext ctx) { }
+	@Override public void exitInputs(LogicPLParser.InputsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunction_call(LogicPLParser.Function_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunction_call(LogicPLParser.Function_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -137,25 +173,25 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPredicate(LogicPLParser.PredicateContext ctx) { }
+	@Override public void enterPredicate_statement(LogicPLParser.Predicate_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPredicate(LogicPLParser.PredicateContext ctx) { }
+	@Override public void exitPredicate_statement(LogicPLParser.Predicate_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterImplication(LogicPLParser.ImplicationContext ctx) { }
+	@Override public void enterImplication_statement(LogicPLParser.Implication_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitImplication(LogicPLParser.ImplicationContext ctx) { }
+	@Override public void exitImplication_statement(LogicPLParser.Implication_statementContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

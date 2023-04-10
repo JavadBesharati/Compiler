@@ -17,11 +17,17 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLogicPL(LogicPLParser.LogicPLContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#main}.
+	 * Visit a parse tree produced by {@link LogicPLParser#main_call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMain(LogicPLParser.MainContext ctx);
+	T visitMain_call(LogicPLParser.Main_callContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#body}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBody(LogicPLParser.BodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#line}.
 	 * @param ctx the parse tree
@@ -29,17 +35,23 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLine(LogicPLParser.LineContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#function}.
+	 * Visit a parse tree produced by {@link LogicPLParser#function_declare}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunction(LogicPLParser.FunctionContext ctx);
+	T visitFunction_declare(LogicPLParser.Function_declareContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#argument}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitArgument(LogicPLParser.ArgumentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArguments(LogicPLParser.ArgumentsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#variable_declare}.
 	 * @param ctx the parse tree
@@ -53,17 +65,23 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitReturn(LogicPLParser.ReturnContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#print}.
+	 * Visit a parse tree produced by {@link LogicPLParser#print_call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrint(LogicPLParser.PrintContext ctx);
+	T visitPrint_call(LogicPLParser.Print_callContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#functionCall}.
+	 * Visit a parse tree produced by {@link LogicPLParser#inputs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionCall(LogicPLParser.FunctionCallContext ctx);
+	T visitInputs(LogicPLParser.InputsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#function_call}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_call(LogicPLParser.Function_callContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#for}.
 	 * @param ctx the parse tree
@@ -71,15 +89,15 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFor(LogicPLParser.ForContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#predicate}.
+	 * Visit a parse tree produced by {@link LogicPLParser#predicate_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPredicate(LogicPLParser.PredicateContext ctx);
+	T visitPredicate_statement(LogicPLParser.Predicate_statementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#implication}.
+	 * Visit a parse tree produced by {@link LogicPLParser#implication_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitImplication(LogicPLParser.ImplicationContext ctx);
+	T visitImplication_statement(LogicPLParser.Implication_statementContext ctx);
 }
