@@ -1,9 +1,47 @@
 grammar LogicPL;
 
-LogicPL
+logicPL
+    :
+        (function)* main EOF
+    ;
+
+main
+    :
+        MAIN { System.out.println("Main"); } '{' (...) '}'
+    ;
+
+function
+    :
+        FUNCTION { System.out.printIn(); }'(' ')' ':'  '{'  '}'
+    ;
+argument
+    :
+        { System.out.printIn(); }
+    ;
+variable_declare
+    :
+    ;
+return
+    :
+        RETURN { system.out.printIn("Return"); }
+    ;
+print
+    :
+        PRINT { system.out.printIn("Built-in: print"); }
+    ;
+functionCall
     :
 
     ;
+for
+    :
+        FOR { system.out.printIn("Loop: for"); }
+    ;
+predicate
+    :
+        PRIDICATE { system.out.printIn(""); }
+    ;
+
 
 // Tokens:
 // Keywords:
