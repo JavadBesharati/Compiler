@@ -9,12 +9,12 @@ logicPL
 
 main_call
     :
-        MAIN '{' (line)* '}'
+        MAIN '{' body '}'
     ;
-/*body
+body
     :
-        (line* return line*)
-    ;*/
+        (line*)
+    ;
 line
     :
         ((variable_declare | predicate_statement | return) SEMICOLON) | implication_statement
@@ -79,6 +79,7 @@ predicate_statement
 implication_statement
     :
         //WE CAN HAVE FUNCTIONCALL
+        '(' ')' '=>' '(' ')'
     ;
 
 
