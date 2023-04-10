@@ -39,7 +39,12 @@ for
     ;
 predicate
     :
-        PRIDICATE { system.out.printIn(""); }
+        PRIDICATE { system.out.printIn("Predicare: "); }
+    ;
+
+implication
+    :
+
     ;
 
 
