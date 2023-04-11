@@ -14,13 +14,17 @@ main{
 	int num2 = 200;
 	
 	boolean divisible = true;
-	#for(a: int_array){
-	#	(!isDivisible(num2, a)) => (divisible = false; return;)
-	#}
+	for(a: int_array){
+		(isDivisible(num2, a)) => (num = a;)
+		#(!isDivisible(num2, a)) => (divisible = false; return;)
+
+	}
 	#(divisible == true) => (DivisibleBy20(num2);)
 	
 	#([?DivisibleBy20[num2]]) => (EvenNumber(num2);DivisibleBy10(num2);)
-	
+
+	(isDivisible(num, 5)) => (EvenNumber(num2);DivisibleBy10(num2);)
+
 	#print([?EvenNumber(num2)]) => (EvenNumber(num2);DivisibleBy10(num2);)
 	
 	#print([?EvenNumber(num2)]); # prints "true"

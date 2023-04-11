@@ -17,8 +17,12 @@ body
     ;
 line
     :
-        ((variable_declare | predicate_statement | return) SEMICOLON) | implication_statement
-        // retun
+        //implication_statement use implication_statement ??
+        // loop?
+
+        ((variable_declare | change_variale | array_declare | element_declare | predicate_statement | return | function_call) SEMICOLON)
+         | implication_statement | for
+
         //anything that end  with ;  or  implication
         //add some rule ...
     ;
@@ -39,11 +43,23 @@ arguments
        (argument (COMMA argument)*)
         //{ System.out.println(); }
     ;
+array_declare
+    :
+        ARRAY_TYPE
+    ;
+element_declare
+    :
+
+    ;
 variable_declare
     :
         // ADD ARRAY...SEMICOLON
         //PRINT OUT
-        (TYPE IDENTIFIER ASSIGNMENT_OP (function_call | VALUE | IDENTIFIER ) )
+        (TYPE IDENTIFIER ASSIGNMENT_OP (function_call | VALUE | IDENTIFIER | ARRAY_ELEMENT) )
+    ;
+change_variale
+    :
+        IDENTIFIER ASSIGNMENT_OP (function_call | VALUE | IDENTIFIER)
     ;
 return
     :
@@ -67,7 +83,7 @@ function_call
 for
     :
         //edit ...
-        FOR //{ system.out.println("Loop: for"); }
+        FOR '(' IDENTIFIER ':' IDENTIFIER ')' '{' (line)* '}'
     ;
 predicate_statement
     :
@@ -75,11 +91,32 @@ predicate_statement
         PRIDICATE '(' IDENTIFIER ')'
         //{ system.out.println("Predicare: "); }
     ;
+and_expression
+    :
 
+    ;
+or_expression
+    :
+
+    ;
+logical_expression
+    :
+
+    ;
+boolean_expression
+    :
+        //functions
+        //math
+        //...
+        // or expression
+        // and expression
+       // (and_expression | or_expression ...)
+       (function_call) //| logical_expression
+    ;
 implication_statement
     :
         //WE CAN HAVE FUNCTIONCALL
-        '(' ')' '=>' '(' ')'
+        '(' boolean_expression ')' '=>' '(' (line)*')'
     ;
 
 
@@ -196,7 +233,7 @@ ARRAY_TYPE
     :
         TYPE '[' NATURAL_NUMBERS ']' ' ' IDENTIFIER
     ;
-ARRAY_VALUE
+ARRAY_VALUE //token or rule?
     :
         '[' VALUE (COMMA VALUE)* ']'
     ;

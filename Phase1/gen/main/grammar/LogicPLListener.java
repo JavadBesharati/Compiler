@@ -88,6 +88,16 @@ public interface LogicPLListener extends ParseTreeListener {
 	 */
 	void exitVariable_declare(LogicPLParser.Variable_declareContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#change_variale}.
+	 * @param ctx the parse tree
+	 */
+	void enterChange_variale(LogicPLParser.Change_varialeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#change_variale}.
+	 * @param ctx the parse tree
+	 */
+	void exitChange_variale(LogicPLParser.Change_varialeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LogicPLParser#return}.
 	 * @param ctx the parse tree
 	 */
@@ -147,6 +157,46 @@ public interface LogicPLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPredicate_statement(LogicPLParser.Predicate_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#and_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnd_expression(LogicPLParser.And_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#and_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnd_expression(LogicPLParser.And_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#or_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterOr_expression(LogicPLParser.Or_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#or_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitOr_expression(LogicPLParser.Or_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#logical_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogical_expression(LogicPLParser.Logical_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#logical_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogical_expression(LogicPLParser.Logical_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#boolean_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolean_expression(LogicPLParser.Boolean_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#boolean_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolean_expression(LogicPLParser.Boolean_expressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogicPLParser#implication_statement}.
 	 * @param ctx the parse tree
