@@ -1,6 +1,11 @@
-grammar LogicPL;
 
-// SKIP COMMA AND SEMICOLON AND .....
+grammar LogicPL;
+// Javad :
+// 1. operator - post order
+// 2. expression -> boolean / logical
+// 3. edit (rules)
+
+// SKIP COMMA AND SEMICOLON AND ..... ?
 
 logicPL
     :
@@ -16,20 +21,17 @@ body
         (line*)
     ;
 line
-    :
+    :   //anything that end  with ;  or  implication
+        //add some rule ...
         //implication_statement use implication_statement ??
         // loop?
-
-        ((variable_declare | change_variale | array_declare | element_declare | predicate_statement | return | function_call) SEMICOLON)
-         | implication_statement | for
-
-        //anything that end  with ;  or  implication
-        //add some rule ...
+        ((variable_declare | change_variale | array_declare | element_declare | predicate_statement | return | function_call) SEMICOLON) | for
+        // | implication_statement
     ;
 function_declare
     :
         //edit ... daneshvar
-        // check if we can have void func.
+
         // retun ham check she
         FUNCTION IDENTIFIER  '(' (arguments) ')' ':' TYPE '{' (line)* '}'
     ;
@@ -45,11 +47,11 @@ arguments
     ;
 array_declare
     :
-        ARRAY_TYPE
+        //edit
     ;
 element_declare
     :
-
+        // edit
     ;
 variable_declare
     :
@@ -87,36 +89,22 @@ for
     ;
 predicate_statement
     :
-        // SEMICOLON
         PRIDICATE '(' IDENTIFIER ')'
         //{ system.out.println("Predicare: "); }
     ;
-and_expression
-    :
 
-    ;
-or_expression
-    :
-
-    ;
-logical_expression
-    :
-
-    ;
 boolean_expression
     :
         //functions
-        //math
         //...
         // or expression
         // and expression
-       // (and_expression | or_expression ...)
-       (function_call) //| logical_expression
+        // logical_expression - math experssion
+
     ;
 implication_statement
     :
-        //WE CAN HAVE FUNCTIONCALL
-        '(' boolean_expression ')' '=>' '(' (line)*')'
+        //'(' boolean_expression ')' '=>' '(' (line)*')'
     ;
 
 

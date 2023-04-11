@@ -53,6 +53,18 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArguments(LogicPLParser.ArgumentsContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#array_declare}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray_declare(LogicPLParser.Array_declareContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#element_declare}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElement_declare(LogicPLParser.Element_declareContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#variable_declare}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -100,24 +112,6 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPredicate_statement(LogicPLParser.Predicate_statementContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#and_expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnd_expression(LogicPLParser.And_expressionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#or_expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOr_expression(LogicPLParser.Or_expressionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#logical_expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLogical_expression(LogicPLParser.Logical_expressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#boolean_expression}.
 	 * @param ctx the parse tree
