@@ -13,9 +13,8 @@
 // function call -                              done
 // for loop strcuture -                         done
 // queries                                      done
-// print pre-order
-// print post-order
-// print parse tree
+// print pre-order                              done -> test (Fatemeh)
+// print post-order                             1. questions(TA) - 2. assignments -> test(Fatemeh)
 
 // Question: What do we have in "q" expression of implications(implication: (p) => (q))?
 //           Just predications or all expressions are possible?
@@ -28,7 +27,8 @@ logicPL
     ;
 main_call
     :
-        MAIN '{' main_body '}'
+        MAIN { System.out.println("MainBody"); }
+        '{' main_body '}'
     ;
 main_body
     :
@@ -36,13 +36,17 @@ main_body
     ;
 line
     :
-        ((array_declaration | int_declaration | float_declaration | boolean_declaration
-            | function_return | or_expression | function_return | print_expression) SEMICOLON
+        (((function_call
+            {System.out.println("FunctionCall");})
+            | array_declaration | int_declaration | float_declaration | boolean_declaration
+            | or_expression | function_return | print_expression) SEMICOLON
             | for_structure | predicate_expression | implication_expression)
     ;
 for_structure
     :
-        FOR '(' IDENTIFIER ':' IDENTIFIER ')' '{' for_body '}'
+        FOR
+        {System.out.println("Loop: for");}
+        '(' IDENTIFIER ':' IDENTIFIER ')' '{' for_body '}'
     ;
 for_body
     :
@@ -50,46 +54,54 @@ for_body
     ;
 function_declaration
     :
-        FUNCTION IDENTIFIER '(' (argument (COMMA argument)*) ')' ':' (INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE)
+        FUNCTION IDENTIFIER { System.out.println("FunctionDec: " + $IDENTIFIER.getText()); }
+        '(' (argument (COMMA argument)*) ')' ':' (INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE)
         '{' line* '}'
     ;
 array_declaration
     :
-        //     INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        // |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
-        //     '[' primary_expression (COMMA primary_expression)* ']'
-        // |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        // |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
-        //     '[' primary_expression (COMMA primary_expression)* ']'
-        // |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        // |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
-        //     '[' primary_expression (COMMA primary_expression)* ']'
             INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP array_elements
+            { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+        |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+            { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+             ASSIGNMENT_OP array_elements
         |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP array_elements
+            { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+        |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+            { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+            ASSIGNMENT_OP array_elements
         |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP array_elements
+            { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+        |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+            { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+            ASSIGNMENT_OP array_elements
     ;
 array_elements
     :
-        '[' primary_expression (COMMA primary_expression)* ']'
+           '[' primary_expression (COMMA primary_expression)* ']'
     ;
 argument
     :
-        ((INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE) IDENTIFIER) | QUERY_1
+        ((INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE) IDENTIFIER
+        { System.out.println("ArgumentDec: " + $IDENTIFIER.getText()); } ) | QUERY_1
     ;
 int_declaration
     :
-        INT_TYPE IDENTIFIER ASSIGNMENT_OP additive_expression
+        INT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+    |   INT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+        ASSIGNMENT_OP additive_expression
     ;
 float_declaration
     :
-        FLOAT_TYPE IDENTIFIER ASSIGNMENT_OP additive_expression
+        FLOAT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+    |   FLOAT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+        ASSIGNMENT_OP additive_expression
     ;
 boolean_declaration
     :
-        BOOLEAN_TYPE IDENTIFIER ASSIGNMENT_OP or_expression
+        BOOLEAN_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+    |   BOOLEAN_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
+        ASSIGNMENT_OP or_expression
     ;
 function_call
     :
@@ -97,40 +109,51 @@ function_call
     ;
 function_return
     :
-        RETURN or_expression
+        RETURN { System.out.println("Return"); }
+        or_expression
     ;
 print_expression
     :
-        PRINT '(' ( (or_expression) (COMMA (or_expression))* ) ')'
+        PRINT { System.out.println("Built-in: print"); }
+        '(' ( (or_expression) (COMMA (or_expression))* ) ')'
     ;
 or_expression
     :
-        and_expression (LOGICAL_OR_OP and_expression)*
+        and_expression (LOGICAL_OR_OP and_expression
+        {System.out.println("Operator: " + $LOGICAL_OR_OP.getText());})*
     ;
 and_expression
     :
-        equality_expression (LOGICAL_AND_OP equality_expression)*
+        equality_expression (LOGICAL_AND_OP equality_expression
+        {System.out.println("Operator: " + $LOGICAL_AND_OP.getText());})*
     ;
 equality_expression
     :
-        relational_expression ((RELATIONAL_OP2 | ASSIGNMENT_OP) relational_expression)*
+        relational_expression ((RELATIONAL_OP2 relational_expression)*
+        //{System.out.println("Operator: " + $RELATIONAL_OP2.getText());})*
+        | (ASSIGNMENT_OP relational_expression)*)
+//        {System.out.println("Operator: " + $ASSIGNMENT_OP.getText());})*)
     ;
 relational_expression
     :
         additive_expression (RELATIONAL_OP1 additive_expression)*
+        // ???
     ;
 additive_expression
     :
-    multiplicative_expression (BINARY_ARITHMETIC_OP2 multiplicative_expression)*
+    multiplicative_expression (BINARY_ARITHMETIC_OP2 multiplicative_expression
+    {System.out.println("Operator: " + $BINARY_ARITHMETIC_OP2.getText());})*
     ;
 multiplicative_expression
     :
-        not_expression (BINARY_ARITHMETIC_OP1 not_expression)*
+        not_expression (BINARY_ARITHMETIC_OP1 not_expression
+        {System.out.println("Operator: " + $BINARY_ARITHMETIC_OP1.getText());})*
     ;
 not_expression
     :
         LOGICAL_NOT_OP not_expression
-    |   primary_expression
+        {System.out.println("Operator: " + $LOGICAL_NOT_OP.getText());}
+      |   primary_expression
     ;
 primary_expression
     :
@@ -138,16 +161,18 @@ primary_expression
     |   (NATURAL_NUMBERS | '0') // same as int
     |   FLOAT
     |   BOOLEAN
-    |   function_call
     |   '(' or_expression ')'
     |   IDENTIFIER '[' (NATURAL_NUMBERS | additive_expression) ']' // to edit array elements
     |   QUERY_1
-    |   array_elements
     |   QUERY_2
+    |   array_elements
+    |   function_call
     ;
 predicate_expression
     :
-        PRIDICATE '(' IDENTIFIER ')' SEMICOLON
+        PRIDICATE
+        {System.out.println("Predicate: " + $PRIDICATE.getText());}
+        '(' IDENTIFIER ')' SEMICOLON
     ;
 implication_expression
     :
@@ -155,6 +180,7 @@ implication_expression
         // '(' or_expression ')' '=>' '(' (predicate_expression)+ ')'
         // if q be all expressions:
         // '(' (or_expression | (QUERY_2 RELATIONAL_OP2 array_elements))')' '=>' '(' (line)+ ')'
+        { System.out.println("Implication"); }
         '(' or_expression ')' '=>' '(' (line)+ ')'
     ;
 // tokens:

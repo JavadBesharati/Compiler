@@ -4,16 +4,19 @@
 # Good luck!
 
 #function_declaration_test
-function isDivisible(int a, int b): boolean {
+#function isDivisible(int a, int b): boolean {
 	#(b == 0) => (return false;)
-	(a % b == 0) => (return true;)
+	#(a % b == 0) => (return true;)
     #return x[2];
-    return f(4, 5, c);
+    #return f(4, 5, c);
 	#(a % b != 0) => (return false;)
     #return 0;
-}
+#}
 
 main{
+    (a && b || !c) => (a = 2 + 5 * 3;)
+    int a;
+    #f1(a, b);
     #arr_dec test:
     #int[10] a1;
     #int[4] a2 = [2, 4, 6, 8];
@@ -35,7 +38,9 @@ main{
     #isDivisible(x, int_var);
 
     #operators_test
-    #boolean x = a || b;
+    boolean x = a && !b && c || (a || b);
+    int a = a / b + c * d;
+    int c = a + b - (c - s) * 6;
     #boolean y = 2 && 4;
     #boolean z = a == b;
     #int a = 2 + 3 + 4 * (3 - 6) + fun(x, 2, true) * zzz;
@@ -54,9 +59,9 @@ main{
     #test_for_structure:
     int num = 100;
     int[4] d_arr = [2, 3, 5, 7];
-    int[4] r_arr;
-    int s = 0;
-    int i = 1;
+    #int[4] r_arr;
+    #int s = 0;
+    #int i = 1;
     for (a: d_arr){
         r_arr[i] = num % a;
         i = i + 1;
@@ -74,6 +79,7 @@ main{
     fun([?DivisibleBy20(num2)], [?DivisibleBy10(num1)]);
     print([PositiveInteger(?)]);
     print([?EvenNumber(num2)]);
+    (f(x) == true) => (PrimeNumber(p);)
     ([EvenNumber(?)] == [2, 3]) => (PrimeNumber(p);)
     (a) => (a2 = [1, 2, 3];)
 }
