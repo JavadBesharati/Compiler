@@ -13,8 +13,8 @@
 // function call -                              done
 // for loop strcuture -                         done
 // queries                                      done
-// print pre-order                              done -> test (Fatemeh)
-// print post-order                             1. questions(TA) - 2. assignments -> test(Fatemeh)
+// print pre-order                              done
+// print post-order                             done
 
 // Question: What do we have in "q" expression of implications(implication: (p) => (q))?
 //           Just predications or all expressions are possible?
@@ -36,8 +36,7 @@ main_body
     ;
 line
     :
-        (((function_call
-            {System.out.println("FunctionCall");})
+        ((({System.out.println("FunctionCall");} function_call )
             | array_declaration | int_declaration | float_declaration | boolean_declaration
             | or_expression | function_return | print_expression) SEMICOLON
             | for_structure | predicate_expression | implication_expression)
@@ -65,20 +64,26 @@ array_declaration
         |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
              ASSIGNMENT_OP array_elements
+             { System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
         |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
             ASSIGNMENT_OP array_elements
+            { System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
         |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
             ASSIGNMENT_OP array_elements
+            { System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
+//----> ???
+
     ;
 array_elements
     :
-           '[' primary_expression (COMMA primary_expression)* ']'
+           //'[' primary_expression (COMMA primary_expression)* ']'
+            '[' or_expression (COMMA or_expression)* ']'
     ;
 argument
     :
@@ -90,18 +95,21 @@ int_declaration
         INT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
     |   INT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         ASSIGNMENT_OP additive_expression
+        { System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
     ;
 float_declaration
     :
         FLOAT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
     |   FLOAT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         ASSIGNMENT_OP additive_expression
+        { System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
     ;
 boolean_declaration
     :
         BOOLEAN_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
     |   BOOLEAN_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         ASSIGNMENT_OP or_expression
+        { System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
     ;
 function_call
     :
@@ -129,15 +137,16 @@ and_expression
     ;
 equality_expression
     :
-        relational_expression ((RELATIONAL_OP2 relational_expression)*
-        //{System.out.println("Operator: " + $RELATIONAL_OP2.getText());})*
-        | (ASSIGNMENT_OP relational_expression)*)
-//        {System.out.println("Operator: " + $ASSIGNMENT_OP.getText());})*)
+        relational_expression ((RELATIONAL_OP2 relational_expression
+        {System.out.println("Operator: " + $RELATIONAL_OP2.getText());})*
+        | (ASSIGNMENT_OP relational_expression
+        {System.out.println("Operator: " + $ASSIGNMENT_OP.getText());})*)
     ;
 relational_expression
     :
-        additive_expression (RELATIONAL_OP1 additive_expression)*
-        // ???
+        additive_expression (RELATIONAL_OP1 additive_expression
+         {System.out.println("Operator: " + $RELATIONAL_OP1.getText());})*
+
     ;
 additive_expression
     :
@@ -183,6 +192,7 @@ implication_expression
         { System.out.println("Implication"); }
         '(' or_expression ')' '=>' '(' (line)+ ')'
     ;
+
 // tokens:
 MAIN
     :
@@ -276,11 +286,7 @@ ASSIGNMENT_OP
     :
         '='
     ;
-OPERATORS
-    :
-        LOGICAL_NOT_OP | BINARY_ARITHMETIC_OP1 | BINARY_ARITHMETIC_OP2 | RELATIONAL_OP1
-        | RELATIONAL_OP2 | LOGICAL_AND_OP | LOGICAL_OR_OP | ASSIGNMENT_OP
-    ;
+
 COMMA
     :
         ','
