@@ -88,6 +88,16 @@ public interface LogicPLListener extends ParseTreeListener {
 	 */
 	void exitArray_declaration(LogicPLParser.Array_declarationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#array_elements}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray_elements(LogicPLParser.Array_elementsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#array_elements}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray_elements(LogicPLParser.Array_elementsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LogicPLParser#argument}.
 	 * @param ctx the parse tree
 	 */

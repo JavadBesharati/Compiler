@@ -59,6 +59,12 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArray_declaration(LogicPLParser.Array_declarationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#array_elements}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray_elements(LogicPLParser.Array_elementsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#argument}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

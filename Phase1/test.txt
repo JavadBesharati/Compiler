@@ -72,6 +72,8 @@ main{
     ([?DivisibleBy20(num2)]) => (EvenNumber(num2);DivisibleBy10(num2);)
     boolean b = [?DivisibleBy20(num2)];
     fun([?DivisibleBy20(num2)], [?DivisibleBy10(num1)]);
-    print([PsitiveInteger(?)]);
+    print([PositiveInteger(?)]);
     print([?EvenNumber(num2)]);
+    ([EvenNumber(?)] == [2, 3]) => (PrimeNumber(p);)
+    (a) => (a2 = [1, 2, 3];)
 }

@@ -55,13 +55,25 @@ function_declaration
     ;
 array_declaration
     :
+        //     INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+        // |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
+        //     '[' primary_expression (COMMA primary_expression)* ']'
+        // |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+        // |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
+        //     '[' primary_expression (COMMA primary_expression)* ']'
+        // |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+        // |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
+        //     '[' primary_expression (COMMA primary_expression)* ']'
             INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
-            '[' (NATURAL_NUMBERS | '0') (COMMA (NATURAL_NUMBERS | '0'))* ']'
+        |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP array_elements
         |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP '[' FLOAT (COMMA FLOAT)* ']'
+        |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP array_elements
         |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
-        |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP '[' BOOLEAN (COMMA BOOLEAN)* ']'
+        |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP array_elements
+    ;
+array_elements
+    :
+        '[' primary_expression (COMMA primary_expression)* ']'
     ;
 argument
     :
@@ -89,7 +101,7 @@ function_return
     ;
 print_expression
     :
-        PRINT '(' ( (or_expression | QUERY_2) (COMMA (or_expression | QUERY_2))* ) ')'
+        PRINT '(' ( (or_expression) (COMMA (or_expression))* ) ')'
     ;
 or_expression
     :
@@ -130,6 +142,8 @@ primary_expression
     |   '(' or_expression ')'
     |   IDENTIFIER '[' (NATURAL_NUMBERS | additive_expression) ']' // to edit array elements
     |   QUERY_1
+    |   array_elements
+    |   QUERY_2
     ;
 predicate_expression
     :
@@ -140,6 +154,7 @@ implication_expression
         // if q be just predications:
         // '(' or_expression ')' '=>' '(' (predicate_expression)+ ')'
         // if q be all expressions:
+        // '(' (or_expression | (QUERY_2 RELATIONAL_OP2 array_elements))')' '=>' '(' (line)+ ')'
         '(' or_expression ')' '=>' '(' (line)+ ')'
     ;
 // tokens:
