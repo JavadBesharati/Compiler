@@ -1,146 +1,174 @@
+// Possible propositions:
+// assignment -                                 done
+// variable declaration -                       done
+// predicate declaration -                      done
+// implication declaration -                    done
+// return in functions -                        done
+// print                                        done
+// (for example: query or variable value)       //
+// function declaration -                       done
+// array declaration -                          done
+// array elements edition -                     done
+// types declaration (int, float, boolean) -    done
+// function call -                              done
+// for loop strcuture -                         done
+// queries                                      done
+// print pre-order
+// print post-order
+// print parse tree
+
+// Question: What do we have in "q" expression of implications(implication: (p) => (q))?
+//           Just predications or all expressions are possible?
 
 grammar LogicPL;
-// Javad :
-// 1. operator - post order
-// 2. expression -> boolean / logical
-// 3. edit (rules)
-
-// SKIP COMMA AND SEMICOLON AND ..... ?
-
+// grammar rules:
 logicPL
     :
-        (function_declare)* main_call EOF
+        (function_declaration)* main_call EOF
     ;
-
 main_call
     :
-        MAIN '{' body '}'
+        MAIN '{' main_body '}'
     ;
-body
+main_body
     :
-        (line*)
+        // ((line)* | (for_structure)+)
+        (line)*
     ;
 line
-    :   //anything that end  with ;  or  implication
-        //add some rule ...
-        //implication_statement use implication_statement ??
-        // loop?
-        ((variable_declare | change_variale | array_declare | element_declare | predicate_statement | return | function_call) SEMICOLON) | for
-        // | implication_statement
-    ;
-function_declare
     :
-        //edit ... daneshvar
-
-        // retun ham check she
-        FUNCTION IDENTIFIER  '(' (arguments) ')' ':' TYPE '{' (line)* '}'
+        ((array_declaration | int_declaration | float_declaration | boolean_declaration
+            | function_return | or_expression | function_return | print_expression) SEMICOLON
+            | for_structure | predicate_expression | implication_expression)
+    ;
+for_structure
+    :
+        FOR '(' IDENTIFIER ':' IDENTIFIER ')' '{' for_body '}'
+    ;
+for_body
+    :
+        (line)*
+    ;
+function_declaration
+    :
+        FUNCTION IDENTIFIER '(' (argument (COMMA argument)*) ')' ':' (INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE)
+        '{' line* '}'
+    ;
+array_declaration
+    :
+            INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+        |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP
+            '[' (NATURAL_NUMBERS | '0') (COMMA (NATURAL_NUMBERS | '0'))* ']'
+        |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+        |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP '[' FLOAT (COMMA FLOAT)* ']'
+        |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
+        |   BOOLEAN_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER ASSIGNMENT_OP '[' BOOLEAN (COMMA BOOLEAN)* ']'
     ;
 argument
     :
-        TYPE IDENTIFIER
+        // (INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE) IDENTIFIER
+        ((INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE) IDENTIFIER) | QUERY_1
     ;
-arguments
+int_declaration
     :
-        // edit  ...
-       (argument (COMMA argument)*)
-        //{ System.out.println(); }
+        INT_TYPE IDENTIFIER ASSIGNMENT_OP additive_expression
     ;
-array_declare
+float_declaration
     :
-        //edit
+        FLOAT_TYPE IDENTIFIER ASSIGNMENT_OP additive_expression
     ;
-element_declare
+boolean_declaration
     :
-        // edit
-    ;
-variable_declare
-    :
-        // ADD ARRAY...SEMICOLON
-        //PRINT OUT
-        (TYPE IDENTIFIER ASSIGNMENT_OP (function_call | VALUE | IDENTIFIER | ARRAY_ELEMENT) )
-    ;
-change_variale
-    :
-        IDENTIFIER ASSIGNMENT_OP (function_call | VALUE | IDENTIFIER)
-    ;
-return
-    :
-        //EDIT ...SEMICOLON
-        RETURN (VALUE | IDENTIFIER | function_call)
-        //{ system.out.println("Return"); }
-    ;
-print_call
-    :
-        // EDIT...
-        PRINT //{ system.out.println("Built-in: print"); }
-    ;
-inputs
-    :
-        (VALUE | IDENTIFIER | function_call) (COMMA (VALUE | IDENTIFIER | function_call))*
+        BOOLEAN_TYPE IDENTIFIER ASSIGNMENT_OP or_expression
     ;
 function_call
     :
-        IDENTIFIER '(' inputs ')'
+        IDENTIFIER '(' or_expression (COMMA or_expression)* ')'
     ;
-for
+function_return
     :
-        //edit ...
-        FOR '(' IDENTIFIER ':' IDENTIFIER ')' '{' (line)* '}'
+        // add implications
+        RETURN or_expression
     ;
-predicate_statement
+print_expression
     :
-        PRIDICATE '(' IDENTIFIER ')'
-        //{ system.out.println("Predicare: "); }
+        PRINT '(' ( (or_expression | QUERY_2) (COMMA (or_expression | QUERY_2))* ) ')'
     ;
-
-boolean_expression
+or_expression
     :
-        //functions
-        //...
-        // or expression
-        // and expression
-        // logical_expression - math experssion
-
+        and_expression (LOGICAL_OR_OP and_expression)*
     ;
-implication_statement
+and_expression
     :
-        //'(' boolean_expression ')' '=>' '(' (line)*')'
+        equality_expression (LOGICAL_AND_OP equality_expression)*
     ;
-
-
-// Tokens:
-// Keywords and Datas:
-VALUE
+equality_expression
     :
-        INT | FLOAT | BOOLEAN
+        relational_expression ((RELATIONAL_OP2 | ASSIGNMENT_OP) relational_expression)*
     ;
-FLOAT
+relational_expression
     :
-        [0-9]*[.][0-9]+
+        additive_expression (RELATIONAL_OP1 additive_expression)*
     ;
-INT
+additive_expression
     :
-        [1-9][0-9]* | '0'
+    multiplicative_expression (BINARY_ARITHMETIC_OP2 multiplicative_expression)*
     ;
-NATURAL_NUMBERS
+multiplicative_expression
     :
-        [1-9][0-9]*
+        not_expression (BINARY_ARITHMETIC_OP1 not_expression)*
     ;
-FUNCTION
+not_expression
     :
-        'function'
+        LOGICAL_NOT_OP not_expression
+    |   primary_expression
     ;
+primary_expression
+    :
+        IDENTIFIER
+    |   (NATURAL_NUMBERS | '0') // same as int
+    |   FLOAT
+    |   BOOLEAN
+    |   function_call
+    |   '(' or_expression ')'
+    |   IDENTIFIER '[' (NATURAL_NUMBERS | additive_expression) ']' // to edit array elements
+    |   QUERY_1
+    ;
+predicate_expression
+    :
+        PRIDICATE '(' IDENTIFIER ')' SEMICOLON
+    ;
+implication_expression
+    :
+        // if q be just predications:
+        // '(' or_expression ')' '=>' '(' (predicate_expression)+ ')'
+        // if q be all expressions:
+        '(' or_expression ')' '=>' '(' (line)+ ')'
+    ;
+// tokens:
 MAIN
     :
         'main'
     ;
-TYPE
+INT_TYPE
     :
-        'int' | 'float' | 'boolean'
+        'int'
+    ;
+FLOAT_TYPE
+    :
+        'float'
+    ;
+BOOLEAN_TYPE
+    :
+        'boolean'
     ;
 BOOLEAN
     :
         'true' | 'false'
+    ;
+FUNCTION
+    :
+        'function'
     ;
 PRINT
     :
@@ -156,9 +184,12 @@ RETURN
     ;
 KEYWORDS
     :
-        FUNCTION | MAIN | TYPE | BOOLEAN | PRINT | FOR | RETURN
+    FUNCTION | MAIN | INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE | BOOLEAN | PRINT | FOR | RETURN
     ;
-
+NATURAL_NUMBERS
+    :
+        [1-9][0-9]*
+    ;
 IDENTIFIER
     :
         [a-z][a-zA-Z0-9_]*
@@ -167,7 +198,6 @@ PRIDICATE
     :
         [A-Z][a-zA-Z0-9_]*
     ;
-
 QUERY_1
     :
         '[' '?' PRIDICATE '(' IDENTIFIER ')' ']'
@@ -176,11 +206,9 @@ QUERY_2
     :
         '[' PRIDICATE '(' '?' ')' ']'
     ;
-
-//Operator:
-UNARY_OP
+LOGICAL_NOT_OP
     :
-        '+' | '-' | '!'
+        '!'
     ;
 BINARY_ARITHMETIC_OP1
     :
@@ -212,35 +240,21 @@ ASSIGNMENT_OP
     ;
 OPERATORS
     :
-        UNARY_OP | BINARY_ARITHMETIC_OP1 | BINARY_ARITHMETIC_OP2 | RELATIONAL_OP1
+        LOGICAL_NOT_OP | BINARY_ARITHMETIC_OP1 | BINARY_ARITHMETIC_OP2 | RELATIONAL_OP1
         | RELATIONAL_OP2 | LOGICAL_AND_OP | LOGICAL_OR_OP | ASSIGNMENT_OP
     ;
-
-
-ARRAY_TYPE
-    :
-        TYPE '[' NATURAL_NUMBERS ']' ' ' IDENTIFIER
-    ;
-ARRAY_VALUE //token or rule?
-    :
-        '[' VALUE (COMMA VALUE)* ']'
-    ;
-ARRAY_ELEMENT
-    :
-       IDENTIFIER '[' NATURAL_NUMBERS ']'
-    ;
-
 COMMA
     :
-        (',')
+        ','
     ;
-
 SEMICOLON
     :
         ';'
     ;
-
-// WhiteSpaces:
+FLOAT
+    :
+        [0-9]+[.][0-9]+
+    ;
 WHITESPACE
     :
         (' ' | '\t')+ -> skip

@@ -1,32 +1,77 @@
+# I tested all these test cases and they all were parsed correctly.
+# If you wish, you can uncomment and test them again. Also you can
+# add new test cases.
+# Good luck!
+
+#function_declaration_test
 function isDivisible(int a, int b): boolean {
 	#(b == 0) => (return false;)
-	#(a % b == 0) => (return true;)
+	(a % b == 0) => (return true;)
+    #return x[2];
+    return f(4, 5, c);
 	#(a % b != 0) => (return false;)
+    #return 0;
 }
 
 main{
-	int num1 = 50;
-	EvenNumber(num1);
-	boolean i = isDivisible(num, 5);
-	#([?EvenNumber(num1)] && isDivisible(num, 5)) => (DivisibleBy10(num1);)
-	
-	#int[2] int_array = [4, 5];
-	int num2 = 200;
-	
-	boolean divisible = true;
-	#for(a: int_array){
-	#	(isDivisible(num2, a)) => (num = a;)
-		#(!isDivisible(num2, a)) => (divisible = false; return;)
+    #arr_dec test:
+    #int[10] a1;
+    #int[4] a2 = [2, 4, 6, 8];
+    #boolean[2] a3 = [true, false];
+    #float[1] a4 = [2.5];
 
-	#}
-	#(divisible == true) => (DivisibleBy20(num2);)
-	
-	#([?DivisibleBy20[num2]]) => (EvenNumber(num2);DivisibleBy10(num2);)
+    #var_dec test:
+    #int x = 2;
+    #int int_var = 3;
+    #float y = 3.8;
+    #boolean z = true;
 
-	#(isDivisible(num, 5)) => (EvenNumber(num2);DivisibleBy10(num2);)
+    #var_val_edition_test
+    #x = 3;
+    #y = a4[1];
 
-	#print([?EvenNumber(num2)]) => (EvenNumber(num2);DivisibleBy10(num2);)
-	
-	#print([?EvenNumber(num2)]); # prints "true"
-	#print([DivisibleBy10(?)]); #prints "{num1, num2}"
+    #function_call_test:
+    #isDivisible(3, 4);
+    #isDivisible(x, int_var);
+
+    #operators_test
+    #boolean x = a || b;
+    #boolean y = 2 && 4;
+    #boolean z = a == b;
+    #int a = 2 + 3 + 4 * (3 - 6) + fun(x, 2, true) * zzz;
+    #int i = fun1(2);
+    #boolean s = 2 * 3 != 4;
+    #i = i + 1;
+    #a = b;
+
+    #array_access_test:
+    #x[2] = true;
+
+    #function_call_test:
+    #isDivisible(3, 4);
+    #isDivisible(x, int_var);
+
+    #test_for_structure:
+    int num = 100;
+    int[4] d_arr = [2, 3, 5, 7];
+    int[4] r_arr;
+    int s = 0;
+    int i = 1;
+    for (a: d_arr){
+        r_arr[i] = num % a;
+        i = i + 1;
+    }
+
+    #test_predicate:
+    PrimeNumber(p);
+    PrimeNumber(q);
+    CompositeNumber(num1);
+
+    #test_implication:
+    #(a % 2 == 0 && a % 5 == 0) => (DivisibleBy10(a);)
+    ([?DivisibleBy20(num2)]) => (EvenNumber(num2);DivisibleBy10(num2);)
+    boolean b = [?DivisibleBy20(num2)];
+    fun([?DivisibleBy20(num2)], [?DivisibleBy10(num1)]);
+    print([PsitiveInteger(?)]);
+    print([?EvenNumber(num2)]);
 }
