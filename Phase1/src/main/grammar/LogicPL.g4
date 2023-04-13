@@ -32,7 +32,6 @@ main_call
     ;
 main_body
     :
-        // ((line)* | (for_structure)+)
         (line)*
     ;
 line
@@ -66,7 +65,6 @@ array_declaration
     ;
 argument
     :
-        // (INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE) IDENTIFIER
         ((INT_TYPE | FLOAT_TYPE | BOOLEAN_TYPE) IDENTIFIER) | QUERY_1
     ;
 int_declaration
@@ -87,7 +85,6 @@ function_call
     ;
 function_return
     :
-        // add implications
         RETURN or_expression
     ;
 print_expression
