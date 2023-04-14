@@ -258,6 +258,26 @@ public interface LogicPLListener extends ParseTreeListener {
 	 */
 	void exitPredicate_expression(LogicPLParser.Predicate_expressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#query_1}.
+	 * @param ctx the parse tree
+	 */
+	void enterQuery_1(LogicPLParser.Query_1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#query_1}.
+	 * @param ctx the parse tree
+	 */
+	void exitQuery_1(LogicPLParser.Query_1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#query_2}.
+	 * @param ctx the parse tree
+	 */
+	void enterQuery_2(LogicPLParser.Query_2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#query_2}.
+	 * @param ctx the parse tree
+	 */
+	void exitQuery_2(LogicPLParser.Query_2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link LogicPLParser#implication_expression}.
 	 * @param ctx the parse tree
 	 */

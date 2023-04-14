@@ -1,35 +1,38 @@
-#func(void);
 
-#functions:
-function f1(int a, boolean b): boolean {
-    #check post-order
-    #check variableDec
-    #functionCall
-    #int a = 1 * b - c / 2;
-    #int c = b;
-    #float m;
-    #int f = 3;
-    #int d = func(a, b);
-    #boolean c  = func(b);
-    #(a <= b) => (a = c + 2 / 3 * c;)
-    #([Pre(?)] != [2, 3]) => (a = [1 ,2];)
-    #func(c, b);
-    return c + d / v * (b + 1);
+# -- def: (functions) --
+function randomFunc(): boolean {
+    int a;
+    IsRand(a);
+    ( ( b * c / d >= e == f ) && ![?IsRand(a)] ) => (boolean flag = false; print(a); return true;)
+    return false;
 }
 
-function f2(float c, int d): float {
-    #int[4] arr = [1,2, 4 * 5, func(2 + 4) - 3 * (4 + 1)];
-    #boolean[1] a = [!(func(a) && c || !(s && !(true || d )))] ;
-    #func(c + 1 * e < e);
+function isPossible(int a, int b): int {
+    IsLocal(b);
+    boolean[5] local_array = [-1, true, 666, -10, 0, 10.06];
+    for (i : local_array)
+    {
+        int a;
+        (randomFunc() + a == c % (d + 54) && true) => (return; a = a + 5;)
+        print([?IsLocal(a)]);
+        int c = local_array[a * 23 + 2] + 5;
+    }
 }
-#main
-main {
 
+# -- def: (main class) --
+main{
+    int num1 = (a + b % 2) || s - e && a + (-a) + 1 == t * t + 101;
+    int num2 = -0.012;
+    DoCalc(num2);
+
+    ([?DoCalc(num1)] && isPossiblee(num1, 5)) => (
+        for (i : array)
+        {
+            print(i);
+            (-(i+1) != num1 || !randomFunc()) => (flag = true; return;)
+        }
+        EventNum(i);
+        boolean flag = isPossible(a);
+    )
+    print([EventNum(?)]);
 }
-
-#               changes:
-# 1. argument for functioncall -> or-exp.
-# 2. array element -> or-exp.
-# 3. print for FunctionCall (see line)
-# 4. add print for relational-op
-# 5. some other changes for pre-order...

@@ -317,6 +317,30 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterQuery_1(LogicPLParser.Query_1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitQuery_1(LogicPLParser.Query_1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterQuery_2(LogicPLParser.Query_2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitQuery_2(LogicPLParser.Query_2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterImplication_expression(LogicPLParser.Implication_expressionContext ctx) { }
 	/**
 	 * {@inheritDoc}

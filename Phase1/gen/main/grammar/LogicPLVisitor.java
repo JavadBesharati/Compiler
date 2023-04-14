@@ -161,6 +161,18 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPredicate_expression(LogicPLParser.Predicate_expressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#query_1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuery_1(LogicPLParser.Query_1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#query_2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuery_2(LogicPLParser.Query_2Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#implication_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
