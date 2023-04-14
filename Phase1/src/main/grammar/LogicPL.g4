@@ -19,6 +19,7 @@
 
 // Question: What do we have in "q" expression of implications(implication: (p) => (q))?
 //           Just predications or all expressions are possible?
+// little_changed
 
 grammar LogicPL;
 // grammar rules:
@@ -86,8 +87,8 @@ array_elements
     :
            //'[' primary_expression (COMMA primary_expression)* ']'
            //'[' or_expression (COMMA or_expression)* ']'
-        '[' (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
-            (COMMA (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN))* ']'
+        '[' (unary_value)
+            (COMMA (unary_value))* ']'
            //---------------> UNARY?
     ;
 argument
@@ -127,7 +128,7 @@ function_call
 function_return
     :
         RETURN { System.out.println("Return"); }
-        (NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN) // UNARY????????????????????
+        (unary_value) // UNARY????????????????????
         | RETURN { System.out.println("Return"); }
        //or_expression
     ;
@@ -179,12 +180,12 @@ not_expression
     ;
 primary_expression
     :
-        IDENTIFIER
+        IDENTIFIER '[' (NATURAL_NUMBERS | additive_expression) ']' // to edit array elements
     |   (NATURAL_NUMBERS | '0') // same as int
     |   FLOAT
     |   BOOLEAN
     |   '(' or_expression ')'
-    |   IDENTIFIER '[' (NATURAL_NUMBERS | additive_expression) ']' // to edit array elements
+    |   IDENTIFIER
     |   query_1
     |   query_2
     |   array_elements
@@ -194,13 +195,13 @@ predicate_expression
     :
         PRIDICATE
         {System.out.println("Predicate: " + $PRIDICATE.getText());}
-        '(' IDENTIFIER ')' SEMICOLON
+        '(' assign_expression')' SEMICOLON
     ;
 query_1
     :
         '[' '?' PRIDICATE
         {System.out.println("Predicate: " + $PRIDICATE.getText());}
-        '(' IDENTIFIER ')' ']' // UNARY????????????????????
+        '(' assign_expression')' ']' // UNARY????????????????????
 
     ;
 query_2
@@ -217,6 +218,14 @@ implication_expression
         // '(' (or_expression | (QUERY_2 RELATIONAL_OP2 array_elements))')' '=>' '(' (line)+ ')'
         { System.out.println("Implication"); }
         '(' assign_expression ')' '=>' '(' (line)+ ')'
+    ;
+unary_value
+    :
+        OP = (PLUS | MINUS | LOGICAL_NOT)  (NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
+         {System.out.println("Operator: " + $OP.getText());}
+        | OP = (PLUS | MINUS | LOGICAL_NOT) '(' unary_value ')'
+         {System.out.println("Operator: " + $OP.getText());}
+        | (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
     ;
 
 // tokens:

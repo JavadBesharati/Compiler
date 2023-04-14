@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5860a24-963e-47c8-bb65-05062e76b3fe" name="Changes" comment="" />
+    <list default="true" id="2c58cb1a-a140-4585-8c04-ca4c289a1d97" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2OEMNEB9bfnzPxBGs3crRSJ4kZK" />
+  <component name="ProjectId" id="2OPsRpIUXLXTvkVZOhhHhAfvzKB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,7 +26,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/javad/My Folders/University/6th Term/Complier/CAs/Compiler-Projects-UT-Spring-2023/Phase1",
+    "last_opened_file_path": "E:/Uni/Uni06/3. compiler/2. CAs/Compiler-Projects-UT-Spring-2023/phase1/antlr-4.12.0-complete.jar",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -38,44 +35,28 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Uni\Uni06\3. compiler\2. CAs\Compiler-Projects-UT-Spring-2023\Phase1" />
-      <recent name="E:\Uni\Uni06\3. compiler\2. CAs\Compiler-Projects-UT-Spring-2023\Phase1\src\main\grammar" />
+      <recent name="E:\Uni\Uni06\3. compiler\2. CAs\Compiler-Projects-UT-Spring-2023\phase1" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.test">
-    <configuration name="TestRig" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.antlr.v4.gui.TestRig" />
-      <module name="Phase1" />
-      <option name="PROGRAM_PARAMETERS" value="main.grammar.LogicPL logicPL -gui test.txt" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.antlr.v4.gui.TestRig" />
-      <module name="Phase1" />
-      <option name="PROGRAM_PARAMETERS" value=" main.grammar.LogicPL logicPL -gui test3.txt" />
+      <module name="phase1" />
+      <option name="PROGRAM_PARAMETERS" value="main.grammar.LogicPL logicPL -gui test3.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.TestRig" />
-      <item itemvalue="Application.test" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c5860a24-963e-47c8-bb65-05062e76b3fe" name="Changes" comment="" />
-      <created>1681121260195</created>
+      <changelist id="2c58cb1a-a140-4585-8c04-ca4c289a1d97" name="Changes" comment="" />
+      <created>1681473548877</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1681121260195</updated>
+      <updated>1681473548877</updated>
     </task>
     <servers />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LogicPL_g4$test2.ic" NAME="test2 Coverage Results" MODIFIED="1681407335591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

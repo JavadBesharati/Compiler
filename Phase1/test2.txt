@@ -1,4 +1,3 @@
-
 # -- def: (functions) --
 function randomFunc(): boolean {
     int a;

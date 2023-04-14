@@ -1,4 +1,4 @@
-// Generated from /home/javad/My Folders/University/6th Term/Complier/CAs/Compiler-Projects-UT-Spring-2023/Phase1/src/main/grammar/LogicPL.g4 by ANTLR 4.12.0
+// Generated from E:/Uni/Uni06/3. compiler/2. CAs/Compiler-Projects-UT-Spring-2023/phase1/src/main/grammar\LogicPL.g4 by ANTLR 4.12.0
 package main.grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -297,4 +297,14 @@ public interface LogicPLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitImplication_expression(LogicPLParser.Implication_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogicPLParser#unary_value}.
+	 * @param ctx the parse tree
+	 */
+	void enterUnary_value(LogicPLParser.Unary_valueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogicPLParser#unary_value}.
+	 * @param ctx the parse tree
+	 */
+	void exitUnary_value(LogicPLParser.Unary_valueContext ctx);
 }
