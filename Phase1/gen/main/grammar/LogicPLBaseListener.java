@@ -173,6 +173,18 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterChane_var(LogicPLParser.Chane_varContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChane_var(LogicPLParser.Chane_varContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFunction_call(LogicPLParser.Function_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -221,85 +233,145 @@ public class LogicPLBaseListener implements LogicPLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOr_expression(LogicPLParser.Or_expressionContext ctx) { }
+	@Override public void enterAssign_exp2(LogicPLParser.Assign_exp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOr_expression(LogicPLParser.Or_expressionContext ctx) { }
+	@Override public void exitAssign_exp2(LogicPLParser.Assign_exp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnd_expression(LogicPLParser.And_expressionContext ctx) { }
+	@Override public void enterOr_exp(LogicPLParser.Or_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnd_expression(LogicPLParser.And_expressionContext ctx) { }
+	@Override public void exitOr_exp(LogicPLParser.Or_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEquality_expression(LogicPLParser.Equality_expressionContext ctx) { }
+	@Override public void enterOr_exp2(LogicPLParser.Or_exp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEquality_expression(LogicPLParser.Equality_expressionContext ctx) { }
+	@Override public void exitOr_exp2(LogicPLParser.Or_exp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelational_expression(LogicPLParser.Relational_expressionContext ctx) { }
+	@Override public void enterAnd_exp(LogicPLParser.And_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelational_expression(LogicPLParser.Relational_expressionContext ctx) { }
+	@Override public void exitAnd_exp(LogicPLParser.And_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditive_expression(LogicPLParser.Additive_expressionContext ctx) { }
+	@Override public void enterAnd_exp2(LogicPLParser.And_exp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditive_expression(LogicPLParser.Additive_expressionContext ctx) { }
+	@Override public void exitAnd_exp2(LogicPLParser.And_exp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMultiplicative_expression(LogicPLParser.Multiplicative_expressionContext ctx) { }
+	@Override public void enterRelational2_exp(LogicPLParser.Relational2_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMultiplicative_expression(LogicPLParser.Multiplicative_expressionContext ctx) { }
+	@Override public void exitRelational2_exp(LogicPLParser.Relational2_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNot_expression(LogicPLParser.Not_expressionContext ctx) { }
+	@Override public void enterRelational2_exp2(LogicPLParser.Relational2_exp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNot_expression(LogicPLParser.Not_expressionContext ctx) { }
+	@Override public void exitRelational2_exp2(LogicPLParser.Relational2_exp2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRelational1_exp(LogicPLParser.Relational1_expContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRelational1_exp(LogicPLParser.Relational1_expContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRelational1_exp2(LogicPLParser.Relational1_exp2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRelational1_exp2(LogicPLParser.Relational1_exp2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArithmatic2_exp(LogicPLParser.Arithmatic2_expContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArithmatic2_exp(LogicPLParser.Arithmatic2_expContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArithmatic2_exp2(LogicPLParser.Arithmatic2_exp2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArithmatic2_exp2(LogicPLParser.Arithmatic2_exp2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArithmatic1_exp(LogicPLParser.Arithmatic1_expContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArithmatic1_exp(LogicPLParser.Arithmatic1_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

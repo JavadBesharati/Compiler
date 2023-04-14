@@ -89,6 +89,12 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBoolean_declaration(LogicPLParser.Boolean_declarationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#chane_var}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitChane_var(LogicPLParser.Chane_varContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#function_call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -113,47 +119,77 @@ public interface LogicPLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssign_expression(LogicPLParser.Assign_expressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#or_expression}.
+	 * Visit a parse tree produced by {@link LogicPLParser#assign_exp2}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOr_expression(LogicPLParser.Or_expressionContext ctx);
+	T visitAssign_exp2(LogicPLParser.Assign_exp2Context ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#and_expression}.
+	 * Visit a parse tree produced by {@link LogicPLParser#or_exp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAnd_expression(LogicPLParser.And_expressionContext ctx);
+	T visitOr_exp(LogicPLParser.Or_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#equality_expression}.
+	 * Visit a parse tree produced by {@link LogicPLParser#or_exp2}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitEquality_expression(LogicPLParser.Equality_expressionContext ctx);
+	T visitOr_exp2(LogicPLParser.Or_exp2Context ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#relational_expression}.
+	 * Visit a parse tree produced by {@link LogicPLParser#and_exp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRelational_expression(LogicPLParser.Relational_expressionContext ctx);
+	T visitAnd_exp(LogicPLParser.And_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#additive_expression}.
+	 * Visit a parse tree produced by {@link LogicPLParser#and_exp2}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAdditive_expression(LogicPLParser.Additive_expressionContext ctx);
+	T visitAnd_exp2(LogicPLParser.And_exp2Context ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#multiplicative_expression}.
+	 * Visit a parse tree produced by {@link LogicPLParser#relational2_exp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMultiplicative_expression(LogicPLParser.Multiplicative_expressionContext ctx);
+	T visitRelational2_exp(LogicPLParser.Relational2_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogicPLParser#not_expression}.
+	 * Visit a parse tree produced by {@link LogicPLParser#relational2_exp2}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNot_expression(LogicPLParser.Not_expressionContext ctx);
+	T visitRelational2_exp2(LogicPLParser.Relational2_exp2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#relational1_exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelational1_exp(LogicPLParser.Relational1_expContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#relational1_exp2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelational1_exp2(LogicPLParser.Relational1_exp2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#arithmatic2_exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArithmatic2_exp(LogicPLParser.Arithmatic2_expContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#arithmatic2_exp2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArithmatic2_exp2(LogicPLParser.Arithmatic2_exp2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogicPLParser#arithmatic1_exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArithmatic1_exp(LogicPLParser.Arithmatic1_expContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogicPLParser#primary_expression}.
 	 * @param ctx the parse tree

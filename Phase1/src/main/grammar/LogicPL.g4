@@ -1,4 +1,3 @@
-
 // Possible propositions:
 // assignment -                                 done
 // variable declaration -                       done
@@ -40,7 +39,7 @@ line
     :
         (((/*{System.out.println("FunctionCall");}*/ function_call )
             | array_declaration | int_declaration | float_declaration | boolean_declaration
-            | assign_expression | function_return | print_expression) SEMICOLON
+            | assign_expression | function_return | print_expression | chane_var) SEMICOLON
             | for_structure | predicate_expression | implication_expression)
     ;
 for_structure
@@ -120,6 +119,10 @@ boolean_declaration
         ASSIGNMENT_OP assign_expression
         //{ System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
     ;
+chane_var
+    :
+        IDENTIFIER ASSIGNMENT_OP assign_expression
+    ;
 function_call
     :
         IDENTIFIER '(' assign_expression (COMMA assign_expression)* ')'
@@ -135,56 +138,67 @@ function_return
 print_expression
     :
         PRINT { System.out.println("Built-in: print"); }
-        '(' ( (assign_expression) (COMMA (assign_expression))* ) ')'
+        '(' ( (query_2 | query_1 | IDENTIFIER) (COMMA (query_1 | query_2 | IDENTIFIER))* ) ')'
     ;
 assign_expression
     :
-        or_expression (ASSIGNMENT_OP or_expression)*
+        or_exp assign_exp2
     ;
-or_expression
+assign_exp2
     :
-        and_expression (LOGICAL_OR_OP and_expression
-        {System.out.println("Operator: " + $LOGICAL_OR_OP.getText());})*
+        LOGICAL_OR_OP or_exp assign_exp2 |
     ;
-and_expression
+or_exp
     :
-        equality_expression (LOGICAL_AND_OP equality_expression
-        {System.out.println("Operator: " + $LOGICAL_AND_OP.getText());})*
+        and_exp or_exp2
     ;
-equality_expression
+or_exp2
     :
-        relational_expression (RELATIONAL_OP2 relational_expression
-        {System.out.println("Operator: " + $RELATIONAL_OP2.getText());})*
+        LOGICAL_AND_OP and_exp or_exp2 |
     ;
-relational_expression
+and_exp
     :
-        additive_expression (RELATIONAL_OP1 additive_expression
-        {System.out.println("Operator: " + $RELATIONAL_OP1.getText());})*
-
+        relational2_exp and_exp2
     ;
-additive_expression
+and_exp2
     :
-    multiplicative_expression (OP = (PLUS | MINUS) multiplicative_expression
-    {System.out.println("Operator: " + $OP.getText());})*
+        RELATIONAL_OP2 relational2_exp and_exp2 |
     ;
-multiplicative_expression
+relational2_exp
     :
-        not_expression (MUL_DIV_MOD not_expression
-        {System.out.println("Operator: " + $MUL_DIV_MOD.getText());})*
+        relational1_exp relational2_exp2
     ;
-not_expression
+relational2_exp2
     :
-        OP = (PLUS | MINUS | LOGICAL_NOT) not_expression
-        {System.out.println("Operator: " + $OP.getText());}
-    |   primary_expression
+        RELATIONAL_OP1 relational1_exp relational2_exp2|
+    ;
+relational1_exp
+    :
+        arithmatic2_exp relational1_exp2
+    ;
+relational1_exp2
+    :
+        OP = (PLUS | MINUS) arithmatic2_exp relational1_exp2|
+    ;
+arithmatic2_exp
+    :
+        arithmatic1_exp arithmatic2_exp2
+    ;
+arithmatic2_exp2
+    :
+        MUL_DIV_MOD arithmatic1_exp arithmatic2_exp2 |
+    ;
+arithmatic1_exp
+    :
+        OP = (PLUS | MINUS | LOGICAL_NOT) primary_expression | primary_expression
     ;
 primary_expression
     :
-        IDENTIFIER '[' (NATURAL_NUMBERS | additive_expression) ']' // to edit array elements
+        IDENTIFIER '[' (NATURAL_NUMBERS | assign_expression) ']' // to edit array elements
     |   (NATURAL_NUMBERS | '0') // same as int
     |   FLOAT
     |   BOOLEAN
-    |   '(' or_expression ')'
+    |   '(' assign_expression ')'
     |   IDENTIFIER
     |   query_1
     |   query_2
@@ -225,7 +239,6 @@ implication_expression
          {System.out.println("Operator: " + $OP.getText());}
         | OP = (PLUS | MINUS | LOGICAL_NOT) '(' unary_value ')'
          {System.out.println("Operator: " + $OP.getText());}
-
     ; */
 unary_value
     :
