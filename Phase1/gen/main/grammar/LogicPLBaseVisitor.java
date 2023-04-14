@@ -144,84 +144,84 @@ public class LogicPLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAssign_exp2(LogicPLParser.Assign_exp2Context ctx) { return visitChildren(ctx); }
+	@Override public T visitAssign_expression2(LogicPLParser.Assign_expression2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOr_exp(LogicPLParser.Or_expContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOr_expression(LogicPLParser.Or_expressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOr_exp2(LogicPLParser.Or_exp2Context ctx) { return visitChildren(ctx); }
+	@Override public T visitOr_expression2(LogicPLParser.Or_expression2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAnd_exp(LogicPLParser.And_expContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAnd_expression(LogicPLParser.And_expressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAnd_exp2(LogicPLParser.And_exp2Context ctx) { return visitChildren(ctx); }
+	@Override public T visitAnd_expression2(LogicPLParser.And_expression2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRelational2_exp(LogicPLParser.Relational2_expContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRelational2_expression(LogicPLParser.Relational2_expressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRelational2_exp2(LogicPLParser.Relational2_exp2Context ctx) { return visitChildren(ctx); }
+	@Override public T visitRelational2_expression2(LogicPLParser.Relational2_expression2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRelational1_exp(LogicPLParser.Relational1_expContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRelational1_expression(LogicPLParser.Relational1_expressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRelational1_exp2(LogicPLParser.Relational1_exp2Context ctx) { return visitChildren(ctx); }
+	@Override public T visitRelational1_expression2(LogicPLParser.Relational1_expression2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArithmatic2_exp(LogicPLParser.Arithmatic2_expContext ctx) { return visitChildren(ctx); }
+	@Override public T visitArithmatic2_expression(LogicPLParser.Arithmatic2_expressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArithmatic2_exp2(LogicPLParser.Arithmatic2_exp2Context ctx) { return visitChildren(ctx); }
+	@Override public T visitArithmatic2_expression2(LogicPLParser.Arithmatic2_expression2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArithmatic1_exp(LogicPLParser.Arithmatic1_expContext ctx) { return visitChildren(ctx); }
+	@Override public T visitArithmatic1_expression(LogicPLParser.Arithmatic1_expressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

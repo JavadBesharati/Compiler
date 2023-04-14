@@ -188,125 +188,125 @@ public interface LogicPLListener extends ParseTreeListener {
 	 */
 	void exitAssign_expression(LogicPLParser.Assign_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#assign_exp2}.
+	 * Enter a parse tree produced by {@link LogicPLParser#assign_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void enterAssign_exp2(LogicPLParser.Assign_exp2Context ctx);
+	void enterAssign_expression2(LogicPLParser.Assign_expression2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#assign_exp2}.
+	 * Exit a parse tree produced by {@link LogicPLParser#assign_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void exitAssign_exp2(LogicPLParser.Assign_exp2Context ctx);
+	void exitAssign_expression2(LogicPLParser.Assign_expression2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#or_exp}.
+	 * Enter a parse tree produced by {@link LogicPLParser#or_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterOr_exp(LogicPLParser.Or_expContext ctx);
+	void enterOr_expression(LogicPLParser.Or_expressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#or_exp}.
+	 * Exit a parse tree produced by {@link LogicPLParser#or_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitOr_exp(LogicPLParser.Or_expContext ctx);
+	void exitOr_expression(LogicPLParser.Or_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#or_exp2}.
+	 * Enter a parse tree produced by {@link LogicPLParser#or_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void enterOr_exp2(LogicPLParser.Or_exp2Context ctx);
+	void enterOr_expression2(LogicPLParser.Or_expression2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#or_exp2}.
+	 * Exit a parse tree produced by {@link LogicPLParser#or_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void exitOr_exp2(LogicPLParser.Or_exp2Context ctx);
+	void exitOr_expression2(LogicPLParser.Or_expression2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#and_exp}.
+	 * Enter a parse tree produced by {@link LogicPLParser#and_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterAnd_exp(LogicPLParser.And_expContext ctx);
+	void enterAnd_expression(LogicPLParser.And_expressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#and_exp}.
+	 * Exit a parse tree produced by {@link LogicPLParser#and_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitAnd_exp(LogicPLParser.And_expContext ctx);
+	void exitAnd_expression(LogicPLParser.And_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#and_exp2}.
+	 * Enter a parse tree produced by {@link LogicPLParser#and_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void enterAnd_exp2(LogicPLParser.And_exp2Context ctx);
+	void enterAnd_expression2(LogicPLParser.And_expression2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#and_exp2}.
+	 * Exit a parse tree produced by {@link LogicPLParser#and_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void exitAnd_exp2(LogicPLParser.And_exp2Context ctx);
+	void exitAnd_expression2(LogicPLParser.And_expression2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#relational2_exp}.
+	 * Enter a parse tree produced by {@link LogicPLParser#relational2_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterRelational2_exp(LogicPLParser.Relational2_expContext ctx);
+	void enterRelational2_expression(LogicPLParser.Relational2_expressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#relational2_exp}.
+	 * Exit a parse tree produced by {@link LogicPLParser#relational2_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitRelational2_exp(LogicPLParser.Relational2_expContext ctx);
+	void exitRelational2_expression(LogicPLParser.Relational2_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#relational2_exp2}.
+	 * Enter a parse tree produced by {@link LogicPLParser#relational2_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void enterRelational2_exp2(LogicPLParser.Relational2_exp2Context ctx);
+	void enterRelational2_expression2(LogicPLParser.Relational2_expression2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#relational2_exp2}.
+	 * Exit a parse tree produced by {@link LogicPLParser#relational2_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void exitRelational2_exp2(LogicPLParser.Relational2_exp2Context ctx);
+	void exitRelational2_expression2(LogicPLParser.Relational2_expression2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#relational1_exp}.
+	 * Enter a parse tree produced by {@link LogicPLParser#relational1_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterRelational1_exp(LogicPLParser.Relational1_expContext ctx);
+	void enterRelational1_expression(LogicPLParser.Relational1_expressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#relational1_exp}.
+	 * Exit a parse tree produced by {@link LogicPLParser#relational1_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitRelational1_exp(LogicPLParser.Relational1_expContext ctx);
+	void exitRelational1_expression(LogicPLParser.Relational1_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#relational1_exp2}.
+	 * Enter a parse tree produced by {@link LogicPLParser#relational1_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void enterRelational1_exp2(LogicPLParser.Relational1_exp2Context ctx);
+	void enterRelational1_expression2(LogicPLParser.Relational1_expression2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#relational1_exp2}.
+	 * Exit a parse tree produced by {@link LogicPLParser#relational1_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void exitRelational1_exp2(LogicPLParser.Relational1_exp2Context ctx);
+	void exitRelational1_expression2(LogicPLParser.Relational1_expression2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#arithmatic2_exp}.
+	 * Enter a parse tree produced by {@link LogicPLParser#arithmatic2_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterArithmatic2_exp(LogicPLParser.Arithmatic2_expContext ctx);
+	void enterArithmatic2_expression(LogicPLParser.Arithmatic2_expressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#arithmatic2_exp}.
+	 * Exit a parse tree produced by {@link LogicPLParser#arithmatic2_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitArithmatic2_exp(LogicPLParser.Arithmatic2_expContext ctx);
+	void exitArithmatic2_expression(LogicPLParser.Arithmatic2_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#arithmatic2_exp2}.
+	 * Enter a parse tree produced by {@link LogicPLParser#arithmatic2_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void enterArithmatic2_exp2(LogicPLParser.Arithmatic2_exp2Context ctx);
+	void enterArithmatic2_expression2(LogicPLParser.Arithmatic2_expression2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#arithmatic2_exp2}.
+	 * Exit a parse tree produced by {@link LogicPLParser#arithmatic2_expression2}.
 	 * @param ctx the parse tree
 	 */
-	void exitArithmatic2_exp2(LogicPLParser.Arithmatic2_exp2Context ctx);
+	void exitArithmatic2_expression2(LogicPLParser.Arithmatic2_expression2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogicPLParser#arithmatic1_exp}.
+	 * Enter a parse tree produced by {@link LogicPLParser#arithmatic1_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterArithmatic1_exp(LogicPLParser.Arithmatic1_expContext ctx);
+	void enterArithmatic1_expression(LogicPLParser.Arithmatic1_expressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LogicPLParser#arithmatic1_exp}.
+	 * Exit a parse tree produced by {@link LogicPLParser#arithmatic1_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitArithmatic1_exp(LogicPLParser.Arithmatic1_expContext ctx);
+	void exitArithmatic1_expression(LogicPLParser.Arithmatic1_expressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogicPLParser#primary_expression}.
 	 * @param ctx the parse tree

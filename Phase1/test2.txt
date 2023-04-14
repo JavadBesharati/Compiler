@@ -1,7 +1,6 @@
 # -- def: (functions) --
 function randomFunc(): boolean {
-
-    a  = 2 + 2;
+    int a;
     IsRand(a);
     ( ( b * c / d >= e == f ) && ![?IsRand(a)] ) => (boolean flag = false; print(a); return true;)
     return false;

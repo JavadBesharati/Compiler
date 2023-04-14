@@ -30,23 +30,25 @@ public class LogicPLParser extends Parser {
 		RULE_array_declaration = 7, RULE_array_elements = 8, RULE_argument = 9, 
 		RULE_int_declaration = 10, RULE_float_declaration = 11, RULE_boolean_declaration = 12, 
 		RULE_chane_var = 13, RULE_function_call = 14, RULE_function_return = 15, 
-		RULE_print_expression = 16, RULE_assign_expression = 17, RULE_assign_exp2 = 18, 
-		RULE_or_exp = 19, RULE_or_exp2 = 20, RULE_and_exp = 21, RULE_and_exp2 = 22, 
-		RULE_relational2_exp = 23, RULE_relational2_exp2 = 24, RULE_relational1_exp = 25, 
-		RULE_relational1_exp2 = 26, RULE_arithmatic2_exp = 27, RULE_arithmatic2_exp2 = 28, 
-		RULE_arithmatic1_exp = 29, RULE_primary_expression = 30, RULE_predicate_expression = 31, 
-		RULE_query_1 = 32, RULE_query_2 = 33, RULE_implication_expression = 34, 
-		RULE_unary_value = 35;
+		RULE_print_expression = 16, RULE_assign_expression = 17, RULE_assign_expression2 = 18, 
+		RULE_or_expression = 19, RULE_or_expression2 = 20, RULE_and_expression = 21, 
+		RULE_and_expression2 = 22, RULE_relational2_expression = 23, RULE_relational2_expression2 = 24, 
+		RULE_relational1_expression = 25, RULE_relational1_expression2 = 26, RULE_arithmatic2_expression = 27, 
+		RULE_arithmatic2_expression2 = 28, RULE_arithmatic1_expression = 29, RULE_primary_expression = 30, 
+		RULE_predicate_expression = 31, RULE_query_1 = 32, RULE_query_2 = 33, 
+		RULE_implication_expression = 34, RULE_unary_value = 35;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"logicPL", "main_call", "main_body", "line", "for_structure", "for_body", 
 			"function_declaration", "array_declaration", "array_elements", "argument", 
 			"int_declaration", "float_declaration", "boolean_declaration", "chane_var", 
 			"function_call", "function_return", "print_expression", "assign_expression", 
-			"assign_exp2", "or_exp", "or_exp2", "and_exp", "and_exp2", "relational2_exp", 
-			"relational2_exp2", "relational1_exp", "relational1_exp2", "arithmatic2_exp", 
-			"arithmatic2_exp2", "arithmatic1_exp", "primary_expression", "predicate_expression", 
-			"query_1", "query_2", "implication_expression", "unary_value"
+			"assign_expression2", "or_expression", "or_expression2", "and_expression", 
+			"and_expression2", "relational2_expression", "relational2_expression2", 
+			"relational1_expression", "relational1_expression2", "arithmatic2_expression", 
+			"arithmatic2_expression2", "arithmatic1_expression", "primary_expression", 
+			"predicate_expression", "query_1", "query_2", "implication_expression", 
+			"unary_value"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -1622,11 +1624,11 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Assign_expressionContext extends ParserRuleContext {
-		public Or_expContext or_exp() {
-			return getRuleContext(Or_expContext.class,0);
+		public Or_expressionContext or_expression() {
+			return getRuleContext(Or_expressionContext.class,0);
 		}
-		public Assign_exp2Context assign_exp2() {
-			return getRuleContext(Assign_exp2Context.class,0);
+		public Assign_expression2Context assign_expression2() {
+			return getRuleContext(Assign_expression2Context.class,0);
 		}
 		public Assign_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1654,9 +1656,9 @@ public class LogicPLParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(307);
-			or_exp();
+			or_expression();
 			setState(308);
-			assign_exp2();
+			assign_expression2();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1671,37 +1673,37 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Assign_exp2Context extends ParserRuleContext {
+	public static class Assign_expression2Context extends ParserRuleContext {
 		public Token OP;
-		public Or_expContext or_exp() {
-			return getRuleContext(Or_expContext.class,0);
+		public Or_expressionContext or_expression() {
+			return getRuleContext(Or_expressionContext.class,0);
 		}
-		public Assign_exp2Context assign_exp2() {
-			return getRuleContext(Assign_exp2Context.class,0);
+		public Assign_expression2Context assign_expression2() {
+			return getRuleContext(Assign_expression2Context.class,0);
 		}
 		public TerminalNode LOGICAL_OR_OP() { return getToken(LogicPLParser.LOGICAL_OR_OP, 0); }
-		public Assign_exp2Context(ParserRuleContext parent, int invokingState) {
+		public Assign_expression2Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_assign_exp2; }
+		@Override public int getRuleIndex() { return RULE_assign_expression2; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterAssign_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterAssign_expression2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitAssign_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitAssign_expression2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitAssign_exp2(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitAssign_expression2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Assign_exp2Context assign_exp2() throws RecognitionException {
-		Assign_exp2Context _localctx = new Assign_exp2Context(_ctx, getState());
-		enterRule(_localctx, 36, RULE_assign_exp2);
+	public final Assign_expression2Context assign_expression2() throws RecognitionException {
+		Assign_expression2Context _localctx = new Assign_expression2Context(_ctx, getState());
+		enterRule(_localctx, 36, RULE_assign_expression2);
 		try {
 			setState(316);
 			_errHandler.sync(this);
@@ -1710,12 +1712,12 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(310);
-				((Assign_exp2Context)_localctx).OP = match(LOGICAL_OR_OP);
+				((Assign_expression2Context)_localctx).OP = match(LOGICAL_OR_OP);
 				setState(311);
-				or_exp();
+				or_expression();
 				setState(312);
-				assign_exp2();
-				System.out.println("Operator: " + ((Assign_exp2Context)_localctx).OP.getText());
+				assign_expression2();
+				System.out.println("Operator: " + ((Assign_expression2Context)_localctx).OP.getText());
 				}
 				break;
 			case T__4:
@@ -1742,42 +1744,42 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Or_expContext extends ParserRuleContext {
-		public And_expContext and_exp() {
-			return getRuleContext(And_expContext.class,0);
+	public static class Or_expressionContext extends ParserRuleContext {
+		public And_expressionContext and_expression() {
+			return getRuleContext(And_expressionContext.class,0);
 		}
-		public Or_exp2Context or_exp2() {
-			return getRuleContext(Or_exp2Context.class,0);
+		public Or_expression2Context or_expression2() {
+			return getRuleContext(Or_expression2Context.class,0);
 		}
-		public Or_expContext(ParserRuleContext parent, int invokingState) {
+		public Or_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_or_exp; }
+		@Override public int getRuleIndex() { return RULE_or_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterOr_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterOr_expression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitOr_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitOr_expression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitOr_exp(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitOr_expression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Or_expContext or_exp() throws RecognitionException {
-		Or_expContext _localctx = new Or_expContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_or_exp);
+	public final Or_expressionContext or_expression() throws RecognitionException {
+		Or_expressionContext _localctx = new Or_expressionContext(_ctx, getState());
+		enterRule(_localctx, 38, RULE_or_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(318);
-			and_exp();
+			and_expression();
 			setState(319);
-			or_exp2();
+			or_expression2();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1792,37 +1794,37 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Or_exp2Context extends ParserRuleContext {
+	public static class Or_expression2Context extends ParserRuleContext {
 		public Token OP;
-		public And_expContext and_exp() {
-			return getRuleContext(And_expContext.class,0);
+		public And_expressionContext and_expression() {
+			return getRuleContext(And_expressionContext.class,0);
 		}
-		public Or_exp2Context or_exp2() {
-			return getRuleContext(Or_exp2Context.class,0);
+		public Or_expression2Context or_expression2() {
+			return getRuleContext(Or_expression2Context.class,0);
 		}
 		public TerminalNode LOGICAL_AND_OP() { return getToken(LogicPLParser.LOGICAL_AND_OP, 0); }
-		public Or_exp2Context(ParserRuleContext parent, int invokingState) {
+		public Or_expression2Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_or_exp2; }
+		@Override public int getRuleIndex() { return RULE_or_expression2; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterOr_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterOr_expression2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitOr_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitOr_expression2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitOr_exp2(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitOr_expression2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Or_exp2Context or_exp2() throws RecognitionException {
-		Or_exp2Context _localctx = new Or_exp2Context(_ctx, getState());
-		enterRule(_localctx, 40, RULE_or_exp2);
+	public final Or_expression2Context or_expression2() throws RecognitionException {
+		Or_expression2Context _localctx = new Or_expression2Context(_ctx, getState());
+		enterRule(_localctx, 40, RULE_or_expression2);
 		try {
 			setState(327);
 			_errHandler.sync(this);
@@ -1831,12 +1833,12 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(321);
-				((Or_exp2Context)_localctx).OP = match(LOGICAL_AND_OP);
+				((Or_expression2Context)_localctx).OP = match(LOGICAL_AND_OP);
 				setState(322);
-				and_exp();
+				and_expression();
 				setState(323);
-				or_exp2();
-				System.out.println("Operator: " + ((Or_exp2Context)_localctx).OP.getText());
+				or_expression2();
+				System.out.println("Operator: " + ((Or_expression2Context)_localctx).OP.getText());
 				}
 				break;
 			case T__4:
@@ -1864,42 +1866,42 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class And_expContext extends ParserRuleContext {
-		public Relational2_expContext relational2_exp() {
-			return getRuleContext(Relational2_expContext.class,0);
+	public static class And_expressionContext extends ParserRuleContext {
+		public Relational2_expressionContext relational2_expression() {
+			return getRuleContext(Relational2_expressionContext.class,0);
 		}
-		public And_exp2Context and_exp2() {
-			return getRuleContext(And_exp2Context.class,0);
+		public And_expression2Context and_expression2() {
+			return getRuleContext(And_expression2Context.class,0);
 		}
-		public And_expContext(ParserRuleContext parent, int invokingState) {
+		public And_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_and_exp; }
+		@Override public int getRuleIndex() { return RULE_and_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterAnd_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterAnd_expression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitAnd_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitAnd_expression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitAnd_exp(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitAnd_expression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final And_expContext and_exp() throws RecognitionException {
-		And_expContext _localctx = new And_expContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_and_exp);
+	public final And_expressionContext and_expression() throws RecognitionException {
+		And_expressionContext _localctx = new And_expressionContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_and_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(329);
-			relational2_exp();
+			relational2_expression();
 			setState(330);
-			and_exp2();
+			and_expression2();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1914,37 +1916,37 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class And_exp2Context extends ParserRuleContext {
+	public static class And_expression2Context extends ParserRuleContext {
 		public Token OP;
-		public Relational2_expContext relational2_exp() {
-			return getRuleContext(Relational2_expContext.class,0);
+		public Relational2_expressionContext relational2_expression() {
+			return getRuleContext(Relational2_expressionContext.class,0);
 		}
-		public And_exp2Context and_exp2() {
-			return getRuleContext(And_exp2Context.class,0);
+		public And_expression2Context and_expression2() {
+			return getRuleContext(And_expression2Context.class,0);
 		}
 		public TerminalNode RELATIONAL_OP2() { return getToken(LogicPLParser.RELATIONAL_OP2, 0); }
-		public And_exp2Context(ParserRuleContext parent, int invokingState) {
+		public And_expression2Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_and_exp2; }
+		@Override public int getRuleIndex() { return RULE_and_expression2; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterAnd_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterAnd_expression2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitAnd_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitAnd_expression2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitAnd_exp2(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitAnd_expression2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final And_exp2Context and_exp2() throws RecognitionException {
-		And_exp2Context _localctx = new And_exp2Context(_ctx, getState());
-		enterRule(_localctx, 44, RULE_and_exp2);
+	public final And_expression2Context and_expression2() throws RecognitionException {
+		And_expression2Context _localctx = new And_expression2Context(_ctx, getState());
+		enterRule(_localctx, 44, RULE_and_expression2);
 		try {
 			setState(338);
 			_errHandler.sync(this);
@@ -1953,12 +1955,12 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(332);
-				((And_exp2Context)_localctx).OP = match(RELATIONAL_OP2);
+				((And_expression2Context)_localctx).OP = match(RELATIONAL_OP2);
 				setState(333);
-				relational2_exp();
+				relational2_expression();
 				setState(334);
-				and_exp2();
-				System.out.println("Operator: " + ((And_exp2Context)_localctx).OP.getText());
+				and_expression2();
+				System.out.println("Operator: " + ((And_expression2Context)_localctx).OP.getText());
 				}
 				break;
 			case T__4:
@@ -1987,42 +1989,42 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Relational2_expContext extends ParserRuleContext {
-		public Relational1_expContext relational1_exp() {
-			return getRuleContext(Relational1_expContext.class,0);
+	public static class Relational2_expressionContext extends ParserRuleContext {
+		public Relational1_expressionContext relational1_expression() {
+			return getRuleContext(Relational1_expressionContext.class,0);
 		}
-		public Relational2_exp2Context relational2_exp2() {
-			return getRuleContext(Relational2_exp2Context.class,0);
+		public Relational2_expression2Context relational2_expression2() {
+			return getRuleContext(Relational2_expression2Context.class,0);
 		}
-		public Relational2_expContext(ParserRuleContext parent, int invokingState) {
+		public Relational2_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_relational2_exp; }
+		@Override public int getRuleIndex() { return RULE_relational2_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational2_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational2_expression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational2_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational2_expression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational2_exp(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational2_expression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Relational2_expContext relational2_exp() throws RecognitionException {
-		Relational2_expContext _localctx = new Relational2_expContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_relational2_exp);
+	public final Relational2_expressionContext relational2_expression() throws RecognitionException {
+		Relational2_expressionContext _localctx = new Relational2_expressionContext(_ctx, getState());
+		enterRule(_localctx, 46, RULE_relational2_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(340);
-			relational1_exp();
+			relational1_expression();
 			setState(341);
-			relational2_exp2();
+			relational2_expression2();
 			}
 		}
 		catch (RecognitionException re) {
@@ -2037,37 +2039,37 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Relational2_exp2Context extends ParserRuleContext {
+	public static class Relational2_expression2Context extends ParserRuleContext {
 		public Token OP;
-		public Relational1_expContext relational1_exp() {
-			return getRuleContext(Relational1_expContext.class,0);
+		public Relational1_expressionContext relational1_expression() {
+			return getRuleContext(Relational1_expressionContext.class,0);
 		}
-		public Relational2_exp2Context relational2_exp2() {
-			return getRuleContext(Relational2_exp2Context.class,0);
+		public Relational2_expression2Context relational2_expression2() {
+			return getRuleContext(Relational2_expression2Context.class,0);
 		}
 		public TerminalNode RELATIONAL_OP1() { return getToken(LogicPLParser.RELATIONAL_OP1, 0); }
-		public Relational2_exp2Context(ParserRuleContext parent, int invokingState) {
+		public Relational2_expression2Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_relational2_exp2; }
+		@Override public int getRuleIndex() { return RULE_relational2_expression2; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational2_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational2_expression2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational2_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational2_expression2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational2_exp2(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational2_expression2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Relational2_exp2Context relational2_exp2() throws RecognitionException {
-		Relational2_exp2Context _localctx = new Relational2_exp2Context(_ctx, getState());
-		enterRule(_localctx, 48, RULE_relational2_exp2);
+	public final Relational2_expression2Context relational2_expression2() throws RecognitionException {
+		Relational2_expression2Context _localctx = new Relational2_expression2Context(_ctx, getState());
+		enterRule(_localctx, 48, RULE_relational2_expression2);
 		try {
 			setState(349);
 			_errHandler.sync(this);
@@ -2076,12 +2078,12 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(343);
-				((Relational2_exp2Context)_localctx).OP = match(RELATIONAL_OP1);
+				((Relational2_expression2Context)_localctx).OP = match(RELATIONAL_OP1);
 				setState(344);
-				relational1_exp();
+				relational1_expression();
 				setState(345);
-				relational2_exp2();
-				System.out.println("Operator: " + ((Relational2_exp2Context)_localctx).OP.getText());
+				relational2_expression2();
+				System.out.println("Operator: " + ((Relational2_expression2Context)_localctx).OP.getText());
 				}
 				break;
 			case T__4:
@@ -2111,42 +2113,42 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Relational1_expContext extends ParserRuleContext {
-		public Arithmatic2_expContext arithmatic2_exp() {
-			return getRuleContext(Arithmatic2_expContext.class,0);
+	public static class Relational1_expressionContext extends ParserRuleContext {
+		public Arithmatic2_expressionContext arithmatic2_expression() {
+			return getRuleContext(Arithmatic2_expressionContext.class,0);
 		}
-		public Relational1_exp2Context relational1_exp2() {
-			return getRuleContext(Relational1_exp2Context.class,0);
+		public Relational1_expression2Context relational1_expression2() {
+			return getRuleContext(Relational1_expression2Context.class,0);
 		}
-		public Relational1_expContext(ParserRuleContext parent, int invokingState) {
+		public Relational1_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_relational1_exp; }
+		@Override public int getRuleIndex() { return RULE_relational1_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational1_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational1_expression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational1_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational1_expression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational1_exp(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational1_expression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Relational1_expContext relational1_exp() throws RecognitionException {
-		Relational1_expContext _localctx = new Relational1_expContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_relational1_exp);
+	public final Relational1_expressionContext relational1_expression() throws RecognitionException {
+		Relational1_expressionContext _localctx = new Relational1_expressionContext(_ctx, getState());
+		enterRule(_localctx, 50, RULE_relational1_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(351);
-			arithmatic2_exp();
+			arithmatic2_expression();
 			setState(352);
-			relational1_exp2();
+			relational1_expression2();
 			}
 		}
 		catch (RecognitionException re) {
@@ -2161,38 +2163,38 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Relational1_exp2Context extends ParserRuleContext {
+	public static class Relational1_expression2Context extends ParserRuleContext {
 		public Token OP;
-		public Arithmatic2_expContext arithmatic2_exp() {
-			return getRuleContext(Arithmatic2_expContext.class,0);
+		public Arithmatic2_expressionContext arithmatic2_expression() {
+			return getRuleContext(Arithmatic2_expressionContext.class,0);
 		}
-		public Relational1_exp2Context relational1_exp2() {
-			return getRuleContext(Relational1_exp2Context.class,0);
+		public Relational1_expression2Context relational1_expression2() {
+			return getRuleContext(Relational1_expression2Context.class,0);
 		}
 		public TerminalNode PLUS() { return getToken(LogicPLParser.PLUS, 0); }
 		public TerminalNode MINUS() { return getToken(LogicPLParser.MINUS, 0); }
-		public Relational1_exp2Context(ParserRuleContext parent, int invokingState) {
+		public Relational1_expression2Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_relational1_exp2; }
+		@Override public int getRuleIndex() { return RULE_relational1_expression2; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational1_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterRelational1_expression2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational1_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitRelational1_expression2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational1_exp2(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitRelational1_expression2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Relational1_exp2Context relational1_exp2() throws RecognitionException {
-		Relational1_exp2Context _localctx = new Relational1_exp2Context(_ctx, getState());
-		enterRule(_localctx, 52, RULE_relational1_exp2);
+	public final Relational1_expression2Context relational1_expression2() throws RecognitionException {
+		Relational1_expression2Context _localctx = new Relational1_expression2Context(_ctx, getState());
+		enterRule(_localctx, 52, RULE_relational1_expression2);
 		int _la;
 		try {
 			setState(360);
@@ -2203,10 +2205,10 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(354);
-				((Relational1_exp2Context)_localctx).OP = _input.LT(1);
+				((Relational1_expression2Context)_localctx).OP = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==PLUS || _la==MINUS) ) {
-					((Relational1_exp2Context)_localctx).OP = (Token)_errHandler.recoverInline(this);
+					((Relational1_expression2Context)_localctx).OP = (Token)_errHandler.recoverInline(this);
 				}
 				else {
 					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
@@ -2214,10 +2216,10 @@ public class LogicPLParser extends Parser {
 					consume();
 				}
 				setState(355);
-				arithmatic2_exp();
+				arithmatic2_expression();
 				setState(356);
-				relational1_exp2();
-				System.out.println("Operator: " + ((Relational1_exp2Context)_localctx).OP.getText());
+				relational1_expression2();
+				System.out.println("Operator: " + ((Relational1_expression2Context)_localctx).OP.getText());
 				}
 				break;
 			case T__4:
@@ -2248,42 +2250,42 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Arithmatic2_expContext extends ParserRuleContext {
-		public Arithmatic1_expContext arithmatic1_exp() {
-			return getRuleContext(Arithmatic1_expContext.class,0);
+	public static class Arithmatic2_expressionContext extends ParserRuleContext {
+		public Arithmatic1_expressionContext arithmatic1_expression() {
+			return getRuleContext(Arithmatic1_expressionContext.class,0);
 		}
-		public Arithmatic2_exp2Context arithmatic2_exp2() {
-			return getRuleContext(Arithmatic2_exp2Context.class,0);
+		public Arithmatic2_expression2Context arithmatic2_expression2() {
+			return getRuleContext(Arithmatic2_expression2Context.class,0);
 		}
-		public Arithmatic2_expContext(ParserRuleContext parent, int invokingState) {
+		public Arithmatic2_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_arithmatic2_exp; }
+		@Override public int getRuleIndex() { return RULE_arithmatic2_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterArithmatic2_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterArithmatic2_expression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitArithmatic2_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitArithmatic2_expression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitArithmatic2_exp(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitArithmatic2_expression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Arithmatic2_expContext arithmatic2_exp() throws RecognitionException {
-		Arithmatic2_expContext _localctx = new Arithmatic2_expContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_arithmatic2_exp);
+	public final Arithmatic2_expressionContext arithmatic2_expression() throws RecognitionException {
+		Arithmatic2_expressionContext _localctx = new Arithmatic2_expressionContext(_ctx, getState());
+		enterRule(_localctx, 54, RULE_arithmatic2_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(362);
-			arithmatic1_exp();
+			arithmatic1_expression();
 			setState(363);
-			arithmatic2_exp2();
+			arithmatic2_expression2();
 			}
 		}
 		catch (RecognitionException re) {
@@ -2298,37 +2300,37 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Arithmatic2_exp2Context extends ParserRuleContext {
+	public static class Arithmatic2_expression2Context extends ParserRuleContext {
 		public Token OP;
-		public Arithmatic1_expContext arithmatic1_exp() {
-			return getRuleContext(Arithmatic1_expContext.class,0);
+		public Arithmatic1_expressionContext arithmatic1_expression() {
+			return getRuleContext(Arithmatic1_expressionContext.class,0);
 		}
-		public Arithmatic2_exp2Context arithmatic2_exp2() {
-			return getRuleContext(Arithmatic2_exp2Context.class,0);
+		public Arithmatic2_expression2Context arithmatic2_expression2() {
+			return getRuleContext(Arithmatic2_expression2Context.class,0);
 		}
 		public TerminalNode MUL_DIV_MOD() { return getToken(LogicPLParser.MUL_DIV_MOD, 0); }
-		public Arithmatic2_exp2Context(ParserRuleContext parent, int invokingState) {
+		public Arithmatic2_expression2Context(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_arithmatic2_exp2; }
+		@Override public int getRuleIndex() { return RULE_arithmatic2_expression2; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterArithmatic2_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterArithmatic2_expression2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitArithmatic2_exp2(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitArithmatic2_expression2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitArithmatic2_exp2(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitArithmatic2_expression2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Arithmatic2_exp2Context arithmatic2_exp2() throws RecognitionException {
-		Arithmatic2_exp2Context _localctx = new Arithmatic2_exp2Context(_ctx, getState());
-		enterRule(_localctx, 56, RULE_arithmatic2_exp2);
+	public final Arithmatic2_expression2Context arithmatic2_expression2() throws RecognitionException {
+		Arithmatic2_expression2Context _localctx = new Arithmatic2_expression2Context(_ctx, getState());
+		enterRule(_localctx, 56, RULE_arithmatic2_expression2);
 		try {
 			setState(371);
 			_errHandler.sync(this);
@@ -2337,12 +2339,12 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(365);
-				((Arithmatic2_exp2Context)_localctx).OP = match(MUL_DIV_MOD);
+				((Arithmatic2_expression2Context)_localctx).OP = match(MUL_DIV_MOD);
 				setState(366);
-				arithmatic1_exp();
+				arithmatic1_expression();
 				setState(367);
-				arithmatic2_exp2();
-				System.out.println("Operator: " + ((Arithmatic2_exp2Context)_localctx).OP.getText());
+				arithmatic2_expression2();
+				System.out.println("Operator: " + ((Arithmatic2_expression2Context)_localctx).OP.getText());
 				}
 				break;
 			case T__4:
@@ -2375,7 +2377,7 @@ public class LogicPLParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
-	public static class Arithmatic1_expContext extends ParserRuleContext {
+	public static class Arithmatic1_expressionContext extends ParserRuleContext {
 		public Token OP;
 		public Primary_expressionContext primary_expression() {
 			return getRuleContext(Primary_expressionContext.class,0);
@@ -2383,28 +2385,28 @@ public class LogicPLParser extends Parser {
 		public TerminalNode PLUS() { return getToken(LogicPLParser.PLUS, 0); }
 		public TerminalNode MINUS() { return getToken(LogicPLParser.MINUS, 0); }
 		public TerminalNode LOGICAL_NOT() { return getToken(LogicPLParser.LOGICAL_NOT, 0); }
-		public Arithmatic1_expContext(ParserRuleContext parent, int invokingState) {
+		public Arithmatic1_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_arithmatic1_exp; }
+		@Override public int getRuleIndex() { return RULE_arithmatic1_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterArithmatic1_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).enterArithmatic1_expression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitArithmatic1_exp(this);
+			if ( listener instanceof LogicPLListener ) ((LogicPLListener)listener).exitArithmatic1_expression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitArithmatic1_exp(this);
+			if ( visitor instanceof LogicPLVisitor ) return ((LogicPLVisitor<? extends T>)visitor).visitArithmatic1_expression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Arithmatic1_expContext arithmatic1_exp() throws RecognitionException {
-		Arithmatic1_expContext _localctx = new Arithmatic1_expContext(_ctx, getState());
-		enterRule(_localctx, 58, RULE_arithmatic1_exp);
+	public final Arithmatic1_expressionContext arithmatic1_expression() throws RecognitionException {
+		Arithmatic1_expressionContext _localctx = new Arithmatic1_expressionContext(_ctx, getState());
+		enterRule(_localctx, 58, RULE_arithmatic1_expression);
 		int _la;
 		try {
 			setState(378);
@@ -2416,10 +2418,10 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(373);
-				((Arithmatic1_expContext)_localctx).OP = _input.LT(1);
+				((Arithmatic1_expressionContext)_localctx).OP = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 234881024L) != 0)) ) {
-					((Arithmatic1_expContext)_localctx).OP = (Token)_errHandler.recoverInline(this);
+					((Arithmatic1_expressionContext)_localctx).OP = (Token)_errHandler.recoverInline(this);
 				}
 				else {
 					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
@@ -2428,7 +2430,7 @@ public class LogicPLParser extends Parser {
 				}
 				setState(374);
 				primary_expression();
-				System.out.println("Operator: " + ((Arithmatic1_expContext)_localctx).OP.getText());
+				System.out.println("Operator: " + ((Arithmatic1_expressionContext)_localctx).OP.getText());
 				}
 				break;
 			case T__2:
@@ -2876,11 +2878,10 @@ public class LogicPLParser extends Parser {
 		public Token OP;
 		public TerminalNode NATURAL_NUMBERS() { return getToken(LogicPLParser.NATURAL_NUMBERS, 0); }
 		public TerminalNode FLOAT() { return getToken(LogicPLParser.FLOAT, 0); }
-		public TerminalNode BOOLEAN() { return getToken(LogicPLParser.BOOLEAN, 0); }
 		public TerminalNode PLUS() { return getToken(LogicPLParser.PLUS, 0); }
 		public TerminalNode MINUS() { return getToken(LogicPLParser.MINUS, 0); }
-		public TerminalNode LOGICAL_NOT() { return getToken(LogicPLParser.LOGICAL_NOT, 0); }
 		public TerminalNode IDENTIFIER() { return getToken(LogicPLParser.IDENTIFIER, 0); }
+		public TerminalNode BOOLEAN() { return getToken(LogicPLParser.BOOLEAN, 0); }
 		public Unary_valueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2910,13 +2911,12 @@ public class LogicPLParser extends Parser {
 			switch (_input.LA(1)) {
 			case PLUS:
 			case MINUS:
-			case LOGICAL_NOT:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(438);
 				((Unary_valueContext)_localctx).OP = _input.LT(1);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 234881024L) != 0)) ) {
+				if ( !(_la==PLUS || _la==MINUS) ) {
 					((Unary_valueContext)_localctx).OP = (Token)_errHandler.recoverInline(this);
 				}
 				else {
@@ -2926,7 +2926,7 @@ public class LogicPLParser extends Parser {
 				}
 				setState(439);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 34361868544L) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 34361835776L) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -3043,194 +3043,194 @@ public class LogicPLParser extends Parser {
 		"\b#\u0001#\u0000\u0000$\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012"+
 		"\u0014\u0016\u0018\u001a\u001c\u001e \"$&(*,.02468:<>@BDF\u0000\u0006"+
 		"\u0001\u0000\f\u000e\u0001\u0000\u0019\u001a\u0001\u0000\u0019\u001b\u0002"+
-		"\u0000\b\b\u0015\u0015\u0004\u0000\b\b\u000f\u000f\u0015\u0015##\u0004"+
-		"\u0000\b\b\u000f\u000f\u0015\u0016##\u01ce\u0000K\u0001\u0000\u0000\u0000"+
-		"\u0002Q\u0001\u0000\u0000\u0000\u0004Z\u0001\u0000\u0000\u0000\u0006m"+
-		"\u0001\u0000\u0000\u0000\bo\u0001\u0000\u0000\u0000\n}\u0001\u0000\u0000"+
-		"\u0000\f\u00a7\u0001\u0000\u0000\u0000\u000e\u00d3\u0001\u0000\u0000\u0000"+
-		"\u0010\u00d5\u0001\u0000\u0000\u0000\u0012\u00e0\u0001\u0000\u0000\u0000"+
-		"\u0014\u00ec\u0001\u0000\u0000\u0000\u0016\u00f6\u0001\u0000\u0000\u0000"+
-		"\u0018\u0100\u0001\u0000\u0000\u0000\u001a\u0102\u0001\u0000\u0000\u0000"+
-		"\u001c\u0115\u0001\u0000\u0000\u0000\u001e\u011c\u0001\u0000\u0000\u0000"+
-		" \u011e\u0001\u0000\u0000\u0000\"\u0133\u0001\u0000\u0000\u0000$\u013c"+
-		"\u0001\u0000\u0000\u0000&\u013e\u0001\u0000\u0000\u0000(\u0147\u0001\u0000"+
-		"\u0000\u0000*\u0149\u0001\u0000\u0000\u0000,\u0152\u0001\u0000\u0000\u0000"+
-		".\u0154\u0001\u0000\u0000\u00000\u015d\u0001\u0000\u0000\u00002\u015f"+
-		"\u0001\u0000\u0000\u00004\u0168\u0001\u0000\u0000\u00006\u016a\u0001\u0000"+
-		"\u0000\u00008\u0173\u0001\u0000\u0000\u0000:\u017a\u0001\u0000\u0000\u0000"+
-		"<\u018f\u0001\u0000\u0000\u0000>\u0191\u0001\u0000\u0000\u0000@\u0198"+
-		"\u0001\u0000\u0000\u0000B\u01a1\u0001\u0000\u0000\u0000D\u01a9\u0001\u0000"+
-		"\u0000\u0000F\u01ba\u0001\u0000\u0000\u0000HJ\u0003\f\u0006\u0000IH\u0001"+
-		"\u0000\u0000\u0000JM\u0001\u0000\u0000\u0000KI\u0001\u0000\u0000\u0000"+
-		"KL\u0001\u0000\u0000\u0000LN\u0001\u0000\u0000\u0000MK\u0001\u0000\u0000"+
-		"\u0000NO\u0003\u0002\u0001\u0000OP\u0005\u0000\u0000\u0001P\u0001\u0001"+
-		"\u0000\u0000\u0000QR\u0005\u000b\u0000\u0000RS\u0006\u0001\uffff\uffff"+
-		"\u0000ST\u0005\u0001\u0000\u0000TU\u0003\u0004\u0002\u0000UV\u0005\u0002"+
-		"\u0000\u0000V\u0003\u0001\u0000\u0000\u0000WY\u0003\u0006\u0003\u0000"+
-		"XW\u0001\u0000\u0000\u0000Y\\\u0001\u0000\u0000\u0000ZX\u0001\u0000\u0000"+
-		"\u0000Z[\u0001\u0000\u0000\u0000[\u0005\u0001\u0000\u0000\u0000\\Z\u0001"+
-		"\u0000\u0000\u0000]g\u0003\u001c\u000e\u0000^g\u0003\u000e\u0007\u0000"+
-		"_g\u0003\u0014\n\u0000`g\u0003\u0016\u000b\u0000ag\u0003\u0018\f\u0000"+
-		"bg\u0003\"\u0011\u0000cg\u0003\u001e\u000f\u0000dg\u0003 \u0010\u0000"+
-		"eg\u0003\u001a\r\u0000f]\u0001\u0000\u0000\u0000f^\u0001\u0000\u0000\u0000"+
-		"f_\u0001\u0000\u0000\u0000f`\u0001\u0000\u0000\u0000fa\u0001\u0000\u0000"+
-		"\u0000fb\u0001\u0000\u0000\u0000fc\u0001\u0000\u0000\u0000fd\u0001\u0000"+
-		"\u0000\u0000fe\u0001\u0000\u0000\u0000gh\u0001\u0000\u0000\u0000hi\u0005"+
-		"\"\u0000\u0000in\u0001\u0000\u0000\u0000jn\u0003\b\u0004\u0000kn\u0003"+
-		">\u001f\u0000ln\u0003D\"\u0000mf\u0001\u0000\u0000\u0000mj\u0001\u0000"+
-		"\u0000\u0000mk\u0001\u0000\u0000\u0000ml\u0001\u0000\u0000\u0000n\u0007"+
-		"\u0001\u0000\u0000\u0000op\u0005\u0012\u0000\u0000pq\u0006\u0004\uffff"+
-		"\uffff\u0000qr\u0005\u0003\u0000\u0000rs\u0005\u0016\u0000\u0000st\u0005"+
-		"\u0004\u0000\u0000tu\u0005\u0016\u0000\u0000uv\u0005\u0005\u0000\u0000"+
-		"vw\u0005\u0001\u0000\u0000wx\u0003\n\u0005\u0000xy\u0005\u0002\u0000\u0000"+
-		"y\t\u0001\u0000\u0000\u0000z|\u0003\u0006\u0003\u0000{z\u0001\u0000\u0000"+
-		"\u0000|\u007f\u0001\u0000\u0000\u0000}{\u0001\u0000\u0000\u0000}~\u0001"+
-		"\u0000\u0000\u0000~\u000b\u0001\u0000\u0000\u0000\u007f}\u0001\u0000\u0000"+
-		"\u0000\u0080\u0081\u0005\u0010\u0000\u0000\u0081\u0082\u0005\u0016\u0000"+
-		"\u0000\u0082\u0083\u0006\u0006\uffff\uffff\u0000\u0083\u0084\u0005\u0003"+
-		"\u0000\u0000\u0084\u0089\u0003\u0012\t\u0000\u0085\u0086\u0005!\u0000"+
-		"\u0000\u0086\u0088\u0003\u0012\t\u0000\u0087\u0085\u0001\u0000\u0000\u0000"+
-		"\u0088\u008b\u0001\u0000\u0000\u0000\u0089\u0087\u0001\u0000\u0000\u0000"+
-		"\u0089\u008a\u0001\u0000\u0000\u0000\u008a\u008c\u0001\u0000\u0000\u0000"+
-		"\u008b\u0089\u0001\u0000\u0000\u0000\u008c\u008d\u0005\u0005\u0000\u0000"+
-		"\u008d\u008e\u0005\u0004\u0000\u0000\u008e\u008f\u0007\u0000\u0000\u0000"+
-		"\u008f\u0093\u0005\u0001\u0000\u0000\u0090\u0092\u0003\u0006\u0003\u0000"+
-		"\u0091\u0090\u0001\u0000\u0000\u0000\u0092\u0095\u0001\u0000\u0000\u0000"+
-		"\u0093\u0091\u0001\u0000\u0000\u0000\u0093\u0094\u0001\u0000\u0000\u0000"+
-		"\u0094\u0096\u0001\u0000\u0000\u0000\u0095\u0093\u0001\u0000\u0000\u0000"+
-		"\u0096\u0097\u0005\u0002\u0000\u0000\u0097\u00a8\u0001\u0000\u0000\u0000"+
-		"\u0098\u0099\u0005\u0010\u0000\u0000\u0099\u009a\u0005\u0016\u0000\u0000"+
-		"\u009a\u009b\u0006\u0006\uffff\uffff\u0000\u009b\u009c\u0005\u0003\u0000"+
-		"\u0000\u009c\u009d\u0005\u0005\u0000\u0000\u009d\u009e\u0005\u0004\u0000"+
-		"\u0000\u009e\u009f\u0007\u0000\u0000\u0000\u009f\u00a3\u0005\u0001\u0000"+
-		"\u0000\u00a0\u00a2\u0003\u0006\u0003\u0000\u00a1\u00a0\u0001\u0000\u0000"+
-		"\u0000\u00a2\u00a5\u0001\u0000\u0000\u0000\u00a3\u00a1\u0001\u0000\u0000"+
-		"\u0000\u00a3\u00a4\u0001\u0000\u0000\u0000\u00a4\u00a6\u0001\u0000\u0000"+
-		"\u0000\u00a5\u00a3\u0001\u0000\u0000\u0000\u00a6\u00a8\u0005\u0002\u0000"+
-		"\u0000\u00a7\u0080\u0001\u0000\u0000\u0000\u00a7\u0098\u0001\u0000\u0000"+
-		"\u0000\u00a8\r\u0001\u0000\u0000\u0000\u00a9\u00aa\u0005\f\u0000\u0000"+
-		"\u00aa\u00ab\u0005\u0006\u0000\u0000\u00ab\u00ac\u0005\u0015\u0000\u0000"+
-		"\u00ac\u00ad\u0005\u0007\u0000\u0000\u00ad\u00ae\u0005\u0016\u0000\u0000"+
-		"\u00ae\u00d4\u0006\u0007\uffff\uffff\u0000\u00af\u00b0\u0005\f\u0000\u0000"+
-		"\u00b0\u00b1\u0005\u0006\u0000\u0000\u00b1\u00b2\u0005\u0015\u0000\u0000"+
-		"\u00b2\u00b3\u0005\u0007\u0000\u0000\u00b3\u00b4\u0005\u0016\u0000\u0000"+
-		"\u00b4\u00b5\u0006\u0007\uffff\uffff\u0000\u00b5\u00b6\u0005 \u0000\u0000"+
-		"\u00b6\u00d4\u0003\u0010\b\u0000\u00b7\u00b8\u0005\r\u0000\u0000\u00b8"+
-		"\u00b9\u0005\u0006\u0000\u0000\u00b9\u00ba\u0005\u0015\u0000\u0000\u00ba"+
-		"\u00bb\u0005\u0007\u0000\u0000\u00bb\u00bc\u0005\u0016\u0000\u0000\u00bc"+
-		"\u00d4\u0006\u0007\uffff\uffff\u0000\u00bd\u00be\u0005\r\u0000\u0000\u00be"+
-		"\u00bf\u0005\u0006\u0000\u0000\u00bf\u00c0\u0005\u0015\u0000\u0000\u00c0"+
-		"\u00c1\u0005\u0007\u0000\u0000\u00c1\u00c2\u0005\u0016\u0000\u0000\u00c2"+
-		"\u00c3\u0006\u0007\uffff\uffff\u0000\u00c3\u00c4\u0005 \u0000\u0000\u00c4"+
-		"\u00d4\u0003\u0010\b\u0000\u00c5\u00c6\u0005\u000e\u0000\u0000\u00c6\u00c7"+
-		"\u0005\u0006\u0000\u0000\u00c7\u00c8\u0005\u0015\u0000\u0000\u00c8\u00c9"+
-		"\u0005\u0007\u0000\u0000\u00c9\u00ca\u0005\u0016\u0000\u0000\u00ca\u00d4"+
-		"\u0006\u0007\uffff\uffff\u0000\u00cb\u00cc\u0005\u000e\u0000\u0000\u00cc"+
-		"\u00cd\u0005\u0006\u0000\u0000\u00cd\u00ce\u0005\u0015\u0000\u0000\u00ce"+
-		"\u00cf\u0005\u0007\u0000\u0000\u00cf\u00d0\u0005\u0016\u0000\u0000\u00d0"+
-		"\u00d1\u0006\u0007\uffff\uffff\u0000\u00d1\u00d2\u0005 \u0000\u0000\u00d2"+
-		"\u00d4\u0003\u0010\b\u0000\u00d3\u00a9\u0001\u0000\u0000\u0000\u00d3\u00af"+
-		"\u0001\u0000\u0000\u0000\u00d3\u00b7\u0001\u0000\u0000\u0000\u00d3\u00bd"+
-		"\u0001\u0000\u0000\u0000\u00d3\u00c5\u0001\u0000\u0000\u0000\u00d3\u00cb"+
-		"\u0001\u0000\u0000\u0000\u00d4\u000f\u0001\u0000\u0000\u0000\u00d5\u00d6"+
-		"\u0005\u0006\u0000\u0000\u00d6\u00db\u0003F#\u0000\u00d7\u00d8\u0005!"+
-		"\u0000\u0000\u00d8\u00da\u0003F#\u0000\u00d9\u00d7\u0001\u0000\u0000\u0000"+
-		"\u00da\u00dd\u0001\u0000\u0000\u0000\u00db\u00d9\u0001\u0000\u0000\u0000"+
-		"\u00db\u00dc\u0001\u0000\u0000\u0000\u00dc\u00de\u0001\u0000\u0000\u0000"+
-		"\u00dd\u00db\u0001\u0000\u0000\u0000\u00de\u00df\u0005\u0007\u0000\u0000"+
-		"\u00df\u0011\u0001\u0000\u0000\u0000\u00e0\u00e1\u0007\u0000\u0000\u0000"+
-		"\u00e1\u00e2\u0005\u0016\u0000\u0000\u00e2\u00e3\u0006\t\uffff\uffff\u0000"+
-		"\u00e3\u0013\u0001\u0000\u0000\u0000\u00e4\u00e5\u0005\f\u0000\u0000\u00e5"+
-		"\u00e6\u0005\u0016\u0000\u0000\u00e6\u00ed\u0006\n\uffff\uffff\u0000\u00e7"+
-		"\u00e8\u0005\f\u0000\u0000\u00e8\u00e9\u0005\u0016\u0000\u0000\u00e9\u00ea"+
-		"\u0006\n\uffff\uffff\u0000\u00ea\u00eb\u0005 \u0000\u0000\u00eb\u00ed"+
-		"\u0003\"\u0011\u0000\u00ec\u00e4\u0001\u0000\u0000\u0000\u00ec\u00e7\u0001"+
-		"\u0000\u0000\u0000\u00ed\u0015\u0001\u0000\u0000\u0000\u00ee\u00ef\u0005"+
-		"\r\u0000\u0000\u00ef\u00f0\u0005\u0016\u0000\u0000\u00f0\u00f7\u0006\u000b"+
-		"\uffff\uffff\u0000\u00f1\u00f2\u0005\r\u0000\u0000\u00f2\u00f3\u0005\u0016"+
-		"\u0000\u0000\u00f3\u00f4\u0006\u000b\uffff\uffff\u0000\u00f4\u00f5\u0005"+
-		" \u0000\u0000\u00f5\u00f7\u0003\"\u0011\u0000\u00f6\u00ee\u0001\u0000"+
-		"\u0000\u0000\u00f6\u00f1\u0001\u0000\u0000\u0000\u00f7\u0017\u0001\u0000"+
-		"\u0000\u0000\u00f8\u00f9\u0005\u000e\u0000\u0000\u00f9\u00fa\u0005\u0016"+
-		"\u0000\u0000\u00fa\u0101\u0006\f\uffff\uffff\u0000\u00fb\u00fc\u0005\u000e"+
-		"\u0000\u0000\u00fc\u00fd\u0005\u0016\u0000\u0000\u00fd\u00fe\u0006\f\uffff"+
-		"\uffff\u0000\u00fe\u00ff\u0005 \u0000\u0000\u00ff\u0101\u0003\"\u0011"+
-		"\u0000\u0100\u00f8\u0001\u0000\u0000\u0000\u0100\u00fb\u0001\u0000\u0000"+
-		"\u0000\u0101\u0019\u0001\u0000\u0000\u0000\u0102\u0103\u0005\u0016\u0000"+
-		"\u0000\u0103\u0104\u0005 \u0000\u0000\u0104\u0105\u0003\"\u0011\u0000"+
-		"\u0105\u001b\u0001\u0000\u0000\u0000\u0106\u0107\u0005\u0016\u0000\u0000"+
-		"\u0107\u0108\u0005\u0003\u0000\u0000\u0108\u010d\u0003\"\u0011\u0000\u0109"+
-		"\u010a\u0005!\u0000\u0000\u010a\u010c\u0003\"\u0011\u0000\u010b\u0109"+
-		"\u0001\u0000\u0000\u0000\u010c\u010f\u0001\u0000\u0000\u0000\u010d\u010b"+
-		"\u0001\u0000\u0000\u0000\u010d\u010e\u0001\u0000\u0000\u0000\u010e\u0110"+
-		"\u0001\u0000\u0000\u0000\u010f\u010d\u0001\u0000\u0000\u0000\u0110\u0111"+
-		"\u0005\u0005\u0000\u0000\u0111\u0116\u0001\u0000\u0000\u0000\u0112\u0113"+
-		"\u0005\u0016\u0000\u0000\u0113\u0114\u0005\u0003\u0000\u0000\u0114\u0116"+
-		"\u0005\u0005\u0000\u0000\u0115\u0106\u0001\u0000\u0000\u0000\u0115\u0112"+
-		"\u0001\u0000\u0000\u0000\u0116\u001d\u0001\u0000\u0000\u0000\u0117\u0118"+
-		"\u0005\u0013\u0000\u0000\u0118\u0119\u0006\u000f\uffff\uffff\u0000\u0119"+
-		"\u011d\u0003F#\u0000\u011a\u011b\u0005\u0013\u0000\u0000\u011b\u011d\u0006"+
-		"\u000f\uffff\uffff\u0000\u011c\u0117\u0001\u0000\u0000\u0000\u011c\u011a"+
-		"\u0001\u0000\u0000\u0000\u011d\u001f\u0001\u0000\u0000\u0000\u011e\u011f"+
-		"\u0005\u0011\u0000\u0000\u011f\u0120\u0006\u0010\uffff\uffff\u0000\u0120"+
-		"\u0124\u0005\u0003\u0000\u0000\u0121\u0125\u0003B!\u0000\u0122\u0125\u0003"+
-		"@ \u0000\u0123\u0125\u0005\u0016\u0000\u0000\u0124\u0121\u0001\u0000\u0000"+
-		"\u0000\u0124\u0122\u0001\u0000\u0000\u0000\u0124\u0123\u0001\u0000\u0000"+
-		"\u0000\u0125\u012e\u0001\u0000\u0000\u0000\u0126\u012a\u0005!\u0000\u0000"+
-		"\u0127\u012b\u0003@ \u0000\u0128\u012b\u0003B!\u0000\u0129\u012b\u0005"+
-		"\u0016\u0000\u0000\u012a\u0127\u0001\u0000\u0000\u0000\u012a\u0128\u0001"+
-		"\u0000\u0000\u0000\u012a\u0129\u0001\u0000\u0000\u0000\u012b\u012d\u0001"+
-		"\u0000\u0000\u0000\u012c\u0126\u0001\u0000\u0000\u0000\u012d\u0130\u0001"+
-		"\u0000\u0000\u0000\u012e\u012c\u0001\u0000\u0000\u0000\u012e\u012f\u0001"+
-		"\u0000\u0000\u0000\u012f\u0131\u0001\u0000\u0000\u0000\u0130\u012e\u0001"+
-		"\u0000\u0000\u0000\u0131\u0132\u0005\u0005\u0000\u0000\u0132!\u0001\u0000"+
-		"\u0000\u0000\u0133\u0134\u0003&\u0013\u0000\u0134\u0135\u0003$\u0012\u0000"+
-		"\u0135#\u0001\u0000\u0000\u0000\u0136\u0137\u0005\u001f\u0000\u0000\u0137"+
-		"\u0138\u0003&\u0013\u0000\u0138\u0139\u0003$\u0012\u0000\u0139\u013a\u0006"+
-		"\u0012\uffff\uffff\u0000\u013a\u013d\u0001\u0000\u0000\u0000\u013b\u013d"+
-		"\u0001\u0000\u0000\u0000\u013c\u0136\u0001\u0000\u0000\u0000\u013c\u013b"+
-		"\u0001\u0000\u0000\u0000\u013d%\u0001\u0000\u0000\u0000\u013e\u013f\u0003"+
-		"*\u0015\u0000\u013f\u0140\u0003(\u0014\u0000\u0140\'\u0001\u0000\u0000"+
-		"\u0000\u0141\u0142\u0005\u001e\u0000\u0000\u0142\u0143\u0003*\u0015\u0000"+
-		"\u0143\u0144\u0003(\u0014\u0000\u0144\u0145\u0006\u0014\uffff\uffff\u0000"+
-		"\u0145\u0148\u0001\u0000\u0000\u0000\u0146\u0148\u0001\u0000\u0000\u0000"+
-		"\u0147\u0141\u0001\u0000\u0000\u0000\u0147\u0146\u0001\u0000\u0000\u0000"+
-		"\u0148)\u0001\u0000\u0000\u0000\u0149\u014a\u0003.\u0017\u0000\u014a\u014b"+
-		"\u0003,\u0016\u0000\u014b+\u0001\u0000\u0000\u0000\u014c\u014d\u0005\u001d"+
-		"\u0000\u0000\u014d\u014e\u0003.\u0017\u0000\u014e\u014f\u0003,\u0016\u0000"+
-		"\u014f\u0150\u0006\u0016\uffff\uffff\u0000\u0150\u0153\u0001\u0000\u0000"+
-		"\u0000\u0151\u0153\u0001\u0000\u0000\u0000\u0152\u014c\u0001\u0000\u0000"+
-		"\u0000\u0152\u0151\u0001\u0000\u0000\u0000\u0153-\u0001\u0000\u0000\u0000"+
-		"\u0154\u0155\u00032\u0019\u0000\u0155\u0156\u00030\u0018\u0000\u0156/"+
-		"\u0001\u0000\u0000\u0000\u0157\u0158\u0005\u001c\u0000\u0000\u0158\u0159"+
-		"\u00032\u0019\u0000\u0159\u015a\u00030\u0018\u0000\u015a\u015b\u0006\u0018"+
-		"\uffff\uffff\u0000\u015b\u015e\u0001\u0000\u0000\u0000\u015c\u015e\u0001"+
-		"\u0000\u0000\u0000\u015d\u0157\u0001\u0000\u0000\u0000\u015d\u015c\u0001"+
-		"\u0000\u0000\u0000\u015e1\u0001\u0000\u0000\u0000\u015f\u0160\u00036\u001b"+
-		"\u0000\u0160\u0161\u00034\u001a\u0000\u01613\u0001\u0000\u0000\u0000\u0162"+
-		"\u0163\u0007\u0001\u0000\u0000\u0163\u0164\u00036\u001b\u0000\u0164\u0165"+
-		"\u00034\u001a\u0000\u0165\u0166\u0006\u001a\uffff\uffff\u0000\u0166\u0169"+
-		"\u0001\u0000\u0000\u0000\u0167\u0169\u0001\u0000\u0000\u0000\u0168\u0162"+
-		"\u0001\u0000\u0000\u0000\u0168\u0167\u0001\u0000\u0000\u0000\u01695\u0001"+
-		"\u0000\u0000\u0000\u016a\u016b\u0003:\u001d\u0000\u016b\u016c\u00038\u001c"+
-		"\u0000\u016c7\u0001\u0000\u0000\u0000\u016d\u016e\u0005\u0018\u0000\u0000"+
-		"\u016e\u016f\u0003:\u001d\u0000\u016f\u0170\u00038\u001c\u0000\u0170\u0171"+
-		"\u0006\u001c\uffff\uffff\u0000\u0171\u0174\u0001\u0000\u0000\u0000\u0172"+
-		"\u0174\u0001\u0000\u0000\u0000\u0173\u016d\u0001\u0000\u0000\u0000\u0173"+
-		"\u0172\u0001\u0000\u0000\u0000\u01749\u0001\u0000\u0000\u0000\u0175\u0176"+
-		"\u0007\u0002\u0000\u0000\u0176\u0177\u0003<\u001e\u0000\u0177\u0178\u0006"+
-		"\u001d\uffff\uffff\u0000\u0178\u017b\u0001\u0000\u0000\u0000\u0179\u017b"+
-		"\u0003<\u001e\u0000\u017a\u0175\u0001\u0000\u0000\u0000\u017a\u0179\u0001"+
-		"\u0000\u0000\u0000\u017b;\u0001\u0000\u0000\u0000\u017c\u017d\u0005\u0016"+
-		"\u0000\u0000\u017d\u0180\u0005\u0006\u0000\u0000\u017e\u0181\u0005\u0015"+
-		"\u0000\u0000\u017f\u0181\u0003\"\u0011\u0000\u0180\u017e\u0001\u0000\u0000"+
-		"\u0000\u0180\u017f\u0001\u0000\u0000\u0000\u0181\u0182\u0001\u0000\u0000"+
-		"\u0000\u0182\u0190\u0005\u0007\u0000\u0000\u0183\u0190\u0007\u0003\u0000"+
-		"\u0000\u0184\u0190\u0005#\u0000\u0000\u0185\u0190\u0005\u000f\u0000\u0000"+
-		"\u0186\u0187\u0005\u0003\u0000\u0000\u0187\u0188\u0003\"\u0011\u0000\u0188"+
-		"\u0189\u0005\u0005\u0000\u0000\u0189\u0190\u0001\u0000\u0000\u0000\u018a"+
-		"\u0190\u0005\u0016\u0000\u0000\u018b\u0190\u0003@ \u0000\u018c\u0190\u0003"+
-		"B!\u0000\u018d\u0190\u0003\u0010\b\u0000\u018e\u0190\u0003\u001c\u000e"+
+		"\u0000\b\b\u0015\u0015\u0003\u0000\b\b\u0015\u0015##\u0004\u0000\b\b\u000f"+
+		"\u000f\u0015\u0016##\u01ce\u0000K\u0001\u0000\u0000\u0000\u0002Q\u0001"+
+		"\u0000\u0000\u0000\u0004Z\u0001\u0000\u0000\u0000\u0006m\u0001\u0000\u0000"+
+		"\u0000\bo\u0001\u0000\u0000\u0000\n}\u0001\u0000\u0000\u0000\f\u00a7\u0001"+
+		"\u0000\u0000\u0000\u000e\u00d3\u0001\u0000\u0000\u0000\u0010\u00d5\u0001"+
+		"\u0000\u0000\u0000\u0012\u00e0\u0001\u0000\u0000\u0000\u0014\u00ec\u0001"+
+		"\u0000\u0000\u0000\u0016\u00f6\u0001\u0000\u0000\u0000\u0018\u0100\u0001"+
+		"\u0000\u0000\u0000\u001a\u0102\u0001\u0000\u0000\u0000\u001c\u0115\u0001"+
+		"\u0000\u0000\u0000\u001e\u011c\u0001\u0000\u0000\u0000 \u011e\u0001\u0000"+
+		"\u0000\u0000\"\u0133\u0001\u0000\u0000\u0000$\u013c\u0001\u0000\u0000"+
+		"\u0000&\u013e\u0001\u0000\u0000\u0000(\u0147\u0001\u0000\u0000\u0000*"+
+		"\u0149\u0001\u0000\u0000\u0000,\u0152\u0001\u0000\u0000\u0000.\u0154\u0001"+
+		"\u0000\u0000\u00000\u015d\u0001\u0000\u0000\u00002\u015f\u0001\u0000\u0000"+
+		"\u00004\u0168\u0001\u0000\u0000\u00006\u016a\u0001\u0000\u0000\u00008"+
+		"\u0173\u0001\u0000\u0000\u0000:\u017a\u0001\u0000\u0000\u0000<\u018f\u0001"+
+		"\u0000\u0000\u0000>\u0191\u0001\u0000\u0000\u0000@\u0198\u0001\u0000\u0000"+
+		"\u0000B\u01a1\u0001\u0000\u0000\u0000D\u01a9\u0001\u0000\u0000\u0000F"+
+		"\u01ba\u0001\u0000\u0000\u0000HJ\u0003\f\u0006\u0000IH\u0001\u0000\u0000"+
+		"\u0000JM\u0001\u0000\u0000\u0000KI\u0001\u0000\u0000\u0000KL\u0001\u0000"+
+		"\u0000\u0000LN\u0001\u0000\u0000\u0000MK\u0001\u0000\u0000\u0000NO\u0003"+
+		"\u0002\u0001\u0000OP\u0005\u0000\u0000\u0001P\u0001\u0001\u0000\u0000"+
+		"\u0000QR\u0005\u000b\u0000\u0000RS\u0006\u0001\uffff\uffff\u0000ST\u0005"+
+		"\u0001\u0000\u0000TU\u0003\u0004\u0002\u0000UV\u0005\u0002\u0000\u0000"+
+		"V\u0003\u0001\u0000\u0000\u0000WY\u0003\u0006\u0003\u0000XW\u0001\u0000"+
+		"\u0000\u0000Y\\\u0001\u0000\u0000\u0000ZX\u0001\u0000\u0000\u0000Z[\u0001"+
+		"\u0000\u0000\u0000[\u0005\u0001\u0000\u0000\u0000\\Z\u0001\u0000\u0000"+
+		"\u0000]g\u0003\u001c\u000e\u0000^g\u0003\u000e\u0007\u0000_g\u0003\u0014"+
+		"\n\u0000`g\u0003\u0016\u000b\u0000ag\u0003\u0018\f\u0000bg\u0003\"\u0011"+
+		"\u0000cg\u0003\u001e\u000f\u0000dg\u0003 \u0010\u0000eg\u0003\u001a\r"+
+		"\u0000f]\u0001\u0000\u0000\u0000f^\u0001\u0000\u0000\u0000f_\u0001\u0000"+
+		"\u0000\u0000f`\u0001\u0000\u0000\u0000fa\u0001\u0000\u0000\u0000fb\u0001"+
+		"\u0000\u0000\u0000fc\u0001\u0000\u0000\u0000fd\u0001\u0000\u0000\u0000"+
+		"fe\u0001\u0000\u0000\u0000gh\u0001\u0000\u0000\u0000hi\u0005\"\u0000\u0000"+
+		"in\u0001\u0000\u0000\u0000jn\u0003\b\u0004\u0000kn\u0003>\u001f\u0000"+
+		"ln\u0003D\"\u0000mf\u0001\u0000\u0000\u0000mj\u0001\u0000\u0000\u0000"+
+		"mk\u0001\u0000\u0000\u0000ml\u0001\u0000\u0000\u0000n\u0007\u0001\u0000"+
+		"\u0000\u0000op\u0005\u0012\u0000\u0000pq\u0006\u0004\uffff\uffff\u0000"+
+		"qr\u0005\u0003\u0000\u0000rs\u0005\u0016\u0000\u0000st\u0005\u0004\u0000"+
+		"\u0000tu\u0005\u0016\u0000\u0000uv\u0005\u0005\u0000\u0000vw\u0005\u0001"+
+		"\u0000\u0000wx\u0003\n\u0005\u0000xy\u0005\u0002\u0000\u0000y\t\u0001"+
+		"\u0000\u0000\u0000z|\u0003\u0006\u0003\u0000{z\u0001\u0000\u0000\u0000"+
+		"|\u007f\u0001\u0000\u0000\u0000}{\u0001\u0000\u0000\u0000}~\u0001\u0000"+
+		"\u0000\u0000~\u000b\u0001\u0000\u0000\u0000\u007f}\u0001\u0000\u0000\u0000"+
+		"\u0080\u0081\u0005\u0010\u0000\u0000\u0081\u0082\u0005\u0016\u0000\u0000"+
+		"\u0082\u0083\u0006\u0006\uffff\uffff\u0000\u0083\u0084\u0005\u0003\u0000"+
+		"\u0000\u0084\u0089\u0003\u0012\t\u0000\u0085\u0086\u0005!\u0000\u0000"+
+		"\u0086\u0088\u0003\u0012\t\u0000\u0087\u0085\u0001\u0000\u0000\u0000\u0088"+
+		"\u008b\u0001\u0000\u0000\u0000\u0089\u0087\u0001\u0000\u0000\u0000\u0089"+
+		"\u008a\u0001\u0000\u0000\u0000\u008a\u008c\u0001\u0000\u0000\u0000\u008b"+
+		"\u0089\u0001\u0000\u0000\u0000\u008c\u008d\u0005\u0005\u0000\u0000\u008d"+
+		"\u008e\u0005\u0004\u0000\u0000\u008e\u008f\u0007\u0000\u0000\u0000\u008f"+
+		"\u0093\u0005\u0001\u0000\u0000\u0090\u0092\u0003\u0006\u0003\u0000\u0091"+
+		"\u0090\u0001\u0000\u0000\u0000\u0092\u0095\u0001\u0000\u0000\u0000\u0093"+
+		"\u0091\u0001\u0000\u0000\u0000\u0093\u0094\u0001\u0000\u0000\u0000\u0094"+
+		"\u0096\u0001\u0000\u0000\u0000\u0095\u0093\u0001\u0000\u0000\u0000\u0096"+
+		"\u0097\u0005\u0002\u0000\u0000\u0097\u00a8\u0001\u0000\u0000\u0000\u0098"+
+		"\u0099\u0005\u0010\u0000\u0000\u0099\u009a\u0005\u0016\u0000\u0000\u009a"+
+		"\u009b\u0006\u0006\uffff\uffff\u0000\u009b\u009c\u0005\u0003\u0000\u0000"+
+		"\u009c\u009d\u0005\u0005\u0000\u0000\u009d\u009e\u0005\u0004\u0000\u0000"+
+		"\u009e\u009f\u0007\u0000\u0000\u0000\u009f\u00a3\u0005\u0001\u0000\u0000"+
+		"\u00a0\u00a2\u0003\u0006\u0003\u0000\u00a1\u00a0\u0001\u0000\u0000\u0000"+
+		"\u00a2\u00a5\u0001\u0000\u0000\u0000\u00a3\u00a1\u0001\u0000\u0000\u0000"+
+		"\u00a3\u00a4\u0001\u0000\u0000\u0000\u00a4\u00a6\u0001\u0000\u0000\u0000"+
+		"\u00a5\u00a3\u0001\u0000\u0000\u0000\u00a6\u00a8\u0005\u0002\u0000\u0000"+
+		"\u00a7\u0080\u0001\u0000\u0000\u0000\u00a7\u0098\u0001\u0000\u0000\u0000"+
+		"\u00a8\r\u0001\u0000\u0000\u0000\u00a9\u00aa\u0005\f\u0000\u0000\u00aa"+
+		"\u00ab\u0005\u0006\u0000\u0000\u00ab\u00ac\u0005\u0015\u0000\u0000\u00ac"+
+		"\u00ad\u0005\u0007\u0000\u0000\u00ad\u00ae\u0005\u0016\u0000\u0000\u00ae"+
+		"\u00d4\u0006\u0007\uffff\uffff\u0000\u00af\u00b0\u0005\f\u0000\u0000\u00b0"+
+		"\u00b1\u0005\u0006\u0000\u0000\u00b1\u00b2\u0005\u0015\u0000\u0000\u00b2"+
+		"\u00b3\u0005\u0007\u0000\u0000\u00b3\u00b4\u0005\u0016\u0000\u0000\u00b4"+
+		"\u00b5\u0006\u0007\uffff\uffff\u0000\u00b5\u00b6\u0005 \u0000\u0000\u00b6"+
+		"\u00d4\u0003\u0010\b\u0000\u00b7\u00b8\u0005\r\u0000\u0000\u00b8\u00b9"+
+		"\u0005\u0006\u0000\u0000\u00b9\u00ba\u0005\u0015\u0000\u0000\u00ba\u00bb"+
+		"\u0005\u0007\u0000\u0000\u00bb\u00bc\u0005\u0016\u0000\u0000\u00bc\u00d4"+
+		"\u0006\u0007\uffff\uffff\u0000\u00bd\u00be\u0005\r\u0000\u0000\u00be\u00bf"+
+		"\u0005\u0006\u0000\u0000\u00bf\u00c0\u0005\u0015\u0000\u0000\u00c0\u00c1"+
+		"\u0005\u0007\u0000\u0000\u00c1\u00c2\u0005\u0016\u0000\u0000\u00c2\u00c3"+
+		"\u0006\u0007\uffff\uffff\u0000\u00c3\u00c4\u0005 \u0000\u0000\u00c4\u00d4"+
+		"\u0003\u0010\b\u0000\u00c5\u00c6\u0005\u000e\u0000\u0000\u00c6\u00c7\u0005"+
+		"\u0006\u0000\u0000\u00c7\u00c8\u0005\u0015\u0000\u0000\u00c8\u00c9\u0005"+
+		"\u0007\u0000\u0000\u00c9\u00ca\u0005\u0016\u0000\u0000\u00ca\u00d4\u0006"+
+		"\u0007\uffff\uffff\u0000\u00cb\u00cc\u0005\u000e\u0000\u0000\u00cc\u00cd"+
+		"\u0005\u0006\u0000\u0000\u00cd\u00ce\u0005\u0015\u0000\u0000\u00ce\u00cf"+
+		"\u0005\u0007\u0000\u0000\u00cf\u00d0\u0005\u0016\u0000\u0000\u00d0\u00d1"+
+		"\u0006\u0007\uffff\uffff\u0000\u00d1\u00d2\u0005 \u0000\u0000\u00d2\u00d4"+
+		"\u0003\u0010\b\u0000\u00d3\u00a9\u0001\u0000\u0000\u0000\u00d3\u00af\u0001"+
+		"\u0000\u0000\u0000\u00d3\u00b7\u0001\u0000\u0000\u0000\u00d3\u00bd\u0001"+
+		"\u0000\u0000\u0000\u00d3\u00c5\u0001\u0000\u0000\u0000\u00d3\u00cb\u0001"+
+		"\u0000\u0000\u0000\u00d4\u000f\u0001\u0000\u0000\u0000\u00d5\u00d6\u0005"+
+		"\u0006\u0000\u0000\u00d6\u00db\u0003F#\u0000\u00d7\u00d8\u0005!\u0000"+
+		"\u0000\u00d8\u00da\u0003F#\u0000\u00d9\u00d7\u0001\u0000\u0000\u0000\u00da"+
+		"\u00dd\u0001\u0000\u0000\u0000\u00db\u00d9\u0001\u0000\u0000\u0000\u00db"+
+		"\u00dc\u0001\u0000\u0000\u0000\u00dc\u00de\u0001\u0000\u0000\u0000\u00dd"+
+		"\u00db\u0001\u0000\u0000\u0000\u00de\u00df\u0005\u0007\u0000\u0000\u00df"+
+		"\u0011\u0001\u0000\u0000\u0000\u00e0\u00e1\u0007\u0000\u0000\u0000\u00e1"+
+		"\u00e2\u0005\u0016\u0000\u0000\u00e2\u00e3\u0006\t\uffff\uffff\u0000\u00e3"+
+		"\u0013\u0001\u0000\u0000\u0000\u00e4\u00e5\u0005\f\u0000\u0000\u00e5\u00e6"+
+		"\u0005\u0016\u0000\u0000\u00e6\u00ed\u0006\n\uffff\uffff\u0000\u00e7\u00e8"+
+		"\u0005\f\u0000\u0000\u00e8\u00e9\u0005\u0016\u0000\u0000\u00e9\u00ea\u0006"+
+		"\n\uffff\uffff\u0000\u00ea\u00eb\u0005 \u0000\u0000\u00eb\u00ed\u0003"+
+		"\"\u0011\u0000\u00ec\u00e4\u0001\u0000\u0000\u0000\u00ec\u00e7\u0001\u0000"+
+		"\u0000\u0000\u00ed\u0015\u0001\u0000\u0000\u0000\u00ee\u00ef\u0005\r\u0000"+
+		"\u0000\u00ef\u00f0\u0005\u0016\u0000\u0000\u00f0\u00f7\u0006\u000b\uffff"+
+		"\uffff\u0000\u00f1\u00f2\u0005\r\u0000\u0000\u00f2\u00f3\u0005\u0016\u0000"+
+		"\u0000\u00f3\u00f4\u0006\u000b\uffff\uffff\u0000\u00f4\u00f5\u0005 \u0000"+
+		"\u0000\u00f5\u00f7\u0003\"\u0011\u0000\u00f6\u00ee\u0001\u0000\u0000\u0000"+
+		"\u00f6\u00f1\u0001\u0000\u0000\u0000\u00f7\u0017\u0001\u0000\u0000\u0000"+
+		"\u00f8\u00f9\u0005\u000e\u0000\u0000\u00f9\u00fa\u0005\u0016\u0000\u0000"+
+		"\u00fa\u0101\u0006\f\uffff\uffff\u0000\u00fb\u00fc\u0005\u000e\u0000\u0000"+
+		"\u00fc\u00fd\u0005\u0016\u0000\u0000\u00fd\u00fe\u0006\f\uffff\uffff\u0000"+
+		"\u00fe\u00ff\u0005 \u0000\u0000\u00ff\u0101\u0003\"\u0011\u0000\u0100"+
+		"\u00f8\u0001\u0000\u0000\u0000\u0100\u00fb\u0001\u0000\u0000\u0000\u0101"+
+		"\u0019\u0001\u0000\u0000\u0000\u0102\u0103\u0005\u0016\u0000\u0000\u0103"+
+		"\u0104\u0005 \u0000\u0000\u0104\u0105\u0003\"\u0011\u0000\u0105\u001b"+
+		"\u0001\u0000\u0000\u0000\u0106\u0107\u0005\u0016\u0000\u0000\u0107\u0108"+
+		"\u0005\u0003\u0000\u0000\u0108\u010d\u0003\"\u0011\u0000\u0109\u010a\u0005"+
+		"!\u0000\u0000\u010a\u010c\u0003\"\u0011\u0000\u010b\u0109\u0001\u0000"+
+		"\u0000\u0000\u010c\u010f\u0001\u0000\u0000\u0000\u010d\u010b\u0001\u0000"+
+		"\u0000\u0000\u010d\u010e\u0001\u0000\u0000\u0000\u010e\u0110\u0001\u0000"+
+		"\u0000\u0000\u010f\u010d\u0001\u0000\u0000\u0000\u0110\u0111\u0005\u0005"+
+		"\u0000\u0000\u0111\u0116\u0001\u0000\u0000\u0000\u0112\u0113\u0005\u0016"+
+		"\u0000\u0000\u0113\u0114\u0005\u0003\u0000\u0000\u0114\u0116\u0005\u0005"+
+		"\u0000\u0000\u0115\u0106\u0001\u0000\u0000\u0000\u0115\u0112\u0001\u0000"+
+		"\u0000\u0000\u0116\u001d\u0001\u0000\u0000\u0000\u0117\u0118\u0005\u0013"+
+		"\u0000\u0000\u0118\u0119\u0006\u000f\uffff\uffff\u0000\u0119\u011d\u0003"+
+		"F#\u0000\u011a\u011b\u0005\u0013\u0000\u0000\u011b\u011d\u0006\u000f\uffff"+
+		"\uffff\u0000\u011c\u0117\u0001\u0000\u0000\u0000\u011c\u011a\u0001\u0000"+
+		"\u0000\u0000\u011d\u001f\u0001\u0000\u0000\u0000\u011e\u011f\u0005\u0011"+
+		"\u0000\u0000\u011f\u0120\u0006\u0010\uffff\uffff\u0000\u0120\u0124\u0005"+
+		"\u0003\u0000\u0000\u0121\u0125\u0003B!\u0000\u0122\u0125\u0003@ \u0000"+
+		"\u0123\u0125\u0005\u0016\u0000\u0000\u0124\u0121\u0001\u0000\u0000\u0000"+
+		"\u0124\u0122\u0001\u0000\u0000\u0000\u0124\u0123\u0001\u0000\u0000\u0000"+
+		"\u0125\u012e\u0001\u0000\u0000\u0000\u0126\u012a\u0005!\u0000\u0000\u0127"+
+		"\u012b\u0003@ \u0000\u0128\u012b\u0003B!\u0000\u0129\u012b\u0005\u0016"+
+		"\u0000\u0000\u012a\u0127\u0001\u0000\u0000\u0000\u012a\u0128\u0001\u0000"+
+		"\u0000\u0000\u012a\u0129\u0001\u0000\u0000\u0000\u012b\u012d\u0001\u0000"+
+		"\u0000\u0000\u012c\u0126\u0001\u0000\u0000\u0000\u012d\u0130\u0001\u0000"+
+		"\u0000\u0000\u012e\u012c\u0001\u0000\u0000\u0000\u012e\u012f\u0001\u0000"+
+		"\u0000\u0000\u012f\u0131\u0001\u0000\u0000\u0000\u0130\u012e\u0001\u0000"+
+		"\u0000\u0000\u0131\u0132\u0005\u0005\u0000\u0000\u0132!\u0001\u0000\u0000"+
+		"\u0000\u0133\u0134\u0003&\u0013\u0000\u0134\u0135\u0003$\u0012\u0000\u0135"+
+		"#\u0001\u0000\u0000\u0000\u0136\u0137\u0005\u001f\u0000\u0000\u0137\u0138"+
+		"\u0003&\u0013\u0000\u0138\u0139\u0003$\u0012\u0000\u0139\u013a\u0006\u0012"+
+		"\uffff\uffff\u0000\u013a\u013d\u0001\u0000\u0000\u0000\u013b\u013d\u0001"+
+		"\u0000\u0000\u0000\u013c\u0136\u0001\u0000\u0000\u0000\u013c\u013b\u0001"+
+		"\u0000\u0000\u0000\u013d%\u0001\u0000\u0000\u0000\u013e\u013f\u0003*\u0015"+
+		"\u0000\u013f\u0140\u0003(\u0014\u0000\u0140\'\u0001\u0000\u0000\u0000"+
+		"\u0141\u0142\u0005\u001e\u0000\u0000\u0142\u0143\u0003*\u0015\u0000\u0143"+
+		"\u0144\u0003(\u0014\u0000\u0144\u0145\u0006\u0014\uffff\uffff\u0000\u0145"+
+		"\u0148\u0001\u0000\u0000\u0000\u0146\u0148\u0001\u0000\u0000\u0000\u0147"+
+		"\u0141\u0001\u0000\u0000\u0000\u0147\u0146\u0001\u0000\u0000\u0000\u0148"+
+		")\u0001\u0000\u0000\u0000\u0149\u014a\u0003.\u0017\u0000\u014a\u014b\u0003"+
+		",\u0016\u0000\u014b+\u0001\u0000\u0000\u0000\u014c\u014d\u0005\u001d\u0000"+
+		"\u0000\u014d\u014e\u0003.\u0017\u0000\u014e\u014f\u0003,\u0016\u0000\u014f"+
+		"\u0150\u0006\u0016\uffff\uffff\u0000\u0150\u0153\u0001\u0000\u0000\u0000"+
+		"\u0151\u0153\u0001\u0000\u0000\u0000\u0152\u014c\u0001\u0000\u0000\u0000"+
+		"\u0152\u0151\u0001\u0000\u0000\u0000\u0153-\u0001\u0000\u0000\u0000\u0154"+
+		"\u0155\u00032\u0019\u0000\u0155\u0156\u00030\u0018\u0000\u0156/\u0001"+
+		"\u0000\u0000\u0000\u0157\u0158\u0005\u001c\u0000\u0000\u0158\u0159\u0003"+
+		"2\u0019\u0000\u0159\u015a\u00030\u0018\u0000\u015a\u015b\u0006\u0018\uffff"+
+		"\uffff\u0000\u015b\u015e\u0001\u0000\u0000\u0000\u015c\u015e\u0001\u0000"+
+		"\u0000\u0000\u015d\u0157\u0001\u0000\u0000\u0000\u015d\u015c\u0001\u0000"+
+		"\u0000\u0000\u015e1\u0001\u0000\u0000\u0000\u015f\u0160\u00036\u001b\u0000"+
+		"\u0160\u0161\u00034\u001a\u0000\u01613\u0001\u0000\u0000\u0000\u0162\u0163"+
+		"\u0007\u0001\u0000\u0000\u0163\u0164\u00036\u001b\u0000\u0164\u0165\u0003"+
+		"4\u001a\u0000\u0165\u0166\u0006\u001a\uffff\uffff\u0000\u0166\u0169\u0001"+
+		"\u0000\u0000\u0000\u0167\u0169\u0001\u0000\u0000\u0000\u0168\u0162\u0001"+
+		"\u0000\u0000\u0000\u0168\u0167\u0001\u0000\u0000\u0000\u01695\u0001\u0000"+
+		"\u0000\u0000\u016a\u016b\u0003:\u001d\u0000\u016b\u016c\u00038\u001c\u0000"+
+		"\u016c7\u0001\u0000\u0000\u0000\u016d\u016e\u0005\u0018\u0000\u0000\u016e"+
+		"\u016f\u0003:\u001d\u0000\u016f\u0170\u00038\u001c\u0000\u0170\u0171\u0006"+
+		"\u001c\uffff\uffff\u0000\u0171\u0174\u0001\u0000\u0000\u0000\u0172\u0174"+
+		"\u0001\u0000\u0000\u0000\u0173\u016d\u0001\u0000\u0000\u0000\u0173\u0172"+
+		"\u0001\u0000\u0000\u0000\u01749\u0001\u0000\u0000\u0000\u0175\u0176\u0007"+
+		"\u0002\u0000\u0000\u0176\u0177\u0003<\u001e\u0000\u0177\u0178\u0006\u001d"+
+		"\uffff\uffff\u0000\u0178\u017b\u0001\u0000\u0000\u0000\u0179\u017b\u0003"+
+		"<\u001e\u0000\u017a\u0175\u0001\u0000\u0000\u0000\u017a\u0179\u0001\u0000"+
+		"\u0000\u0000\u017b;\u0001\u0000\u0000\u0000\u017c\u017d\u0005\u0016\u0000"+
+		"\u0000\u017d\u0180\u0005\u0006\u0000\u0000\u017e\u0181\u0005\u0015\u0000"+
+		"\u0000\u017f\u0181\u0003\"\u0011\u0000\u0180\u017e\u0001\u0000\u0000\u0000"+
+		"\u0180\u017f\u0001\u0000\u0000\u0000\u0181\u0182\u0001\u0000\u0000\u0000"+
+		"\u0182\u0190\u0005\u0007\u0000\u0000\u0183\u0190\u0007\u0003\u0000\u0000"+
+		"\u0184\u0190\u0005#\u0000\u0000\u0185\u0190\u0005\u000f\u0000\u0000\u0186"+
+		"\u0187\u0005\u0003\u0000\u0000\u0187\u0188\u0003\"\u0011\u0000\u0188\u0189"+
+		"\u0005\u0005\u0000\u0000\u0189\u0190\u0001\u0000\u0000\u0000\u018a\u0190"+
+		"\u0005\u0016\u0000\u0000\u018b\u0190\u0003@ \u0000\u018c\u0190\u0003B"+
+		"!\u0000\u018d\u0190\u0003\u0010\b\u0000\u018e\u0190\u0003\u001c\u000e"+
 		"\u0000\u018f\u017c\u0001\u0000\u0000\u0000\u018f\u0183\u0001\u0000\u0000"+
 		"\u0000\u018f\u0184\u0001\u0000\u0000\u0000\u018f\u0185\u0001\u0000\u0000"+
 		"\u0000\u018f\u0186\u0001\u0000\u0000\u0000\u018f\u018a\u0001\u0000\u0000"+
@@ -3255,7 +3255,7 @@ public class LogicPLParser extends Parser {
 		"\u0001\u0000\u0000\u0000\u01b2\u01b0\u0001\u0000\u0000\u0000\u01b2\u01b3"+
 		"\u0001\u0000\u0000\u0000\u01b3\u01b4\u0001\u0000\u0000\u0000\u01b4\u01b5"+
 		"\u0005\u0005\u0000\u0000\u01b5E\u0001\u0000\u0000\u0000\u01b6\u01b7\u0007"+
-		"\u0002\u0000\u0000\u01b7\u01b8\u0007\u0004\u0000\u0000\u01b8\u01bb\u0006"+
+		"\u0001\u0000\u0000\u01b7\u01b8\u0007\u0004\u0000\u0000\u01b8\u01bb\u0006"+
 		"#\uffff\uffff\u0000\u01b9\u01bb\u0007\u0005\u0000\u0000\u01ba\u01b6\u0001"+
 		"\u0000\u0000\u0000\u01ba\u01b9\u0001\u0000\u0000\u0000\u01bbG\u0001\u0000"+
 		"\u0000\u0000\u001fKZfm}\u0089\u0093\u00a3\u00a7\u00d3\u00db\u00ec\u00f6"+
