@@ -146,7 +146,8 @@ assign_expression
     ;
 assign_exp2
     :
-        LOGICAL_OR_OP or_exp assign_exp2 |
+        OP = LOGICAL_OR_OP or_exp assign_exp2  {System.out.println("Operator: " + $OP.getText());}
+        |
     ;
 or_exp
     :
@@ -154,7 +155,8 @@ or_exp
     ;
 or_exp2
     :
-        LOGICAL_AND_OP and_exp or_exp2 |
+        OP = LOGICAL_AND_OP and_exp or_exp2  {System.out.println("Operator: " + $OP.getText());}
+        |
     ;
 and_exp
     :
@@ -162,7 +164,8 @@ and_exp
     ;
 and_exp2
     :
-        RELATIONAL_OP2 relational2_exp and_exp2 |
+        OP = RELATIONAL_OP2 relational2_exp and_exp2  {System.out.println("Operator: " + $OP.getText());}
+        |
     ;
 relational2_exp
     :
@@ -170,7 +173,8 @@ relational2_exp
     ;
 relational2_exp2
     :
-        RELATIONAL_OP1 relational1_exp relational2_exp2|
+        OP = RELATIONAL_OP1 relational1_exp relational2_exp2  {System.out.println("Operator: " + $OP.getText());}
+        |
     ;
 relational1_exp
     :
@@ -178,7 +182,8 @@ relational1_exp
     ;
 relational1_exp2
     :
-        OP = (PLUS | MINUS) arithmatic2_exp relational1_exp2|
+        OP = (PLUS | MINUS) arithmatic2_exp relational1_exp2 {System.out.println("Operator: " + $OP.getText());}
+        |
     ;
 arithmatic2_exp
     :
@@ -186,11 +191,13 @@ arithmatic2_exp
     ;
 arithmatic2_exp2
     :
-        MUL_DIV_MOD arithmatic1_exp arithmatic2_exp2 |
+        OP = MUL_DIV_MOD arithmatic1_exp arithmatic2_exp2  {System.out.println("Operator: " + $OP.getText());}
+        |
     ;
 arithmatic1_exp
     :
-        OP = (PLUS | MINUS | LOGICAL_NOT) primary_expression | primary_expression
+        OP = (PLUS | MINUS | LOGICAL_NOT) primary_expression  {System.out.println("Operator: " + $OP.getText());}
+        | primary_expression
     ;
 primary_expression
     :
