@@ -39,7 +39,7 @@ line
     :
         (((/*{System.out.println("FunctionCall");}*/ function_call )
             | array_declaration | int_declaration | float_declaration | boolean_declaration
-            | or_expression | function_return | print_expression) SEMICOLON
+            | assign_expression | function_return | print_expression) SEMICOLON
             | for_structure | predicate_expression | implication_expression)
     ;
 for_structure
@@ -66,7 +66,7 @@ array_declaration
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         |   INT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
-             ASSIGNMENT_OP array_elements
+            ASSIGNMENT_OP array_elements
              //{ System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
         |   FLOAT_TYPE '[' NATURAL_NUMBERS ']' IDENTIFIER
             { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
@@ -86,8 +86,8 @@ array_elements
     :
            //'[' primary_expression (COMMA primary_expression)* ']'
            //'[' or_expression (COMMA or_expression)* ']'
-           '[' (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
-           (COMMA (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN))* ']'
+        '[' (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
+            (COMMA (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN))* ']'
            //---------------> UNARY?
     ;
 argument
@@ -101,7 +101,7 @@ int_declaration
         INT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
     |   INT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         //ASSIGNMENT_OP additive_expression
-        ASSIGNMENT_OP or_expression
+        ASSIGNMENT_OP assign_expression
        // { System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
     ;
 float_declaration
@@ -109,19 +109,19 @@ float_declaration
         FLOAT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
     |   FLOAT_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
         //ASSIGNMENT_OP additive_expression
-        ASSIGNMENT_OP or_expression
+        ASSIGNMENT_OP assign_expression
         //{ System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
     ;
 boolean_declaration
     :
         BOOLEAN_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
     |   BOOLEAN_TYPE IDENTIFIER { System.out.println("VarDec: " + $IDENTIFIER.getText()); }
-        ASSIGNMENT_OP or_expression
+        ASSIGNMENT_OP assign_expression
         //{ System.out.println("Operator: " + $ASSIGNMENT_OP.getText()); }
     ;
 function_call
     :
-        IDENTIFIER '(' or_expression (COMMA or_expression)* ')'
+        IDENTIFIER '(' assign_expression (COMMA assign_expression)* ')'
         | IDENTIFIER '(' ')'
     ;
 function_return
@@ -134,7 +134,11 @@ function_return
 print_expression
     :
         PRINT { System.out.println("Built-in: print"); }
-        '(' ( (or_expression) (COMMA (or_expression))* ) ')'
+        '(' ( (assign_expression) (COMMA (assign_expression))* ) ')'
+    ;
+assign_expression
+    :
+        or_expression (ASSIGNMENT_OP or_expression)*
     ;
 or_expression
     :
@@ -148,32 +152,30 @@ and_expression
     ;
 equality_expression
     :
-        relational_expression ((RELATIONAL_OP2 relational_expression
+        relational_expression (RELATIONAL_OP2 relational_expression
         {System.out.println("Operator: " + $RELATIONAL_OP2.getText());})*
-        | (ASSIGNMENT_OP relational_expression)*)
-        //{System.out.println("Operator: " + $ASSIGNMENT_OP.getText());})*)
     ;
 relational_expression
     :
         additive_expression (RELATIONAL_OP1 additive_expression
-         {System.out.println("Operator: " + $RELATIONAL_OP1.getText());})*
+        {System.out.println("Operator: " + $RELATIONAL_OP1.getText());})*
 
     ;
 additive_expression
     :
-    multiplicative_expression (BINARY_ARITHMETIC_OP2 multiplicative_expression
-    {System.out.println("Operator: " + $BINARY_ARITHMETIC_OP2.getText());})*
+    multiplicative_expression (OP = (PLUS | MINUS) multiplicative_expression
+    {System.out.println("Operator: " + $OP.getText());})*
     ;
 multiplicative_expression
     :
-        not_expression (BINARY_ARITHMETIC_OP1 not_expression
-        {System.out.println("Operator: " + $BINARY_ARITHMETIC_OP1.getText());})*
+        not_expression (MUL_DIV_MOD not_expression
+        {System.out.println("Operator: " + $MUL_DIV_MOD.getText());})*
     ;
 not_expression
     :
-        LOGICAL_NOT_OP not_expression
-        {System.out.println("Operator: " + $LOGICAL_NOT_OP.getText());}
-      |   primary_expression
+        OP = (PLUS | MINUS | LOGICAL_NOT) not_expression
+        {System.out.println("Operator: " + $OP.getText());}
+    |   primary_expression
     ;
 primary_expression
     :
@@ -214,7 +216,7 @@ implication_expression
         // if q be all expressions:
         // '(' (or_expression | (QUERY_2 RELATIONAL_OP2 array_elements))')' '=>' '(' (line)+ ')'
         { System.out.println("Implication"); }
-        '(' or_expression ')' '=>' '(' (line)+ ')'
+        '(' assign_expression ')' '=>' '(' (line)+ ')'
     ;
 
 // tokens:
@@ -270,18 +272,29 @@ PRIDICATE
     :
         [A-Z][a-zA-Z0-9_]*
     ;
-
-LOGICAL_NOT_OP
-    :
-        '!'
-    ;
-BINARY_ARITHMETIC_OP1
+// LOGICAL_NOT_OP
+//     :
+//         '!'
+//     ;
+MUL_DIV_MOD
     :
         '*' | '/' | '%'
     ;
-BINARY_ARITHMETIC_OP2
+// UNARY_OPERATOR
+//     :
+//         '+' | '-' | '!'
+//     ;
+PLUS
     :
-        '+' | '-'
+        '+'
+    ;
+MINUS
+    :
+        '-'
+    ;
+LOGICAL_NOT
+    :
+        '!'
     ;
 RELATIONAL_OP1
     :
