@@ -180,7 +180,7 @@ not_expression
     ;
 primary_expression
     :
-        IDENTIFIER '[' (NATURAL_NUMBERS | assign_expression) ']' // to edit array elements
+        IDENTIFIER '[' (NATURAL_NUMBERS | additive_expression) ']' // to edit array elements
     |   (NATURAL_NUMBERS | '0') // same as int
     |   FLOAT
     |   BOOLEAN
@@ -225,12 +225,12 @@ implication_expression
          {System.out.println("Operator: " + $OP.getText());}
         | OP = (PLUS | MINUS | LOGICAL_NOT) '(' unary_value ')'
          {System.out.println("Operator: " + $OP.getText());}
-        | (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
+
     ; */
 unary_value
     :
-        OP = (PLUS | MINUS | LOGICAL_NOT)  (NATURAL_NUMBERS | '0' | FLOAT)
-        {System.out.println("Operator: " + $OP.getText());}
+        OP = (PLUS | MINUS | LOGICAL_NOT)  (NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
+                 {System.out.println("Operator: " + $OP.getText());}
         | (IDENTIFIER | NATURAL_NUMBERS | '0' | FLOAT | BOOLEAN)
     ;
 
