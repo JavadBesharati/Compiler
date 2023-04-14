@@ -19,6 +19,7 @@
 
 // Question: What do we have in "q" expression of implications(implication: (p) => (q))?
 //           Just predications or all expressions are possible?
+// little_changed
 
 grammar LogicPL;
 // grammar rules:
