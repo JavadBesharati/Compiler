@@ -11,6 +11,8 @@ import ast.type.primitiveType.*;
 import ast.type.*;
 }
 
+// comment
+
 program returns[Program p]:
     {$p = new Program(); $p.setLine(0);}
     (f = functionDec {$p.addFunc($f.functionDeclaration);})*
