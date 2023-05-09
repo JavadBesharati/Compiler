@@ -1,0 +1,68 @@
+#func f(a, b, c):
+#{
+#    if (g().size > f()):
+#        print(a1);
+#    else:
+#        if (a and b or c):{
+#            return 780;
+#        }
+#        print("PLC");
+#        return f() + g(true) / h(1,2, "pLc");
+#}
+
+#func f(a):
+#    if (b):
+#    {
+#        if (c):
+#            return 1;
+#        else:
+#            print("hi");
+#    }
+
+#main : append([]);
+
+
+#func apppend(a) : {
+#    append([[], [[]], [[], 1, 2], "hello"]);
+#    return []::i;
+#}
+
+#func f(a):
+    #if (a):
+        #if (b): {
+            #if (c):
+                #print("salam");
+            #else:
+                #print("bye");
+            #return 2;
+        #}
+        #else:
+            #return 1;
+
+#main: f(a = 1, b = 2, c = 3);
+
+#main : print(getOdds([], 1, 100));
+#func getOdds(list, i, end) : {
+    #if i is end : {
+        #printList(list);
+        #return void;
+    #}
+    #getOdds(list::i, i+2, end);
+    #return void;
+#}
+#func printList(list, i) : {
+    #if size_ not list.size : {
+        #print(list[i]);
+        #printList(list, i+1);
+        #return void;
+    #}
+    #else :
+        #return void;
+#}
+
+main : append([]);
+
+func apppend(a) : {
+    append([[], [[]], [[], 1, 2], "hello"]);
+    return []::i;
+}

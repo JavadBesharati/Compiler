@@ -1,0 +1,16 @@
+func g(): {
+    print("--inside g");
+    return 1;
+}
+
+func f(): {
+    print("--inside f");
+    return g() + 10;
+}
+
+#func h(x): {
+#    return x + 2;
+#}
+main: print(f() + g());
+
+#main: print(h(5));

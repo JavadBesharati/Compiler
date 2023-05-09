@@ -1,0 +1,26 @@
+struct TT
+    list #bool ids
+
+struct WW
+    list #struct TT tt
+
+int ff() begin
+    int a
+    input(a)
+
+    if a > 2
+        if a > 4
+            return 2
+        else
+            return 4
+    else
+        a = 2
+    while a < 2
+        return 1
+
+end
+
+main() begin
+    struct WW ww
+    int i
+end

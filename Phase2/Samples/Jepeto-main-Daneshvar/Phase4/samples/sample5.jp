@@ -1,0 +1,16 @@
+func g(): {
+    print("--inside g");
+    return 1;
+}
+
+func f(): {
+    print("--inside f");
+    print([1, 2, 3] :: 4559);
+    print([-(-1), 1 + 1, [1, 2, 3].size] :: 5669);
+    return g() + 10;
+}
+
+func h(x, y): {
+    return x - y;
+}
+main: print(f() + g() + h(y = 3, x = 2));

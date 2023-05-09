@@ -1,0 +1,107 @@
+program:
+	function* + main
+
+
+function:
+	2 halate:
+		1. 1 khatti
+		2. chand khatti:
+			functionDec + argDec +{ + body + }
+			
+argDec:
+	(id, )*
+
+
+If:
+	2 halate:
+		1. 1 khatti
+		2. chand khatti
+			if + '(' + expression + ')' + '{' + body + '}' + Else //with else
+			if + '(' + expression + ')' + '{' + body + '}' //without else
+			
+Else:
+	'else' + '{' + body + '}'
+
+
+body:
+	(statement | If)* + return + (statement | If)*   
+
+
+statement:
+	(functionCall | return | print) + ';'
+
+functionCall:
+	id + argList
+	
+
+return:
+	'return' + (expression | 'void' | anonymounsFunction)
+	
+expression:
+	expression + ( + | * | - | / | and | or | < | > | is ) + expression
+	(expression)
+	~expression
+	-expression
+	functionCall
+	Int
+	bool
+	string 
+	listMember
+	Identifier
+	List
+	sizable
+
+List
+	'[' + expression* + ']'
+
+bool
+	true | false
+	
+‫
+int 
+	(1-9)*+ (0-9)*
+
+string
+	"[a-zA-Z]*"+
+
+listMember:
+	(Identifier | functionCall) + '[' + expression + ']
+
+
+functionCall:
+	identifier + argList*
+	anonymousFunction + argList
+
+
+argList:
+	'('
+	1. (expression | functionCall)*
+	2.1 (id = expression)*
+	2.2 (id = anonymousFunction)*
+	')'
+
+anonymousFunction:
+	argList --> { body }
+
+main:
+	'main' + ':' + (functionCall | print)
+	
+print:
+	print + '(' + (expression) + ')'
+
+
+sizable:
+	id.size
+	id[expression].size
+	functionCall.size
+
+
+
+
+id:
+	A-Za-z93131
+
+
+id: olaviatesh payin baashe ke avval kalame kilidi haaro bekeshe biroon
+
+
