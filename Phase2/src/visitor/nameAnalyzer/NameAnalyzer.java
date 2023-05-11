@@ -1,18 +1,29 @@
 package visitor.nameAnalyzer;
 
-import ast.node.Program;
-import ast.node.statement.VarDecStmt;
-import java.util.ArrayList;
-import symbolTable.SymbolTable;
-import symbolTable.symbolTableItems.VariableItem;
 
+import ast.node.Program;
+import ast.node.declaration.ArgDeclaration;
+import ast.node.declaration.FuncDeclaration;
+import ast.node.statement.Statement;
+import ast.node.statement.VarDecStmt;
+import compileError.CompileError;
+import compileError.Name.FunctionRedefinition;
+import compileError.Name.VariableRedefinition;
+import java.util.ArrayList;
+import java.util.Iterator;
+import symbolTable.SymbolTable;
+import symbolTable.itemException.ItemAlreadyExistsException;
+import symbolTable.symbolTableItems.FunctionItem;
+import symbolTable.symbolTableItems.VariableItem;
+import visitor.Visitor;
 
 public class NameAnalyzer extends Visitor<Void> {
 
     public ArrayList<CompileError> nameErrors = new ArrayList<>();
-
+    private static int i = 0;
     @Override
     public Void visit(Program program) {
+
         SymbolTable.root = new SymbolTable();
         SymbolTable.push(SymbolTable.root);
 
@@ -38,15 +49,16 @@ public class NameAnalyzer extends Visitor<Void> {
 
         // ToDo
 
-        for(boolean done = false; !done; ++i) {
+        for(boolean done = false; !done; i++ ) {
             try {
                 SymbolTable.top.put(functionItem);
                 done = true;
             } catch (ItemAlreadyExistsException var7) {
                 FunctionRedefinition error = new FunctionRedefinition(funcDeclaration.getLine(), funcDeclaration.getName().getName());
                 this.nameErrors.add(error);
-                String var10001 = funcDeclaration.getName().getName();
-                functionItem.setName(var10001 + "$%:)" + i);
+                //set name:
+                //String var10001 = funcDeclaration.getName().getName();
+                //functionItem.setName(var10001 + "$%:)" + i );
             }
         }
 
@@ -76,9 +88,12 @@ public class NameAnalyzer extends Visitor<Void> {
         } catch (ItemAlreadyExistsException var5) {
             VariableRedefinition error = new VariableRedefinition(varDeclaration.getLine(), varDeclaration.getIdentifier().getName());
             this.nameErrors.add(error);
+            //set name:
         }
 
         return null;
     }
+
+    
 }
 

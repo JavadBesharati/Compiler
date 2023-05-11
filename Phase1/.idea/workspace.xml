@@ -4,14 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c58cb1a-a140-4585-8c04-ca4c289a1d97" name="Changes" comment="" />
+    <list default="true" id="2c58cb1a-a140-4585-8c04-ca4c289a1d97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Phase2/.idea/libraries/antlr_4_10_1_complete1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Phase2/.idea/libraries/antlr_4_12_0_complete.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/Phase2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/Phase2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPL.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPL.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/gen/main/grammar/LogicPLVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/src/visitor/astPrinter/ASTPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Phase2/src/visitor/astPrinter/ASTPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phase2/untitled.iml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -22,17 +37,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/Uni/Uni06/3. compiler/2. CAs/Compiler-Projects-UT-Spring-2023/phase1/antlr-4.12.0-complete.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Uni/Uni06/3. compiler/2. CAs/Compiler-Projects-UT-Spring-2023/phase1/antlr-4.12.0-complete.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Uni\Uni06\3. compiler\2. CAs\Compiler-Projects-UT-Spring-2023\phase1" />

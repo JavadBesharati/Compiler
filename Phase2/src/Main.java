@@ -2,11 +2,16 @@ import java.io.IOException;
 
 import ast.node.Program;
 import compileError.CompileError;
+//import java.io.IOException;
+//import java.util.Iterator;
+import main.grammar.antlr.*;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import visitor.astPrinter.ASTPrinter;
+import visitor.nameAnalyzer.NameAnalyzer;
 import main.grammar.LogicPLLexer;
 import main.grammar.LogicPLParser;
-import visitor.nameAnalyzer.NameAnalyzer;
-import visitor.astPrinter.ASTPrinter;
-import org.antlr.v4.runtime.*;
 
 public class Main {
         public static void main(String[] args) throws java.io.IOException {

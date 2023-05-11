@@ -48,7 +48,7 @@ public class ASTPrinter extends Visitor<Void> {
         }
 
         for (ArgDeclaration  argDecLaration : funcDeclaration.getArgs()) {
-            argDeclaration.accept(this);
+            argDecLaration.accept(this);
         }
 
         for (Statement statement : funcDeclaration.getStatements() ) {
@@ -187,7 +187,7 @@ public class ASTPrinter extends Visitor<Void> {
             implicationStmt.getCondition().accept(this);
         }
 
-        for (Statement statement : implicationStmt.) {
+        for (Statement statement : implicationStmt.getStatements()) {
             statement.accept(this);
         }
         return null;
