@@ -317,7 +317,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(115);
 				((FunctionDecContext)_localctx).stmt = statement();
-				statements.add(((FunctionDecContext)_localctx).stmt.statementRet);
+				statements.add(((FunctionDecContext)_localctx).stmt.statement_);
 				}
 				}
 				setState(120); 
@@ -327,8 +327,8 @@ public class LogicPLParser extends Parser {
 			}
 			setState(122);
 			match(RBRACE);
-			((FunctionDecContext)_localctx).functionDeclaration =  new FuncDeclaration(((FunctionDecContext)_localctx).name.identifierRet, ((FunctionDecContext)_localctx).returnType.typeRet, args, statements);
-			    _localctx.functionDeclaration.setLine(((FunctionDecContext)_localctx).name.identifierRet.getLine());
+			((FunctionDecContext)_localctx).functionDeclaration =  new FuncDeclaration(((FunctionDecContext)_localctx).name.identifier_, ((FunctionDecContext)_localctx).returnType.type_, args, statements);
+			    _localctx.functionDeclaration.setLine(((FunctionDecContext)_localctx).name.identifier_.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -382,8 +382,8 @@ public class LogicPLParser extends Parser {
 			((FunctionVarDecContext)_localctx).t = type();
 			setState(126);
 			((FunctionVarDecContext)_localctx).arg_iden = identifier();
-			((FunctionVarDecContext)_localctx).argDeclaration =  new ArgDeclaration(((FunctionVarDecContext)_localctx).arg_iden.identifierRet, ((FunctionVarDecContext)_localctx).t.typeRet);
-			    _localctx.argDeclaration.setLine(((FunctionVarDecContext)_localctx).arg_iden.identifierRet.getLine());
+			((FunctionVarDecContext)_localctx).argDeclaration =  new ArgDeclaration(((FunctionVarDecContext)_localctx).arg_iden.identifier_, ((FunctionVarDecContext)_localctx).t.type_);
+			    _localctx.argDeclaration.setLine(((FunctionVarDecContext)_localctx).arg_iden.identifier_.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -450,7 +450,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(132);
 				((MainBlockContext)_localctx).s = statement();
-				mainStmts.add(((MainBlockContext)_localctx).s.statementRet);
+				mainStmts.add(((MainBlockContext)_localctx).s.statement_);
 				}
 				}
 				setState(137); 
@@ -475,7 +475,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class StatementContext extends ParserRuleContext {
-		public Statement statementRet;
+		public Statement statement_;
 		public AssignSmtContext s1;
 		public PredicateContext s2;
 		public ImplicationContext s3;
@@ -536,7 +536,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(142);
 				((StatementContext)_localctx).s1 = assignSmt();
-				((StatementContext)_localctx).statementRet =  ((StatementContext)_localctx).s1.assignStmtRet;
+				((StatementContext)_localctx).statement_ =  ((StatementContext)_localctx).s1.assignStmt_;
 				}
 				break;
 			case PREDICATE_IDENTIFIER:
@@ -547,7 +547,7 @@ public class LogicPLParser extends Parser {
 				((StatementContext)_localctx).s2 = predicate();
 				setState(146);
 				match(SEMICOLON);
-				((StatementContext)_localctx).statementRet =  ((StatementContext)_localctx).s2.predicateRet;
+				((StatementContext)_localctx).statement_ =  ((StatementContext)_localctx).s2.predicate_;
 				}
 				}
 				break;
@@ -556,7 +556,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(149);
 				((StatementContext)_localctx).s3 = implication();
-				((StatementContext)_localctx).statementRet =  ((StatementContext)_localctx).s3.implicationRet;
+				((StatementContext)_localctx).statement_ =  ((StatementContext)_localctx).s3.implication_;
 				}
 				break;
 			case RETURN:
@@ -564,7 +564,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(152);
 				((StatementContext)_localctx).s4 = returnSmt();
-				((StatementContext)_localctx).statementRet =  ((StatementContext)_localctx).s4.returnRet;
+				((StatementContext)_localctx).statement_ =  ((StatementContext)_localctx).s4.return_;
 				}
 				break;
 			case PRINT:
@@ -572,7 +572,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(155);
 				((StatementContext)_localctx).s5 = printSmt();
-				((StatementContext)_localctx).statementRet =  ((StatementContext)_localctx).s5.PrintStmtRet;
+				((StatementContext)_localctx).statement_ =  ((StatementContext)_localctx).s5.PrintStmt_;
 				}
 				break;
 			case FOR:
@@ -580,7 +580,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(158);
 				((StatementContext)_localctx).s6 = forLoop();
-				((StatementContext)_localctx).statementRet =  ((StatementContext)_localctx).s6.forRet;
+				((StatementContext)_localctx).statement_ =  ((StatementContext)_localctx).s6.for_;
 				}
 				break;
 			case BOOLEAN:
@@ -590,7 +590,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(161);
 				((StatementContext)_localctx).s7 = localVarDeclaration();
-				((StatementContext)_localctx).statementRet =  ((StatementContext)_localctx).s7.localvarDecRet;
+				((StatementContext)_localctx).statement_ =  ((StatementContext)_localctx).s7.localvarDec_;
 				}
 				break;
 			default:
@@ -610,7 +610,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AssignSmtContext extends ParserRuleContext {
-		public AssignStmt assignStmtRet;
+		public AssignStmt assignStmt_;
 		public VariableContext lv;
 		public Token line;
 		public ExpressionContext rv;
@@ -655,7 +655,7 @@ public class LogicPLParser extends Parser {
 			((AssignSmtContext)_localctx).rv = expression();
 			setState(169);
 			match(SEMICOLON);
-			((AssignSmtContext)_localctx).assignStmtRet =  new AssignStmt(((AssignSmtContext)_localctx).lv.v,  ((AssignSmtContext)_localctx).rv.e); _localctx.assignStmtRet.setLine(((AssignSmtContext)_localctx).line.getLine());
+			((AssignSmtContext)_localctx).assignStmt_ =  new AssignStmt(((AssignSmtContext)_localctx).lv.v,  ((AssignSmtContext)_localctx).rv.exp_); _localctx.assignStmt_.setLine(((AssignSmtContext)_localctx).line.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -714,7 +714,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(172);
 				((VariableContext)_localctx).i = identifier();
-				((VariableContext)_localctx).v =  ((VariableContext)_localctx).i.identifierRet;
+				((VariableContext)_localctx).v =  ((VariableContext)_localctx).i.identifier_;
 				}
 				break;
 			case 2:
@@ -728,7 +728,7 @@ public class LogicPLParser extends Parser {
 				((VariableContext)_localctx).exp = expression();
 				setState(178);
 				match(RBRACKET);
-				((VariableContext)_localctx).v =  new ArrayAccess(((VariableContext)_localctx).name.identifierRet.getName(), ((VariableContext)_localctx).exp.e); _localctx.v.setLine(((VariableContext)_localctx).name.identifierRet.getLine()); 
+				((VariableContext)_localctx).v =  new ArrayAccess(((VariableContext)_localctx).name.identifier_.getName(), ((VariableContext)_localctx).exp.exp_); _localctx.v.setLine(((VariableContext)_localctx).name.identifier_.getLine()); 
 				}
 				break;
 			}
@@ -746,7 +746,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class LocalVarDeclarationContext extends ParserRuleContext {
-		public Statement localvarDecRet;
+		public Statement localvarDec_;
 		public VarDeclarationContext s1;
 		public ArrayDeclarationContext s2;
 		public VarDeclarationContext varDeclaration() {
@@ -786,7 +786,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(183);
 				((LocalVarDeclarationContext)_localctx).s1 = varDeclaration();
-				((LocalVarDeclarationContext)_localctx).localvarDecRet =  ((LocalVarDeclarationContext)_localctx).s1.varDecRet;
+				((LocalVarDeclarationContext)_localctx).localvarDec_ =  ((LocalVarDeclarationContext)_localctx).s1.varDec_;
 				}
 				break;
 			case 2:
@@ -794,7 +794,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(186);
 				((LocalVarDeclarationContext)_localctx).s2 = arrayDeclaration();
-				((LocalVarDeclarationContext)_localctx).localvarDecRet =  ((LocalVarDeclarationContext)_localctx).s2.arrayDecRet;
+				((LocalVarDeclarationContext)_localctx).localvarDec_ =  ((LocalVarDeclarationContext)_localctx).s2.arrayDec_;
 				}
 				break;
 			}
@@ -812,10 +812,10 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class VarDeclarationContext extends ParserRuleContext {
-		public VarDecStmt varDecRet;
+		public VarDecStmt varDec_;
 		public TypeContext t;
 		public IdentifierContext var_iden;
-		public ExpressionContext e;
+		public ExpressionContext exp_;
 		public TerminalNode SEMICOLON() { return getToken(LogicPLParser.SEMICOLON, 0); }
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
@@ -857,8 +857,8 @@ public class LogicPLParser extends Parser {
 			((VarDeclarationContext)_localctx).t = type();
 			setState(192);
 			((VarDeclarationContext)_localctx).var_iden = identifier();
-			((VarDeclarationContext)_localctx).varDecRet =  new VarDecStmt(((VarDeclarationContext)_localctx).var_iden.identifierRet, ((VarDeclarationContext)_localctx).t.typeRet);
-			    _localctx.varDecRet.setLine(((VarDeclarationContext)_localctx).var_iden.identifierRet.getLine());
+			((VarDeclarationContext)_localctx).varDec_ =  new VarDecStmt(((VarDeclarationContext)_localctx).var_iden.identifier_, ((VarDeclarationContext)_localctx).t.type_);
+			    _localctx.varDec_.setLine(((VarDeclarationContext)_localctx).var_iden.identifier_.getLine());
 			setState(198);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -867,8 +867,8 @@ public class LogicPLParser extends Parser {
 				setState(194);
 				match(ASSIGN);
 				setState(195);
-				((VarDeclarationContext)_localctx).e = expression();
-				_localctx.varDecRet.setInitialExpression(((VarDeclarationContext)_localctx).e.e);
+				((VarDeclarationContext)_localctx).exp_ = expression();
+				_localctx.varDec_.setInitialExpression(((VarDeclarationContext)_localctx).exp_.exp_);
 				}
 			}
 
@@ -889,11 +889,11 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ArrayDeclarationContext extends ParserRuleContext {
-		public ArrayDecStmt arrayDecRet;
+		public ArrayDecStmt arrayDec_;
 		public TypeContext t;
 		public Token INT_NUMBER;
 		public IdentifierContext var_iden;
-		public ArrayInitialValueContext initial;
+		public ArrayInitialValueContext arrInit;
 		public TerminalNode LBRACKET() { return getToken(LogicPLParser.LBRACKET, 0); }
 		public TerminalNode INT_NUMBER() { return getToken(LogicPLParser.INT_NUMBER, 0); }
 		public TerminalNode RBRACKET() { return getToken(LogicPLParser.RBRACKET, 0); }
@@ -943,16 +943,16 @@ public class LogicPLParser extends Parser {
 			match(RBRACKET);
 			setState(206);
 			((ArrayDeclarationContext)_localctx).var_iden = identifier();
-			((ArrayDeclarationContext)_localctx).arrayDecRet =  new ArrayDecStmt(((ArrayDeclarationContext)_localctx).var_iden.identifierRet, ((ArrayDeclarationContext)_localctx).t.typeRet, (((ArrayDeclarationContext)_localctx).INT_NUMBER!=null?Integer.valueOf(((ArrayDeclarationContext)_localctx).INT_NUMBER.getText()):0));
-			    _localctx.arrayDecRet.setLine(((ArrayDeclarationContext)_localctx).var_iden.identifierRet.getLine());
+			((ArrayDeclarationContext)_localctx).arrayDec_ =  new ArrayDecStmt(((ArrayDeclarationContext)_localctx).var_iden.identifier_, ((ArrayDeclarationContext)_localctx).t.type_, (((ArrayDeclarationContext)_localctx).INT_NUMBER!=null?Integer.valueOf(((ArrayDeclarationContext)_localctx).INT_NUMBER.getText()):0));
+			    _localctx.arrayDec_.setLine(((ArrayDeclarationContext)_localctx).var_iden.identifier_.getLine());
 			setState(211);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ASSIGN) {
 				{
 				setState(208);
-				((ArrayDeclarationContext)_localctx).initial = arrayInitialValue();
-				_localctx.arrayDecRet.setInitialValues(((ArrayDeclarationContext)_localctx).initial.initialValues);
+				((ArrayDeclarationContext)_localctx).arrInit = arrayInitialValue();
+				_localctx.arrayDec_.setInitialValues(((ArrayDeclarationContext)_localctx).arrInit.initialValues);
 				}
 			}
 
@@ -1087,14 +1087,14 @@ public class LogicPLParser extends Parser {
 				{
 				setState(221);
 				((ArrayListContext)_localctx).v = value();
-				_localctx.values.add(((ArrayListContext)_localctx).v.valueRet);
+				_localctx.values.add(((ArrayListContext)_localctx).v.value_);
 				}
 				break;
 			case IDENTIFIER:
 				{
 				setState(224);
 				((ArrayListContext)_localctx).id = identifier();
-				_localctx.values.add(((ArrayListContext)_localctx).id.identifierRet);
+				_localctx.values.add(((ArrayListContext)_localctx).id.identifier_);
 				}
 				break;
 			default:
@@ -1119,14 +1119,14 @@ public class LogicPLParser extends Parser {
 					{
 					setState(230);
 					((ArrayListContext)_localctx).v2 = value();
-					_localctx.values.add(((ArrayListContext)_localctx).v2.valueRet);
+					_localctx.values.add(((ArrayListContext)_localctx).v2.value_);
 					}
 					break;
 				case IDENTIFIER:
 					{
 					setState(233);
 					((ArrayListContext)_localctx).id2 = identifier();
-					_localctx.values.add(((ArrayListContext)_localctx).id.identifierRet);
+					_localctx.values.add(((ArrayListContext)_localctx).id.identifier_);
 					}
 					break;
 				default:
@@ -1155,7 +1155,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PrintSmtContext extends ParserRuleContext {
-		public PrintStmt PrintStmtRet;
+		public PrintStmt PrintStmt_;
 		public Token p;
 		public PrintExprContext arg;
 		public TerminalNode LPAR() { return getToken(LogicPLParser.LPAR, 0); }
@@ -1200,8 +1200,8 @@ public class LogicPLParser extends Parser {
 			match(RPAR);
 			setState(249);
 			match(SEMICOLON);
-			((PrintSmtContext)_localctx).PrintStmtRet =  new PrintStmt(((PrintSmtContext)_localctx).arg.printExprRet);
-			    _localctx.PrintStmtRet.setLine(((PrintSmtContext)_localctx).p.getLine());
+			((PrintSmtContext)_localctx).PrintStmt_ =  new PrintStmt(((PrintSmtContext)_localctx).arg.printExpr_);
+			    _localctx.PrintStmt_.setLine(((PrintSmtContext)_localctx).p.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1217,7 +1217,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PrintExprContext extends ParserRuleContext {
-		public Expression printExprRet;
+		public Expression printExpr_;
 		public VariableContext var;
 		public QueryContext q;
 		public VariableContext variable() {
@@ -1257,7 +1257,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(252);
 				((PrintExprContext)_localctx).var = variable();
-				((PrintExprContext)_localctx).printExprRet =  ((PrintExprContext)_localctx).var.v;
+				((PrintExprContext)_localctx).printExpr_ =  ((PrintExprContext)_localctx).var.v;
 				}
 				break;
 			case LBRACKET:
@@ -1265,7 +1265,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(255);
 				((PrintExprContext)_localctx).q = query();
-				((PrintExprContext)_localctx).printExprRet =  ((PrintExprContext)_localctx).q.queryRet;
+				((PrintExprContext)_localctx).printExpr_ =  ((PrintExprContext)_localctx).q.query_;
 				}
 				break;
 			default:
@@ -1285,7 +1285,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class QueryContext extends ParserRuleContext {
-		public QueryExpression queryRet;
+		public QueryExpression query_;
 		public QueryType1Context q1;
 		public QueryType2Context q2;
 		public QueryType1Context queryType1() {
@@ -1325,7 +1325,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(260);
 				((QueryContext)_localctx).q1 = queryType1();
-				((QueryContext)_localctx).queryRet =  ((QueryContext)_localctx).q1.query1Ret;
+				((QueryContext)_localctx).query_ =  ((QueryContext)_localctx).q1.query1_;
 				}
 				break;
 			case 2:
@@ -1333,7 +1333,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(263);
 				((QueryContext)_localctx).q2 = queryType2();
-				((QueryContext)_localctx).queryRet =  ((QueryContext)_localctx).q2.query2Ret;
+				((QueryContext)_localctx).query_ =  ((QueryContext)_localctx).q2.query2_;
 				}
 				break;
 			}
@@ -1351,7 +1351,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class QueryType1Context extends ParserRuleContext {
-		public QueryExpression query1Ret;
+		public QueryExpression query1_;
 		public Token line;
 		public PredicateIdentifierContext id;
 		public VariableContext var;
@@ -1405,8 +1405,8 @@ public class LogicPLParser extends Parser {
 			match(RPAR);
 			setState(274);
 			match(RBRACKET);
-			((QueryType1Context)_localctx).query1Ret =  new QueryExpression(((QueryType1Context)_localctx).id.predicateIdentifierRet);
-			    _localctx.query1Ret.setLine(((QueryType1Context)_localctx).line.getLine()); _localctx.query1Ret.setVar(((QueryType1Context)_localctx).var.v);
+			((QueryType1Context)_localctx).query1_ =  new QueryExpression(((QueryType1Context)_localctx).id.predicateIdentifier_);
+			    _localctx.query1_.setLine(((QueryType1Context)_localctx).line.getLine()); _localctx.query1_.setVar(((QueryType1Context)_localctx).var.v);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1422,7 +1422,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class QueryType2Context extends ParserRuleContext {
-		public QueryExpression query2Ret;
+		public QueryExpression query2_;
 		public PredicateIdentifierContext id;
 		public Token line;
 		public TerminalNode LBRACKET() { return getToken(LogicPLParser.LBRACKET, 0); }
@@ -1470,8 +1470,8 @@ public class LogicPLParser extends Parser {
 			match(RPAR);
 			setState(282);
 			match(RBRACKET);
-			((QueryType2Context)_localctx).query2Ret =  new QueryExpression(((QueryType2Context)_localctx).id.predicateIdentifierRet);
-			    _localctx.query2Ret.setLine(((QueryType2Context)_localctx).line.getLine()); 
+			((QueryType2Context)_localctx).query2_ =  new QueryExpression(((QueryType2Context)_localctx).id.predicateIdentifier_);
+			    _localctx.query2_.setLine(((QueryType2Context)_localctx).line.getLine()); 
 			}
 		}
 		catch (RecognitionException re) {
@@ -1487,7 +1487,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ReturnSmtContext extends ParserRuleContext {
-		public ReturnStmt returnRet;
+		public ReturnStmt return_;
 		public Token RETURN;
 		public ValueContext v;
 		public IdentifierContext iden;
@@ -1537,14 +1537,14 @@ public class LogicPLParser extends Parser {
 				{
 				setState(286);
 				((ReturnSmtContext)_localctx).v = value();
-				((ReturnSmtContext)_localctx).returnRet =  new ReturnStmt(((ReturnSmtContext)_localctx).v.valueRet);
+				((ReturnSmtContext)_localctx).return_ =  new ReturnStmt(((ReturnSmtContext)_localctx).v.value_);
 				}
 				break;
 			case IDENTIFIER:
 				{
 				setState(289);
 				((ReturnSmtContext)_localctx).iden = identifier();
-				((ReturnSmtContext)_localctx).returnRet =  new ReturnStmt(((ReturnSmtContext)_localctx).iden.identifierRet);
+				((ReturnSmtContext)_localctx).return_ =  new ReturnStmt(((ReturnSmtContext)_localctx).iden.identifier_);
 				}
 				break;
 			case SEMICOLON:
@@ -1554,8 +1554,8 @@ public class LogicPLParser extends Parser {
 			}
 			setState(294);
 			match(SEMICOLON);
-			if(_localctx.returnRet == null){((ReturnSmtContext)_localctx).returnRet =  new ReturnStmt(null);}
-			_localctx.returnRet.setLine(((ReturnSmtContext)_localctx).RETURN.getLine());
+			if(_localctx.return_ == null){((ReturnSmtContext)_localctx).return_ =  new ReturnStmt(null);}
+			_localctx.return_.setLine(((ReturnSmtContext)_localctx).RETURN.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1571,7 +1571,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ForLoopContext extends ParserRuleContext {
-		public ForloopStmt forRet;
+		public ForloopStmt for_;
 		public Token line;
 		public IdentifierContext iterator;
 		public IdentifierContext arrayName;
@@ -1644,7 +1644,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(306);
 				((ForLoopContext)_localctx).stmt = statement();
-				bodyStmts.add(((ForLoopContext)_localctx).stmt.statementRet);
+				bodyStmts.add(((ForLoopContext)_localctx).stmt.statement_);
 				}
 				}
 				setState(313);
@@ -1654,8 +1654,8 @@ public class LogicPLParser extends Parser {
 			}
 			setState(314);
 			match(RBRACE);
-			((ForLoopContext)_localctx).forRet =  new ForloopStmt(((ForLoopContext)_localctx).iterator.identifierRet, ((ForLoopContext)_localctx).arrayName.identifierRet, bodyStmts);
-			    _localctx.forRet.setLine(((ForLoopContext)_localctx).line.getLine());
+			((ForLoopContext)_localctx).for_ =  new ForloopStmt(((ForLoopContext)_localctx).iterator.identifier_, ((ForLoopContext)_localctx).arrayName.identifier_, bodyStmts);
+			    _localctx.for_.setLine(((ForLoopContext)_localctx).line.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1671,7 +1671,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PredicateContext extends ParserRuleContext {
-		public PredicateStmt predicateRet;
+		public PredicateStmt predicate_;
 		public PredicateIdentifierContext id;
 		public VariableContext v;
 		public TerminalNode LPAR() { return getToken(LogicPLParser.LPAR, 0); }
@@ -1715,8 +1715,8 @@ public class LogicPLParser extends Parser {
 			((PredicateContext)_localctx).v = variable();
 			setState(320);
 			match(RPAR);
-			((PredicateContext)_localctx).predicateRet =  new PredicateStmt(((PredicateContext)_localctx).id.predicateIdentifierRet, ((PredicateContext)_localctx).v.v);
-			    _localctx.predicateRet.setLine(((PredicateContext)_localctx).id.predicateIdentifierRet.getLine());
+			((PredicateContext)_localctx).predicate_ =  new PredicateStmt(((PredicateContext)_localctx).id.predicateIdentifier_, ((PredicateContext)_localctx).v.v);
+			    _localctx.predicate_.setLine(((PredicateContext)_localctx).id.predicateIdentifier_.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1732,8 +1732,8 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ImplicationContext extends ParserRuleContext {
-		public ImplicationStmt implicationRet;
-		public ExpressionContext e;
+		public ImplicationStmt implication_;
+		public ExpressionContext exp_;
 		public Token a;
 		public StatementContext s;
 		public List<TerminalNode> LPAR() { return getTokens(LogicPLParser.LPAR); }
@@ -1780,11 +1780,11 @@ public class LogicPLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			ArrayList<Statement> results = new ArrayList<Statement>();
+			ArrayList<Statement> results_arr = new ArrayList<Statement>();
 			setState(324);
 			match(LPAR);
 			setState(325);
-			((ImplicationContext)_localctx).e = expression();
+			((ImplicationContext)_localctx).exp_ = expression();
 			setState(326);
 			match(RPAR);
 			setState(327);
@@ -1800,7 +1800,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(329);
 				((ImplicationContext)_localctx).s = statement();
-				results.add(((ImplicationContext)_localctx).s.statementRet);
+				results_arr.add(((ImplicationContext)_localctx).s.statement_);
 				}
 				}
 				setState(334); 
@@ -1810,7 +1810,7 @@ public class LogicPLParser extends Parser {
 			}
 			setState(336);
 			match(RPAR);
-			((ImplicationContext)_localctx).implicationRet =  new ImplicationStmt(((ImplicationContext)_localctx).e.e, results); _localctx.implicationRet.setLine(((ImplicationContext)_localctx).a.getLine());
+			((ImplicationContext)_localctx).implication_ =  new ImplicationStmt(((ImplicationContext)_localctx).exp_.exp_, results_arr); _localctx.implication_.setLine(((ImplicationContext)_localctx).a.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -1826,7 +1826,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ExpressionContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public AndExprContext l;
 		public Expression2Context r;
 		public AndExprContext andExpr() {
@@ -1864,8 +1864,8 @@ public class LogicPLParser extends Parser {
 			((ExpressionContext)_localctx).l = andExpr();
 			setState(340);
 			((ExpressionContext)_localctx).r = expression2();
-			if(((ExpressionContext)_localctx).r.e != null) {((ExpressionContext)_localctx).e =  new BinaryExpression(((ExpressionContext)_localctx).l.e, ((ExpressionContext)_localctx).r.e.getRight(), ((ExpressionContext)_localctx).r.e.getBinaryOperator());
-			    _localctx.e.setLine(((ExpressionContext)_localctx).r.e.getLine());} else {((ExpressionContext)_localctx).e =  ((ExpressionContext)_localctx).l.e;}
+			if(((ExpressionContext)_localctx).r.exp_ != null) {((ExpressionContext)_localctx).exp_ =  new BinaryExpression(((ExpressionContext)_localctx).l.exp_, ((ExpressionContext)_localctx).r.exp_.getRight(), ((ExpressionContext)_localctx).r.exp_.getBinaryOperator());
+			    _localctx.exp_.setLine(((ExpressionContext)_localctx).r.exp_.getLine());} else {((ExpressionContext)_localctx).exp_ =  ((ExpressionContext)_localctx).l.exp_;}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1881,7 +1881,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Expression2Context extends ParserRuleContext {
-		public BinaryExpression e;
+		public BinaryExpression exp_;
 		public BinaryExpression ee;
 		public Token OR;
 		public AndExprContext l;
@@ -1928,9 +1928,9 @@ public class LogicPLParser extends Parser {
 				((Expression2Context)_localctx).l = andExpr();
 				setState(345);
 				((Expression2Context)_localctx).r = expression2();
-				if(((Expression2Context)_localctx).r.e != null) {((Expression2Context)_localctx).ee =  new BinaryExpression(((Expression2Context)_localctx).l.e, ((Expression2Context)_localctx).r.e.getRight(), ((Expression2Context)_localctx).r.e.getBinaryOperator());
-				    _localctx.ee.setLine(((Expression2Context)_localctx).r.e.getLine()); ((Expression2Context)_localctx).e =  new BinaryExpression(null, _localctx.ee, BinaryOperator.or);} else{((Expression2Context)_localctx).e =  new BinaryExpression(null, ((Expression2Context)_localctx).l.e, BinaryOperator.or);}
-				_localctx.e.setLine(((Expression2Context)_localctx).OR.getLine());
+				if(((Expression2Context)_localctx).r.exp_ != null) {((Expression2Context)_localctx).ee =  new BinaryExpression(((Expression2Context)_localctx).l.exp_, ((Expression2Context)_localctx).r.exp_.getRight(), ((Expression2Context)_localctx).r.exp_.getBinaryOperator());
+				    _localctx.ee.setLine(((Expression2Context)_localctx).r.exp_.getLine()); ((Expression2Context)_localctx).exp_ =  new BinaryExpression(null, _localctx.ee, BinaryOperator.or);} else{((Expression2Context)_localctx).exp_ =  new BinaryExpression(null, ((Expression2Context)_localctx).l.exp_, BinaryOperator.or);}
+				_localctx.exp_.setLine(((Expression2Context)_localctx).OR.getLine());
 				}
 				break;
 			case RPAR:
@@ -1939,7 +1939,7 @@ public class LogicPLParser extends Parser {
 			case RBRACKET:
 				enterOuterAlt(_localctx, 2);
 				{
-				((Expression2Context)_localctx).e =  null;
+				((Expression2Context)_localctx).exp_ =  null;
 				}
 				break;
 			default:
@@ -1959,7 +1959,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AndExprContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public EqExprContext l;
 		public AndExpr2Context r;
 		public EqExprContext eqExpr() {
@@ -1997,8 +1997,8 @@ public class LogicPLParser extends Parser {
 			((AndExprContext)_localctx).l = eqExpr();
 			setState(353);
 			((AndExprContext)_localctx).r = andExpr2();
-			if(((AndExprContext)_localctx).r.e != null) {((AndExprContext)_localctx).e =  new BinaryExpression(((AndExprContext)_localctx).l.e, ((AndExprContext)_localctx).r.e.getRight(), ((AndExprContext)_localctx).r.e.getBinaryOperator());
-			    _localctx.e.setLine(((AndExprContext)_localctx).r.e.getLine());} else {((AndExprContext)_localctx).e =  ((AndExprContext)_localctx).l.e;}
+			if(((AndExprContext)_localctx).r.exp_ != null) {((AndExprContext)_localctx).exp_ =  new BinaryExpression(((AndExprContext)_localctx).l.exp_, ((AndExprContext)_localctx).r.exp_.getRight(), ((AndExprContext)_localctx).r.exp_.getBinaryOperator());
+			    _localctx.exp_.setLine(((AndExprContext)_localctx).r.exp_.getLine());} else {((AndExprContext)_localctx).exp_ =  ((AndExprContext)_localctx).l.exp_;}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2014,7 +2014,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AndExpr2Context extends ParserRuleContext {
-		public BinaryExpression e;
+		public BinaryExpression exp_;
 		public BinaryExpression ee;
 		public Token AND;
 		public EqExprContext l;
@@ -2061,10 +2061,10 @@ public class LogicPLParser extends Parser {
 				((AndExpr2Context)_localctx).l = eqExpr();
 				setState(358);
 				((AndExpr2Context)_localctx).r = andExpr2();
-				if(((AndExpr2Context)_localctx).r.e != null) {((AndExpr2Context)_localctx).ee =  new BinaryExpression(((AndExpr2Context)_localctx).l.e, ((AndExpr2Context)_localctx).r.e.getRight(), ((AndExpr2Context)_localctx).r.e.getBinaryOperator());
-				    _localctx.ee.setLine(((AndExpr2Context)_localctx).r.e.getLine());
-				    ((AndExpr2Context)_localctx).e =  new BinaryExpression(null, _localctx.ee, BinaryOperator.and);} else{((AndExpr2Context)_localctx).e =  new BinaryExpression(null, ((AndExpr2Context)_localctx).l.e, BinaryOperator.and);}
-				_localctx.e.setLine(((AndExpr2Context)_localctx).AND.getLine());
+				if(((AndExpr2Context)_localctx).r.exp_ != null) {((AndExpr2Context)_localctx).ee =  new BinaryExpression(((AndExpr2Context)_localctx).l.exp_, ((AndExpr2Context)_localctx).r.exp_.getRight(), ((AndExpr2Context)_localctx).r.exp_.getBinaryOperator());
+				    _localctx.ee.setLine(((AndExpr2Context)_localctx).r.exp_.getLine());
+				    ((AndExpr2Context)_localctx).exp_ =  new BinaryExpression(null, _localctx.ee, BinaryOperator.and);} else{((AndExpr2Context)_localctx).exp_ =  new BinaryExpression(null, ((AndExpr2Context)_localctx).l.exp_, BinaryOperator.and);}
+				_localctx.exp_.setLine(((AndExpr2Context)_localctx).AND.getLine());
 				}
 				break;
 			case RPAR:
@@ -2074,7 +2074,7 @@ public class LogicPLParser extends Parser {
 			case OR:
 				enterOuterAlt(_localctx, 2);
 				{
-				((AndExpr2Context)_localctx).e =  null;
+				((AndExpr2Context)_localctx).exp_ =  null;
 				}
 				break;
 			default:
@@ -2094,7 +2094,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class EqExprContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public CompExprContext l;
 		public EqExpr2Context r;
 		public CompExprContext compExpr() {
@@ -2132,8 +2132,8 @@ public class LogicPLParser extends Parser {
 			((EqExprContext)_localctx).l = compExpr();
 			setState(366);
 			((EqExprContext)_localctx).r = eqExpr2();
-			if(((EqExprContext)_localctx).r.e != null) {((EqExprContext)_localctx).e =  new BinaryExpression(((EqExprContext)_localctx).l.e, ((EqExprContext)_localctx).r.e.getRight(), ((EqExprContext)_localctx).r.e.getBinaryOperator());
-			    _localctx.e.setLine(((EqExprContext)_localctx).r.e.getLine());} else {((EqExprContext)_localctx).e =  ((EqExprContext)_localctx).l.e;}
+			if(((EqExprContext)_localctx).r.exp_ != null) {((EqExprContext)_localctx).exp_ =  new BinaryExpression(((EqExprContext)_localctx).l.exp_, ((EqExprContext)_localctx).r.exp_.getRight(), ((EqExprContext)_localctx).r.exp_.getBinaryOperator());
+			    _localctx.exp_.setLine(((EqExprContext)_localctx).r.exp_.getLine());} else {((EqExprContext)_localctx).exp_ =  ((EqExprContext)_localctx).l.exp_;}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2149,7 +2149,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class EqExpr2Context extends ParserRuleContext {
-		public BinaryExpression e;
+		public BinaryExpression exp_;
 		public BinaryOperator opt;
 		public BinaryExpression ee;
 		public Token op;
@@ -2217,9 +2217,9 @@ public class LogicPLParser extends Parser {
 				((EqExpr2Context)_localctx).l = compExpr();
 				setState(376);
 				((EqExpr2Context)_localctx).r = eqExpr2();
-				if(((EqExpr2Context)_localctx).r.e != null) {((EqExpr2Context)_localctx).ee =  new BinaryExpression(((EqExpr2Context)_localctx).l.e, ((EqExpr2Context)_localctx).r.e.getRight(), ((EqExpr2Context)_localctx).r.e.getBinaryOperator());
-				    _localctx.ee.setLine(((EqExpr2Context)_localctx).r.e.getLine()); ((EqExpr2Context)_localctx).e =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((EqExpr2Context)_localctx).e =  new BinaryExpression(null, ((EqExpr2Context)_localctx).l.e, _localctx.opt);}
-				_localctx.e.setLine(((EqExpr2Context)_localctx).op.getLine());
+				if(((EqExpr2Context)_localctx).r.exp_ != null) {((EqExpr2Context)_localctx).ee =  new BinaryExpression(((EqExpr2Context)_localctx).l.exp_, ((EqExpr2Context)_localctx).r.exp_.getRight(), ((EqExpr2Context)_localctx).r.exp_.getBinaryOperator());
+				    _localctx.ee.setLine(((EqExpr2Context)_localctx).r.exp_.getLine()); ((EqExpr2Context)_localctx).exp_ =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((EqExpr2Context)_localctx).exp_ =  new BinaryExpression(null, ((EqExpr2Context)_localctx).l.exp_, _localctx.opt);}
+				_localctx.exp_.setLine(((EqExpr2Context)_localctx).op.getLine());
 				}
 				break;
 			case RPAR:
@@ -2230,7 +2230,7 @@ public class LogicPLParser extends Parser {
 			case AND:
 				enterOuterAlt(_localctx, 2);
 				{
-				((EqExpr2Context)_localctx).e =  null;
+				((EqExpr2Context)_localctx).exp_ =  null;
 				}
 				break;
 			default:
@@ -2250,7 +2250,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class CompExprContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public AdditiveContext l;
 		public CompExpr2Context r;
 		public AdditiveContext additive() {
@@ -2288,8 +2288,8 @@ public class LogicPLParser extends Parser {
 			((CompExprContext)_localctx).l = additive();
 			setState(384);
 			((CompExprContext)_localctx).r = compExpr2();
-			if(((CompExprContext)_localctx).r.e != null) {((CompExprContext)_localctx).e =  new BinaryExpression(((CompExprContext)_localctx).l.e, ((CompExprContext)_localctx).r.e.getRight(), ((CompExprContext)_localctx).r.e.getBinaryOperator());
-			    _localctx.e.setLine(((CompExprContext)_localctx).r.e.getLine());} else {((CompExprContext)_localctx).e =  ((CompExprContext)_localctx).l.e;}
+			if(((CompExprContext)_localctx).r.exp_ != null) {((CompExprContext)_localctx).exp_ =  new BinaryExpression(((CompExprContext)_localctx).l.exp_, ((CompExprContext)_localctx).r.exp_.getRight(), ((CompExprContext)_localctx).r.exp_.getBinaryOperator());
+			    _localctx.exp_.setLine(((CompExprContext)_localctx).r.exp_.getLine());} else {((CompExprContext)_localctx).exp_ =  ((CompExprContext)_localctx).l.exp_;}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2305,7 +2305,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class CompExpr2Context extends ParserRuleContext {
-		public BinaryExpression e;
+		public BinaryExpression exp_;
 		public BinaryOperator opt;
 		public BinaryExpression ee;
 		public Token op;
@@ -2391,9 +2391,9 @@ public class LogicPLParser extends Parser {
 				((CompExpr2Context)_localctx).l = additive();
 				setState(398);
 				((CompExpr2Context)_localctx).r = compExpr2();
-				if(((CompExpr2Context)_localctx).r.e != null) {((CompExpr2Context)_localctx).ee =  new BinaryExpression(((CompExpr2Context)_localctx).l.e, ((CompExpr2Context)_localctx).r.e.getRight(), ((CompExpr2Context)_localctx).r.e.getBinaryOperator());
-				    _localctx.ee.setLine(((CompExpr2Context)_localctx).r.e.getLine()); ((CompExpr2Context)_localctx).e =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((CompExpr2Context)_localctx).e =  new BinaryExpression(null, ((CompExpr2Context)_localctx).l.e, _localctx.opt);}
-				_localctx.e.setLine(((CompExpr2Context)_localctx).op.getLine());
+				if(((CompExpr2Context)_localctx).r.exp_ != null) {((CompExpr2Context)_localctx).ee =  new BinaryExpression(((CompExpr2Context)_localctx).l.exp_, ((CompExpr2Context)_localctx).r.exp_.getRight(), ((CompExpr2Context)_localctx).r.exp_.getBinaryOperator());
+				    _localctx.ee.setLine(((CompExpr2Context)_localctx).r.exp_.getLine()); ((CompExpr2Context)_localctx).exp_ =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((CompExpr2Context)_localctx).exp_ =  new BinaryExpression(null, ((CompExpr2Context)_localctx).l.exp_, _localctx.opt);}
+				_localctx.exp_.setLine(((CompExpr2Context)_localctx).op.getLine());
 				}
 				break;
 			case RPAR:
@@ -2406,7 +2406,7 @@ public class LogicPLParser extends Parser {
 			case NEQ:
 				enterOuterAlt(_localctx, 2);
 				{
-				((CompExpr2Context)_localctx).e =  null;
+				((CompExpr2Context)_localctx).exp_ =  null;
 				}
 				break;
 			default:
@@ -2426,7 +2426,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AdditiveContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public MulticativeContext l;
 		public Additive2Context r;
 		public MulticativeContext multicative() {
@@ -2464,8 +2464,8 @@ public class LogicPLParser extends Parser {
 			((AdditiveContext)_localctx).l = multicative();
 			setState(406);
 			((AdditiveContext)_localctx).r = additive2();
-			if(((AdditiveContext)_localctx).r.e != null) {((AdditiveContext)_localctx).e =  new BinaryExpression(((AdditiveContext)_localctx).l.e, ((AdditiveContext)_localctx).r.e.getRight(), ((AdditiveContext)_localctx).r.e.getBinaryOperator());
-			    _localctx.e.setLine(((AdditiveContext)_localctx).r.e.getLine());} else {((AdditiveContext)_localctx).e =  ((AdditiveContext)_localctx).l.e;}
+			if(((AdditiveContext)_localctx).r.exp_ != null) {((AdditiveContext)_localctx).exp_ =  new BinaryExpression(((AdditiveContext)_localctx).l.exp_, ((AdditiveContext)_localctx).r.exp_.getRight(), ((AdditiveContext)_localctx).r.exp_.getBinaryOperator());
+			    _localctx.exp_.setLine(((AdditiveContext)_localctx).r.exp_.getLine());} else {((AdditiveContext)_localctx).exp_ =  ((AdditiveContext)_localctx).l.exp_;}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2481,7 +2481,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Additive2Context extends ParserRuleContext {
-		public BinaryExpression e;
+		public BinaryExpression exp_;
 		public BinaryOperator opt;
 		public BinaryExpression ee;
 		public Token op;
@@ -2549,9 +2549,9 @@ public class LogicPLParser extends Parser {
 				((Additive2Context)_localctx).l = multicative();
 				setState(416);
 				((Additive2Context)_localctx).r = additive2();
-				if(((Additive2Context)_localctx).r.e != null) {((Additive2Context)_localctx).ee =  new BinaryExpression(((Additive2Context)_localctx).l.e, ((Additive2Context)_localctx).r.e.getRight(), ((Additive2Context)_localctx).r.e.getBinaryOperator());
-				    _localctx.ee.setLine(((Additive2Context)_localctx).r.e.getLine()); ((Additive2Context)_localctx).e =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((Additive2Context)_localctx).e =  new BinaryExpression(null, ((Additive2Context)_localctx).l.e, _localctx.opt);}
-				_localctx.e.setLine(((Additive2Context)_localctx).op.getLine());
+				if(((Additive2Context)_localctx).r.exp_ != null) {((Additive2Context)_localctx).ee =  new BinaryExpression(((Additive2Context)_localctx).l.exp_, ((Additive2Context)_localctx).r.exp_.getRight(), ((Additive2Context)_localctx).r.exp_.getBinaryOperator());
+				    _localctx.ee.setLine(((Additive2Context)_localctx).r.exp_.getLine()); ((Additive2Context)_localctx).exp_ =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((Additive2Context)_localctx).exp_ =  new BinaryExpression(null, ((Additive2Context)_localctx).l.exp_, _localctx.opt);}
+				_localctx.exp_.setLine(((Additive2Context)_localctx).op.getLine());
 				}
 				break;
 			case RPAR:
@@ -2568,7 +2568,7 @@ public class LogicPLParser extends Parser {
 			case NEQ:
 				enterOuterAlt(_localctx, 2);
 				{
-				((Additive2Context)_localctx).e =  null;
+				((Additive2Context)_localctx).exp_ =  null;
 				}
 				break;
 			default:
@@ -2588,7 +2588,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class MulticativeContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public UnaryContext l;
 		public Multicative2Context r;
 		public UnaryContext unary() {
@@ -2626,8 +2626,8 @@ public class LogicPLParser extends Parser {
 			((MulticativeContext)_localctx).l = unary();
 			setState(424);
 			((MulticativeContext)_localctx).r = multicative2();
-			if(((MulticativeContext)_localctx).r.e != null) {((MulticativeContext)_localctx).e =  new BinaryExpression(((MulticativeContext)_localctx).l.e, ((MulticativeContext)_localctx).r.e.getRight(), ((MulticativeContext)_localctx).r.e.getBinaryOperator());
-			    _localctx.e.setLine(((MulticativeContext)_localctx).r.e.getLine());} else {((MulticativeContext)_localctx).e =  ((MulticativeContext)_localctx).l.e;}
+			if(((MulticativeContext)_localctx).r.exp_ != null) {((MulticativeContext)_localctx).exp_ =  new BinaryExpression(((MulticativeContext)_localctx).l.exp_, ((MulticativeContext)_localctx).r.exp_.getRight(), ((MulticativeContext)_localctx).r.exp_.getBinaryOperator());
+			    _localctx.exp_.setLine(((MulticativeContext)_localctx).r.exp_.getLine());} else {((MulticativeContext)_localctx).exp_ =  ((MulticativeContext)_localctx).l.exp_;}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2643,7 +2643,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Multicative2Context extends ParserRuleContext {
-		public BinaryExpression e;
+		public BinaryExpression exp_;
 		public BinaryOperator opt;
 		public BinaryExpression ee;
 		public Token op;
@@ -2720,9 +2720,9 @@ public class LogicPLParser extends Parser {
 				((Multicative2Context)_localctx).l = unary();
 				setState(436);
 				((Multicative2Context)_localctx).r = multicative2();
-				if(((Multicative2Context)_localctx).r.e != null) {((Multicative2Context)_localctx).ee =  new BinaryExpression(((Multicative2Context)_localctx).l.e, ((Multicative2Context)_localctx).r.e.getRight(), ((Multicative2Context)_localctx).r.e.getBinaryOperator());
-				    _localctx.ee.setLine(((Multicative2Context)_localctx).r.e.getLine()); ((Multicative2Context)_localctx).e =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((Multicative2Context)_localctx).e =  new BinaryExpression(null, ((Multicative2Context)_localctx).l.e, _localctx.opt);}
-				_localctx.e.setLine(((Multicative2Context)_localctx).op.getLine());
+				if(((Multicative2Context)_localctx).r.exp_ != null) {((Multicative2Context)_localctx).ee =  new BinaryExpression(((Multicative2Context)_localctx).l.exp_, ((Multicative2Context)_localctx).r.exp_.getRight(), ((Multicative2Context)_localctx).r.exp_.getBinaryOperator());
+				    _localctx.ee.setLine(((Multicative2Context)_localctx).r.exp_.getLine()); ((Multicative2Context)_localctx).exp_ =  new BinaryExpression(null, _localctx.ee, _localctx.opt);} else{((Multicative2Context)_localctx).exp_ =  new BinaryExpression(null, ((Multicative2Context)_localctx).l.exp_, _localctx.opt);}
+				_localctx.exp_.setLine(((Multicative2Context)_localctx).op.getLine());
 				}
 				break;
 			case RPAR:
@@ -2741,7 +2741,7 @@ public class LogicPLParser extends Parser {
 			case NEQ:
 				enterOuterAlt(_localctx, 2);
 				{
-				((Multicative2Context)_localctx).e =  null;
+				((Multicative2Context)_localctx).exp_ =  null;
 				}
 				break;
 			default:
@@ -2761,7 +2761,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class UnaryContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public UnaryOperator opt;
 		public OtherContext otherRet;
 		public Token op;
@@ -2803,7 +2803,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(443);
 				((UnaryContext)_localctx).otherRet = other();
-				((UnaryContext)_localctx).e =  ((UnaryContext)_localctx).otherRet.e;
+				((UnaryContext)_localctx).exp_ =  ((UnaryContext)_localctx).otherRet.exp_;
 				}
 				break;
 			case 2:
@@ -2838,7 +2838,7 @@ public class LogicPLParser extends Parser {
 				}
 				setState(454);
 				((UnaryContext)_localctx).expr = other();
-				((UnaryContext)_localctx).e =  new UnaryExpression(_localctx.opt, ((UnaryContext)_localctx).expr.e); _localctx.e.setLine(((UnaryContext)_localctx).op.getLine());
+				((UnaryContext)_localctx).exp_ =  new UnaryExpression(_localctx.opt, ((UnaryContext)_localctx).expr.exp_); _localctx.exp_.setLine(((UnaryContext)_localctx).op.getLine());
 				}
 				break;
 			}
@@ -2856,7 +2856,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class OtherContext extends ParserRuleContext {
-		public Expression e;
+		public Expression exp_;
 		public ExpressionContext expr;
 		public VariableContext var;
 		public ValueContext val;
@@ -2914,7 +2914,7 @@ public class LogicPLParser extends Parser {
 				((OtherContext)_localctx).expr = expression();
 				setState(461);
 				match(RPAR);
-				((OtherContext)_localctx).e =  ((OtherContext)_localctx).expr.e;
+				((OtherContext)_localctx).exp_ =  ((OtherContext)_localctx).expr.exp_;
 				}
 				break;
 			case 2:
@@ -2922,7 +2922,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(464);
 				((OtherContext)_localctx).var = variable();
-				((OtherContext)_localctx).e =  ((OtherContext)_localctx).var.v;
+				((OtherContext)_localctx).exp_ =  ((OtherContext)_localctx).var.v;
 				}
 				break;
 			case 3:
@@ -2930,7 +2930,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(467);
 				((OtherContext)_localctx).val = value();
-				((OtherContext)_localctx).e =  ((OtherContext)_localctx).val.valueRet;
+				((OtherContext)_localctx).exp_ =  ((OtherContext)_localctx).val.value_;
 				}
 				break;
 			case 4:
@@ -2938,7 +2938,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(470);
 				((OtherContext)_localctx).q1 = queryType1();
-				((OtherContext)_localctx).e =  ((OtherContext)_localctx).q1.query1Ret;
+				((OtherContext)_localctx).exp_ =  ((OtherContext)_localctx).q1.query1_;
 				}
 				break;
 			case 5:
@@ -2946,7 +2946,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(473);
 				((OtherContext)_localctx).funcCall = functionCall();
-				((OtherContext)_localctx).e =  ((OtherContext)_localctx).funcCall.fCallRet;
+				((OtherContext)_localctx).exp_ =  ((OtherContext)_localctx).funcCall.functionCall_;
 				}
 				break;
 			}
@@ -2964,10 +2964,10 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class FunctionCallContext extends ParserRuleContext {
-		public FunctionCall fCallRet;
-		public IdentifierContext name;
-		public ExpressionContext arg1;
-		public ExpressionContext newArg;
+		public FunctionCall functionCall_;
+		public IdentifierContext func_name;
+		public ExpressionContext essential_arg;
+		public ExpressionContext additional_arg;
 		public TerminalNode LPAR() { return getToken(LogicPLParser.LPAR, 0); }
 		public TerminalNode RPAR() { return getToken(LogicPLParser.RPAR, 0); }
 		public IdentifierContext identifier() {
@@ -3011,7 +3011,7 @@ public class LogicPLParser extends Parser {
 			{
 			ArrayList<Expression> args = new ArrayList<Expression>();
 			setState(479);
-			((FunctionCallContext)_localctx).name = identifier();
+			((FunctionCallContext)_localctx).func_name = identifier();
 			setState(480);
 			match(LPAR);
 			setState(492);
@@ -3020,8 +3020,8 @@ public class LogicPLParser extends Parser {
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 7218766810624L) != 0)) {
 				{
 				setState(481);
-				((FunctionCallContext)_localctx).arg1 = expression();
-				args.add(((FunctionCallContext)_localctx).arg1.e);
+				((FunctionCallContext)_localctx).essential_arg = expression();
+				args.add(((FunctionCallContext)_localctx).essential_arg.exp_);
 				setState(489);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -3031,8 +3031,8 @@ public class LogicPLParser extends Parser {
 					setState(483);
 					match(COMMA);
 					setState(484);
-					((FunctionCallContext)_localctx).newArg = expression();
-					args.add(((FunctionCallContext)_localctx).newArg.e);
+					((FunctionCallContext)_localctx).additional_arg = expression();
+					args.add(((FunctionCallContext)_localctx).additional_arg.exp_);
 					}
 					}
 					setState(491);
@@ -3044,7 +3044,7 @@ public class LogicPLParser extends Parser {
 
 			setState(494);
 			match(RPAR);
-			((FunctionCallContext)_localctx).fCallRet =  new FunctionCall(args, ((FunctionCallContext)_localctx).name.identifierRet); _localctx.fCallRet.setLine(((FunctionCallContext)_localctx).name.identifierRet.getLine());
+			((FunctionCallContext)_localctx).functionCall_ =  new FunctionCall(args, ((FunctionCallContext)_localctx).func_name.identifier_); _localctx.functionCall_.setLine(((FunctionCallContext)_localctx).func_name.identifier_.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -3060,11 +3060,11 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ValueContext extends ParserRuleContext {
-		public Value valueRet;
-		public NumericValueContext v;
+		public Value value_;
+		public NumericValueContext pv;
 		public Token t;
 		public Token f;
-		public NumericValueContext v2;
+		public NumericValueContext mv;
 		public NumericValueContext numericValue() {
 			return getRuleContext(NumericValueContext.class,0);
 		}
@@ -3102,8 +3102,8 @@ public class LogicPLParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(497);
-				((ValueContext)_localctx).v = numericValue();
-				((ValueContext)_localctx).valueRet =  ((ValueContext)_localctx).v.v;
+				((ValueContext)_localctx).pv = numericValue();
+				((ValueContext)_localctx).value_ =  ((ValueContext)_localctx).pv.val_;
 				}
 				break;
 			case TRUE:
@@ -3111,8 +3111,8 @@ public class LogicPLParser extends Parser {
 				{
 				setState(500);
 				((ValueContext)_localctx).t = match(TRUE);
-				((ValueContext)_localctx).valueRet =  new BooleanValue(true);
-				_localctx.valueRet.setLine(((ValueContext)_localctx).t.getLine());
+				((ValueContext)_localctx).value_ =  new BooleanValue(true);
+				_localctx.value_.setLine(((ValueContext)_localctx).t.getLine());
 				}
 				break;
 			case FALSE:
@@ -3120,8 +3120,8 @@ public class LogicPLParser extends Parser {
 				{
 				setState(503);
 				((ValueContext)_localctx).f = match(FALSE);
-				((ValueContext)_localctx).valueRet =  new BooleanValue(false);
-				_localctx.valueRet.setLine(((ValueContext)_localctx).f.getLine());
+				((ValueContext)_localctx).value_ =  new BooleanValue(false);
+				_localctx.value_.setLine(((ValueContext)_localctx).f.getLine());
 				}
 				break;
 			case MINUS:
@@ -3130,8 +3130,8 @@ public class LogicPLParser extends Parser {
 				setState(506);
 				match(MINUS);
 				setState(507);
-				((ValueContext)_localctx).v2 = numericValue();
-				((ValueContext)_localctx).v2.v.negateConstant(); ((ValueContext)_localctx).valueRet =  ((ValueContext)_localctx).v2.v;
+				((ValueContext)_localctx).mv = numericValue();
+				((ValueContext)_localctx).mv.val_.negateConstant(); ((ValueContext)_localctx).value_ =  ((ValueContext)_localctx).mv.val_;
 				}
 				break;
 			default:
@@ -3151,7 +3151,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class NumericValueContext extends ParserRuleContext {
-		public Value v;
+		public Value val_;
 		public Token i;
 		public Token f;
 		public TerminalNode INT_NUMBER() { return getToken(LogicPLParser.INT_NUMBER, 0); }
@@ -3187,8 +3187,8 @@ public class LogicPLParser extends Parser {
 				{
 				setState(512);
 				((NumericValueContext)_localctx).i = match(INT_NUMBER);
-				((NumericValueContext)_localctx).v =  new IntValue((((NumericValueContext)_localctx).i!=null?Integer.valueOf(((NumericValueContext)_localctx).i.getText()):0));
-				_localctx.v.setLine(((NumericValueContext)_localctx).i.getLine());
+				((NumericValueContext)_localctx).val_ =  new IntValue((((NumericValueContext)_localctx).i!=null?Integer.valueOf(((NumericValueContext)_localctx).i.getText()):0));
+				_localctx.val_.setLine(((NumericValueContext)_localctx).i.getLine());
 				}
 				break;
 			case FLOAT_NUMBER:
@@ -3196,8 +3196,8 @@ public class LogicPLParser extends Parser {
 				{
 				setState(515);
 				((NumericValueContext)_localctx).f = match(FLOAT_NUMBER);
-				((NumericValueContext)_localctx).v =  new FloatValue(Float.parseFloat((((NumericValueContext)_localctx).f!=null?((NumericValueContext)_localctx).f.getText():null)));
-				_localctx.v.setLine(((NumericValueContext)_localctx).f.getLine());
+				((NumericValueContext)_localctx).val_ =  new FloatValue(Float.parseFloat((((NumericValueContext)_localctx).f!=null?((NumericValueContext)_localctx).f.getText():null)));
+				_localctx.val_.setLine(((NumericValueContext)_localctx).f.getLine());
 				}
 				break;
 			default:
@@ -3217,8 +3217,8 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class IdentifierContext extends ParserRuleContext {
-		public Identifier identifierRet;
-		public Token idnfr;
+		public Identifier identifier_;
+		public Token id;
 		public TerminalNode IDENTIFIER() { return getToken(LogicPLParser.IDENTIFIER, 0); }
 		public IdentifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -3246,8 +3246,8 @@ public class LogicPLParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(520);
-			((IdentifierContext)_localctx).idnfr = match(IDENTIFIER);
-			((IdentifierContext)_localctx).identifierRet =  new Identifier((((IdentifierContext)_localctx).idnfr!=null?((IdentifierContext)_localctx).idnfr.getText():null)); _localctx.identifierRet.setLine(((IdentifierContext)_localctx).idnfr.getLine());
+			((IdentifierContext)_localctx).id = match(IDENTIFIER);
+			((IdentifierContext)_localctx).identifier_ =  new Identifier((((IdentifierContext)_localctx).id!=null?((IdentifierContext)_localctx).id.getText():null)); _localctx.identifier_.setLine(((IdentifierContext)_localctx).id.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -3263,8 +3263,8 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PredicateIdentifierContext extends ParserRuleContext {
-		public Identifier predicateIdentifierRet;
-		public Token predicate_idnfr;
+		public Identifier predicateIdentifier_;
+		public Token predicate_id;
 		public TerminalNode PREDICATE_IDENTIFIER() { return getToken(LogicPLParser.PREDICATE_IDENTIFIER, 0); }
 		public PredicateIdentifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -3292,9 +3292,9 @@ public class LogicPLParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(523);
-			((PredicateIdentifierContext)_localctx).predicate_idnfr = match(PREDICATE_IDENTIFIER);
-			((PredicateIdentifierContext)_localctx).predicateIdentifierRet =  new Identifier((((PredicateIdentifierContext)_localctx).predicate_idnfr!=null?((PredicateIdentifierContext)_localctx).predicate_idnfr.getText():null));
-			    _localctx.predicateIdentifierRet.setLine(((PredicateIdentifierContext)_localctx).predicate_idnfr.getLine());
+			((PredicateIdentifierContext)_localctx).predicate_id = match(PREDICATE_IDENTIFIER);
+			((PredicateIdentifierContext)_localctx).predicateIdentifier_ =  new Identifier((((PredicateIdentifierContext)_localctx).predicate_id!=null?((PredicateIdentifierContext)_localctx).predicate_id.getText():null));
+				 _localctx.predicateIdentifier_.setLine(((PredicateIdentifierContext)_localctx).predicate_id.getLine());
 			}
 		}
 		catch (RecognitionException re) {
@@ -3310,7 +3310,7 @@ public class LogicPLParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class TypeContext extends ParserRuleContext {
-		public Type typeRet;
+		public Type type_;
 		public TerminalNode BOOLEAN() { return getToken(LogicPLParser.BOOLEAN, 0); }
 		public TerminalNode INT() { return getToken(LogicPLParser.INT, 0); }
 		public TerminalNode FLOAT() { return getToken(LogicPLParser.FLOAT, 0); }
@@ -3345,7 +3345,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(526);
 				match(BOOLEAN);
-				((TypeContext)_localctx).typeRet =  new BooleanType();
+				((TypeContext)_localctx).type_ =  new BooleanType();
 				}
 				break;
 			case INT:
@@ -3353,7 +3353,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(528);
 				match(INT);
-				((TypeContext)_localctx).typeRet =  new IntType();
+				((TypeContext)_localctx).type_ =  new IntType();
 				}
 				break;
 			case FLOAT:
@@ -3361,7 +3361,7 @@ public class LogicPLParser extends Parser {
 				{
 				setState(530);
 				match(FLOAT);
-				((TypeContext)_localctx).typeRet =  new FloatType();
+				((TypeContext)_localctx).type_ =  new FloatType();
 				}
 				break;
 			default:

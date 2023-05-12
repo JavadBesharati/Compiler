@@ -210,6 +210,7 @@ public class ASTPrinter extends Visitor<Void> {
     @Override
     public Void visit(ReturnStmt returnStmt) {
         // ToDo
+        messagePrinter(returnStmt.getLine(), returnStmt.toString());
         if (returnStmt.getExpression() != null) {
             returnStmt.getExpression().accept(this);
         }
@@ -253,6 +254,7 @@ public class ASTPrinter extends Visitor<Void> {
         }
         return null;
     }
+
 
 }
 
