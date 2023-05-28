@@ -1,21 +1,21 @@
 // To be implemented:
 // ArgDeclaration
 // ArrayDecStmt
-// AssignStmt
-// ForloopStmt
+// AssignStmt:              done
+// ForloopStmt:             done
 // ImplicationStmt
 // PredicateStmt
 // PrintStmt
 // ReturnStmt
-// VarDecStmt
+// VarDecStmt               done
 
-// ArgDeclaration
-// FuncDeclaration
-// MainDeclaration
+// FuncDeclaration          done
+// MainDeclaration          done
 
 package visitor.typeAnalyzer;
 
 import ast.node.Program;
+import ast.node.declaration.ArgDeclaration;
 import ast.node.declaration.Declaration;
 import ast.node.declaration.FuncDeclaration;
 import ast.node.declaration.MainDeclaration;
@@ -34,10 +34,12 @@ import compileError.Type.LeftSideNotLValue;
 import compileError.Type.UnsupportedOperandType;
 import compileError.Type.ConditionTypeNotBool;
 import symbolTable.SymbolTable;
+import symbolTable.itemException.ItemAlreadyExistsException;
 import symbolTable.itemException.ItemNotFoundException;
 import symbolTable.symbolTableItems.ForLoopItem;
 import symbolTable.symbolTableItems.FunctionItem;
 import symbolTable.symbolTableItems.MainItem;
+import symbolTable.symbolTableItems.VariableItem;
 import visitor.Visitor;
 
 import java.util.ArrayList;
@@ -76,25 +78,30 @@ public class TypeAnalyzer extends Visitor<Void> {
             FunctionItem functionItem = (FunctionItem)  SymbolTable.root.get(FunctionItem.STARTKEY + funcDeclaration.getName().getName());
             SymbolTable.push((functionItem.getFunctionSymbolTable()));
         } catch (ItemNotFoundException e) {
-//            //unreachable
+            //unreachable
         }
-//
+
+        for (ArgDeclaration argDeclaration : funcDeclaration.getArgs()) {
+            argDeclaration.accept(this);
+        }
+
         for(Statement stmt : funcDeclaration.getStatements()) {
             stmt.accept(this);
         }
-
         // check return type for array??
         // check that function type is not void, but has no return statement??
 
 //        Boolean has_ret = funcDeclaration.getStatements().
 
 //        if (!(funcDeclaration.getType() instanceof VoidType) && !funcDeclaration.getStatements().accept(this))
-//
         SymbolTable.pop();
-//
         return null;
-
     }
+
+//    @Override
+//    public Void visit(ArgDeclaration argDeclaration) {
+//
+//    }
 
     @Override
     public Void visit(MainDeclaration mainDeclaration) {
@@ -110,13 +117,16 @@ public class TypeAnalyzer extends Visitor<Void> {
 
         return null;
     }
+
     @Override
     public Void visit(ForloopStmt forloopStmt) {
         try {
             ForLoopItem forLoopItem = (ForLoopItem)  SymbolTable.root.get(FunctionItem.STARTKEY + forloopStmt.toString());
             SymbolTable.push((forLoopItem.getForLoopSymbolTable()));
-        } catch (ItemNotFoundException e) {
+        } catch (ItemNotFoundException e) {}
 
+        for (Statement stmt: forloopStmt.getStatements()) {
+            stmt.accept(this);
         }
 
         SymbolTable.pop();
@@ -129,21 +139,48 @@ public class TypeAnalyzer extends Visitor<Void> {
         Type tl = assignStmt.getLValue().accept(expressionTypeChecker);
         Type tr = assignStmt.getRValue().accept(expressionTypeChecker);
 
+        if (!expressionTypeChecker.sameType(tl, tr)) {
+            typeErrors.add(new UnsupportedOperandType(assignStmt.getRValue().getLine(), BinaryOperator.assign.name()));
+        }
+
+        if (!expressionTypeChecker.isLvalue(assignStmt.getLValue())) {
+            typeErrors.add(new LeftSideNotLValue(assignStmt.getLValue().getLine()));
+        }
 
         return null;
     }
 
+//    @Override
+//    public Void visit(ArrayDecStmt arrayDecStmt) {
+//        try {
+//
+//        }
+//    }
     @Override
-    public Void visit(FunctionCall functionCall) {
+    public Void visit(VarDecStmt varDecStmt) {
         try {
-                SymbolTable.root.get(FunctionItem.STARTKEY + functionCall.getUFuncName().getName());
+            VariableItem variableItem = new VariableItem(varDecStmt);
+            SymbolTable.top.put(variableItem);
+        } catch (ItemAlreadyExistsException itemAlreadyExistsException) {
+            try {
+                VariableItem variableItem = (VariableItem) SymbolTable.top.get(VariableItem.STARTKEY + varDecStmt.getIdentifier().getName());
+                variableItem.setType(varDecStmt.getType());
+            } catch (ItemNotFoundException ignored) {}
         }
-        catch (ItemNotFoundException e) {
-
-        }
-
 
         return null;
     }
+
+//    @Override
+//    public Void visit(FunctionCall functionCall) {
+//        try {
+//                SymbolTable.root.get(FunctionItem.STARTKEY + functionCall.getUFuncName().getName());
+//        }
+//        catch (ItemNotFoundException e) {}
+//
+//
+//        return null;
+//    }
 
 }
+
