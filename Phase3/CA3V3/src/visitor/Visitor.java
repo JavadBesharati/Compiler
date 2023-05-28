@@ -11,6 +11,7 @@ import ast.node.statement.*;
 import ast.type.Type;
 import ast.type.primitiveType.BooleanType;
 import ast.type.primitiveType.FloatType;
+import ast.type.primitiveType.IntType;
 
 public class Visitor<T> implements IVisitor<T> {
     @Override
@@ -103,4 +104,8 @@ public class Visitor<T> implements IVisitor<T> {
     }
     @Override
     public T visit(FloatType value) { return null; }
+
+    // Int type added:
+    @Override
+    public T visit (IntType value) { return null; }
 }

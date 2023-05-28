@@ -10,6 +10,7 @@ import ast.node.expression.values.IntValue;
 import ast.node.statement.*;
 import ast.type.primitiveType.BooleanType;
 import ast.type.primitiveType.FloatType;
+import ast.type.primitiveType.IntType;
 
 public interface IVisitor<T> {
 
@@ -36,4 +37,6 @@ public interface IVisitor<T> {
     T visit(AssignStmt assignStmt);
     T visit(BooleanType value);
     T visit(FloatType value);
+    // Int type added:
+    T visit (IntType value);
 }

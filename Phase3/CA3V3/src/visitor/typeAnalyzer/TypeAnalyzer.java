@@ -1,10 +1,9 @@
 // To be implemented:
-// ArgDeclaration
-// ArrayDecStmt
+// ArgDeclaration           done
+// ArrayDecStmt             done
 // AssignStmt:              done
 // ForloopStmt:             done
-// ImplicationStmt
-// PredicateStmt
+// ImplicationStmt          done
 // PrintStmt
 // ReturnStmt
 // VarDecStmt               done
@@ -19,6 +18,7 @@ import ast.node.declaration.ArgDeclaration;
 import ast.node.declaration.Declaration;
 import ast.node.declaration.FuncDeclaration;
 import ast.node.declaration.MainDeclaration;
+import ast.node.expression.ArrayAccess;
 import ast.node.expression.Expression;
 import ast.node.expression.FunctionCall;
 import ast.node.expression.Identifier;
@@ -36,12 +36,10 @@ import compileError.Type.ConditionTypeNotBool;
 import symbolTable.SymbolTable;
 import symbolTable.itemException.ItemAlreadyExistsException;
 import symbolTable.itemException.ItemNotFoundException;
-import symbolTable.symbolTableItems.ForLoopItem;
-import symbolTable.symbolTableItems.FunctionItem;
-import symbolTable.symbolTableItems.MainItem;
-import symbolTable.symbolTableItems.VariableItem;
+import symbolTable.symbolTableItems.*;
 import visitor.Visitor;
 
+import java.text.spi.DateFormatSymbolsProvider;
 import java.util.ArrayList;
 
 public class TypeAnalyzer extends Visitor<Void> {
@@ -50,25 +48,10 @@ public class TypeAnalyzer extends Visitor<Void> {
 
     @Override
     public Void visit(Program program) {
-        // Should we handle array declaration? (could arrays be defined globally?)
-        SymbolTable symbolTable;
-        for(FuncDeclaration functionDec : program.getFuncs()) {
-//            functionDec.accept(this);
-            try {
-                FunctionItem functionItem = (FunctionItem) SymbolTable.root
-                                            .get(FunctionItem.STARTKEY + functionDec.getName().toString());
-                symbolTable = new SymbolTable();
-                functionItem.setFunctionSymbolTable(symbolTable);
-                SymbolTable.push(symbolTable);
-                functionDec.accept(this);
-                SymbolTable.pop();
-            }
-            catch (ItemNotFoundException ignored) {}
-            }
-        symbolTable = new SymbolTable();
-        SymbolTable.push(symbolTable);
+        for(var functionDec : program.getFuncs()) {
+            functionDec.accept(this);
+        }
         program.getMain().accept(this);
-        SymbolTable.pop();
         return null;
         }
 
@@ -88,20 +71,22 @@ public class TypeAnalyzer extends Visitor<Void> {
         for(Statement stmt : funcDeclaration.getStatements()) {
             stmt.accept(this);
         }
-        // check return type for array??
-        // check that function type is not void, but has no return statement??
 
-//        Boolean has_ret = funcDeclaration.getStatements().
-
-//        if (!(funcDeclaration.getType() instanceof VoidType) && !funcDeclaration.getStatements().accept(this))
         SymbolTable.pop();
         return null;
     }
 
-//    @Override
-//    public Void visit(ArgDeclaration argDeclaration) {
-//
-//    }
+    @Override
+    public Void visit(ArgDeclaration argDeclaration) {
+        try {
+            VariableItem variableItem = (VariableItem) SymbolTable.top.get(VariableItem.STARTKEY + argDeclaration.getIdentifier().getName());
+            try {
+                SymbolTable.top.put(variableItem);
+            } catch (ItemAlreadyExistsException itemAlreadyExistsException) {}
+        } catch (ItemNotFoundException itemNotFoundException) {}
+
+        return null;
+    }
 
     @Override
     public Void visit(MainDeclaration mainDeclaration) {
@@ -120,16 +105,22 @@ public class TypeAnalyzer extends Visitor<Void> {
 
     @Override
     public Void visit(ForloopStmt forloopStmt) {
-        try {
-            ForLoopItem forLoopItem = (ForLoopItem)  SymbolTable.root.get(FunctionItem.STARTKEY + forloopStmt.toString());
-            SymbolTable.push((forLoopItem.getForLoopSymbolTable()));
-        } catch (ItemNotFoundException e) {}
 
-        for (Statement stmt: forloopStmt.getStatements()) {
+        Type arrItemType = forloopStmt.getArrayName().accept(expressionTypeChecker);
+        SymbolTable.push(SymbolTable.top);
+
+        VariableItem forVar = new VariableItem(forloopStmt.getIterator().getName(), arrItemType);
+        try {
+            SymbolTable.top.put(forVar);
+        } catch (ItemAlreadyExistsException ignored) {}
+
+        for(Statement stmt : forloopStmt.getStatements()) {
             stmt.accept(this);
         }
 
         SymbolTable.pop();
+        SymbolTable.pop(); // pop twice to change the top to the previous top
+        SymbolTable.push(SymbolTable.top); // .top = previous so push it once again
 
         return null;
     }
@@ -143,44 +134,65 @@ public class TypeAnalyzer extends Visitor<Void> {
             typeErrors.add(new UnsupportedOperandType(assignStmt.getRValue().getLine(), BinaryOperator.assign.name()));
         }
 
-        if (!expressionTypeChecker.isLvalue(assignStmt.getLValue())) {
-            typeErrors.add(new LeftSideNotLValue(assignStmt.getLValue().getLine()));
-        }
+//        Is it necessary to check lValue?
+//        if (!expressionTypeChecker.isLvalue(assignStmt.getLValue())) {
+//            typeErrors.add(new LeftSideNotLValue(assignStmt.getLValue().getLine()));
+//        }
 
         return null;
     }
 
-//    @Override
-//    public Void visit(ArrayDecStmt arrayDecStmt) {
-//        try {
-//
-//        }
-//    }
+
     @Override
     public Void visit(VarDecStmt varDecStmt) {
+        if (varDecStmt.getInitialExpression() != null) {
+            Type defaultValType = varDecStmt.getInitialExpression().accept(expressionTypeChecker);
+//            SymbolTable.top.put(new VariableItem(varDecStmt));
+            if (!expressionTypeChecker.sameType(varDecStmt.getType(), defaultValType)) {
+                typeErrors.add(new UnsupportedOperandType(varDecStmt.getLine(), BinaryOperator.assign.name()));
+            }
+        }
+
         try {
             VariableItem variableItem = new VariableItem(varDecStmt);
+            variableItem.setType(varDecStmt.getType());
             SymbolTable.top.put(variableItem);
-        } catch (ItemAlreadyExistsException itemAlreadyExistsException) {
-            try {
-                VariableItem variableItem = (VariableItem) SymbolTable.top.get(VariableItem.STARTKEY + varDecStmt.getIdentifier().getName());
-                variableItem.setType(varDecStmt.getType());
-            } catch (ItemNotFoundException ignored) {}
-        }
+        } catch (ItemAlreadyExistsException ignored) {}
 
         return null;
     }
 
-//    @Override
-//    public Void visit(FunctionCall functionCall) {
-//        try {
-//                SymbolTable.root.get(FunctionItem.STARTKEY + functionCall.getUFuncName().getName());
-//        }
-//        catch (ItemNotFoundException e) {}
-//
-//
-//        return null;
-//    }
+    @Override
+    public Void visit(PrintStmt printStmt) {
+        printStmt.getArg().accept(expressionTypeChecker);
+        return null;
+    }
 
+    @Override
+    public Void visit(ReturnStmt returnStmt) {
+        if(returnStmt.getExpression() != null) {
+            returnStmt.getExpression().accept(expressionTypeChecker);
+        }
+        return null;
+    }
+
+    @Override
+    public Void visit(ArrayDecStmt arrayDecStmt) {
+        try {
+            SymbolTable.top.put(new ArrayItem(arrayDecStmt.getIdentifier().getName(), arrayDecStmt.getType()));
+        } catch (ItemAlreadyExistsException ignored) {}
+        return null;
+    }
+
+    @Override
+    public Void visit(ImplicationStmt implicationStmt) {
+        Type implicationCondition = implicationStmt.getCondition().accept(expressionTypeChecker);
+        if(!(implicationCondition instanceof BooleanType || implicationCondition instanceof NoType)) {
+            typeErrors.add(new ConditionTypeNotBool(implicationStmt.getLine()));
+        }
+        for (Statement statement : implicationStmt.getStatements()) {
+            statement.accept(this);
+        }
+        return null;
+    }
 }
-

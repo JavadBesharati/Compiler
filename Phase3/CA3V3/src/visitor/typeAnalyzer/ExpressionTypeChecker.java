@@ -1,6 +1,8 @@
-// QueryExpression?
-// ArrayAccess?
-// Expression?
+// To be implemented:
+
+// QueryExpression?         // done
+// ArrayAccess?             // done
+
 
 package visitor.typeAnalyzer;
 
@@ -8,6 +10,8 @@ import ast.node.declaration.ArgDeclaration;
 import ast.node.expression.*;
 import ast.node.expression.operators.BinaryOperator;
 import ast.node.expression.operators.UnaryOperator;
+import ast.node.expression.values.BooleanValue;
+import ast.node.expression.values.FloatValue;
 import ast.node.expression.values.IntValue;
 import ast.type.NoType;
 import ast.type.Type;
@@ -23,6 +27,8 @@ import symbolTable.SymbolTable;
 import symbolTable.itemException.ItemNotFoundException;
 import symbolTable.symbolTableItems.FunctionItem;
 import symbolTable.symbolTableItems.VariableItem;
+// Array Item wasn't imported !!
+import symbolTable.symbolTableItems.ArrayItem;
 import visitor.Visitor;
 
 import java.awt.event.WindowStateListener;
@@ -43,13 +49,13 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         if (el1 instanceof NoType || el2 instanceof NoType) {
             return true;
         }
-        if (el1 instanceof BooleanType || el2 instanceof BooleanType) {
+        if (el1 instanceof BooleanType && el2 instanceof BooleanType) {
             return true;
         }
-        if (el1 instanceof FloatType || el2 instanceof FloatType) {
+        if (el1 instanceof FloatType && el2 instanceof FloatType) {
             return true;
         }
-        if (el1 instanceof IntType || el2 instanceof IntType) {
+        if (el1 instanceof IntType && el2 instanceof IntType) {
             return true;
         }
         return false;
@@ -132,21 +138,19 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         }
 
         // =
-        else if (operator.equals(BinaryOperator.eq)) {
+        else if (operator.equals(BinaryOperator.assign)) {
             // what about array? No array type has been declared!
             if (!sameType(tl, tr)) {
                 typeErrors.add(new UnsupportedOperandType(r.getLine(), operator.name()));
                 return new NoType();
             }
-            else {
-                if (tl instanceof  NoType || tr instanceof  NoType) {
-                    return new NoType();
-                }
-                else {
-                    return new BooleanType();
-                }
+            if (!isLvalue(l)) {
+                typeErrors.add(new LeftSideNotLValue(l.getLine()));
+                return new NoType();
             }
+            return tr;
         }
+
 
         // >, <, <=, >=:
         else if (operator.equals(BinaryOperator.lt) || operator.equals(BinaryOperator.gt) ||
@@ -165,16 +169,19 @@ public class ExpressionTypeChecker extends Visitor<Type> {
             }
         }
         // ==, != :
-        else if (operator.equals(BinaryOperator.assign) || operator.equals(BinaryOperator.neq)) {
+        else if (operator.equals(BinaryOperator.eq) || operator.equals(BinaryOperator.neq)) {
             if (!sameType(tl, tr)) {
                 typeErrors.add(new UnsupportedOperandType(r.getLine(), operator.name()));
                 return new NoType();
             }
-            if (!isLvalue(l)) {
-                typeErrors.add(new LeftSideNotLValue(l.getLine()));
-                return new NoType();
+            else {
+                if (tl instanceof NoType || tr instanceof NoType) {
+                    return new NoType();
+                }
+                else {
+                    return new BooleanType();
+                }
             }
-            return tr;
         }
 
         else { // *, /, +, -, %
@@ -184,6 +191,13 @@ public class ExpressionTypeChecker extends Visitor<Type> {
             if ((tl instanceof NoType && tr instanceof IntType) ||
             (tl instanceof IntType && tr instanceof NoType) ||
                     (tl instanceof NoType && tr instanceof NoType)) {
+                return new NoType();
+            }
+            if (tl instanceof FloatType && tr instanceof FloatType) {
+                return new FloatType();
+            }
+            if ((tl instanceof NoType && tr instanceof FloatType) ||
+                    (tl instanceof FloatType && tr instanceof NoType)) {
                 return new NoType();
             }
         }
@@ -197,13 +211,21 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         // TODO:
         // what about arrays? Is it necessary to handle them too?
         try {
-            VariableItem varItem = (VariableItem) SymbolTable.top.get(VariableItem.STARTKEY + identifier.getName());
-            return varItem.getType();
+            if (SymbolTable.top.get(VariableItem.STARTKEY + identifier.getName()) instanceof VariableItem) {
+                VariableItem varItem = (VariableItem) SymbolTable.top.get(VariableItem.STARTKEY + identifier.getName());
+                return varItem.getType();
+            }
+            else if (SymbolTable.top.get(VariableItem.STARTKEY + identifier.getName()) instanceof ArrayItem) {
+                ArrayItem arrayItem = (ArrayItem) SymbolTable.top.get(ArrayItem.STARTKEY + identifier.getName());
+                return arrayItem.getType();
+            }
         } catch (ItemNotFoundException itemNotFoundException) {
             typeErrors.add(new VarNotDeclared(identifier.getLine(), identifier.getName()));
             return new NoType();
         }
+        return new NoType();
     }
+
 
     @Override
     public Type visit(FunctionCall functionCall) {
@@ -211,12 +233,59 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         try
         {
             FunctionItem functionItem = (FunctionItem) SymbolTable.root.get(FunctionItem.STARTKEY +
-                                                            (Identifier) functionCall.getUFuncName());
+                                        functionCall.getUFuncName().getName());
              return functionItem.getHandlerDeclaration().getType();
         } catch (ItemNotFoundException itemNotFoundException) {
-            typeErrors.add(new FunctionNotDeclared(functionCall.getLine(), functionCall.getUFuncName().toString()));
+            typeErrors.add(new FunctionNotDeclared(functionCall.getLine(), functionCall.getUFuncName().getName()));
             return new NoType();
         }
+    }
+
+
+//    @Override
+//    public Type visit(IntType intType) {
+//        return new IntType();
+//    }
+//
+
+    @Override
+    public Type visit(ArrayAccess arrayAccess) {
+        try{
+            if(SymbolTable.top.get(ArrayItem.STARTKEY + arrayAccess.getName()) instanceof VariableItem) {
+                VariableItem arrayItem = (VariableItem) SymbolTable.top.get(ArrayItem.STARTKEY + arrayAccess.getName());
+                return arrayItem.getType();
+            }
+            else if(SymbolTable.top.get(ArrayItem.STARTKEY + arrayAccess.getName()) instanceof ArrayItem) {
+                ArrayItem arrayItem = (ArrayItem) SymbolTable.top.get(ArrayItem.STARTKEY + arrayAccess.getName());
+                return arrayItem.getType();
+            }
+            typeErrors.add(new VarNotDeclared(arrayAccess.getLine(), arrayAccess.getName()));
+            return new NoType();
+        } catch (ItemNotFoundException itemNotFoundException) {
+            typeErrors.add(new VarNotDeclared(arrayAccess.getLine(), arrayAccess.getName()));
+            return new NoType();
+        }
+    }
+
+    @Override
+    public Type visit(QueryExpression queryExpression) {
+        if(queryExpression.getVar() == null) {
+            return new NoType();
+        }
+        else {
+            queryExpression.getVar().accept(this);
+            return new BooleanType();
+        }
+    }
+
+    @Override
+    public Type visit(FloatValue value) {
+        return new FloatType();
+    }
+
+    @Override
+    public Type visit(BooleanValue value) {
+        return new BooleanType();
     }
 
     @Override
@@ -233,4 +302,7 @@ public class ExpressionTypeChecker extends Visitor<Type> {
     public Type visit(BooleanType value) {
         return new BooleanType();
     }
+
+    @Override
+    public Type visit(IntType value) {return new IntType();}
 }
