@@ -1,9 +1,3 @@
-// To be implemented:
-
-// QueryExpression?         // done
-// ArrayAccess?             // done
-
-
 package visitor.typeAnalyzer;
 
 import ast.node.declaration.ArgDeclaration;
@@ -36,12 +30,10 @@ import java.util.ArrayList;
 import java.util.function.ToIntBiFunction;
 
 public class ExpressionTypeChecker extends Visitor<Type> {
-
     public ArrayList<CompileError> typeErrors;
     public ExpressionTypeChecker(ArrayList<CompileError> typeErrors){
         this.typeErrors = typeErrors;
     }
-
     public boolean sameType(Type el1, Type el2) {
         //TODO check the two type are same or not
         // el1 = lValue, el2 = rValue
@@ -68,7 +60,6 @@ public class ExpressionTypeChecker extends Visitor<Type> {
 //                || (expr instanceof UnaryExpression); // Doubt: is left side of an implication, unary?
         return (expr instanceof Identifier) || (expr instanceof ArrayAccess);
     }
-
 
     @Override
     public Type visit(UnaryExpression unaryExpression) {
@@ -126,6 +117,7 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         Type tr = r.accept(this);
         BinaryOperator operator =  binaryExpression.getBinaryOperator();
         // TODO:
+
         // &&, ||:
         if (operator.equals(BinaryOperator.and) || operator.equals(BinaryOperator.or)) {
             if (tl instanceof BooleanType && tr instanceof BooleanType) {
@@ -148,9 +140,14 @@ public class ExpressionTypeChecker extends Visitor<Type> {
                 typeErrors.add(new LeftSideNotLValue(l.getLine()));
                 return new NoType();
             }
+            // ++
+            if (tl instanceof  NoType || tr instanceof  NoType) {
+                return
+                         new NoType();
+            }
+            //???
             return tr;
         }
-
 
         // >, <, <=, >=:
         else if (operator.equals(BinaryOperator.lt) || operator.equals(BinaryOperator.gt) ||
@@ -168,6 +165,7 @@ public class ExpressionTypeChecker extends Visitor<Type> {
                 return new NoType();
             }
         }
+
         // ==, != :
         else if (operator.equals(BinaryOperator.eq) || operator.equals(BinaryOperator.neq)) {
             if (!sameType(tl, tr)) {
@@ -209,7 +207,7 @@ public class ExpressionTypeChecker extends Visitor<Type> {
     @Override
     public Type visit(Identifier identifier) {
         // TODO:
-        // what about arrays? Is it necessary to handle them too?
+        // what about arrays? Is it necessary to handle them too? yes!
         try {
             if (SymbolTable.top.get(VariableItem.STARTKEY + identifier.getName()) instanceof VariableItem) {
                 VariableItem varItem = (VariableItem) SymbolTable.top.get(VariableItem.STARTKEY + identifier.getName());
@@ -226,27 +224,28 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         return new NoType();
     }
 
-
     @Override
     public Type visit(FunctionCall functionCall) {
         // TODO:
-        try
-        {
+        try {
             FunctionItem functionItem = (FunctionItem) SymbolTable.root.get(FunctionItem.STARTKEY +
                                         functionCall.getUFuncName().getName());
+            //args :
+            for (Expression expression: functionCall.getArgs()) {
+                expression.accept(this);
+            }
              return functionItem.getHandlerDeclaration().getType();
+
         } catch (ItemNotFoundException itemNotFoundException) {
             typeErrors.add(new FunctionNotDeclared(functionCall.getLine(), functionCall.getUFuncName().getName()));
+            //args :
+            for (Expression expression: functionCall.getArgs()) {
+                expression.accept(this);
+            }
             return new NoType();
         }
+
     }
-
-
-//    @Override
-//    public Type visit(IntType intType) {
-//        return new IntType();
-//    }
-//
 
     @Override
     public Type visit(ArrayAccess arrayAccess) {
@@ -276,33 +275,20 @@ public class ExpressionTypeChecker extends Visitor<Type> {
             queryExpression.getVar().accept(this);
             return new BooleanType();
         }
+
     }
 
     @Override
     public Type visit(FloatValue value) {
         return new FloatType();
     }
-
     @Override
     public Type visit(BooleanValue value) {
         return new BooleanType();
     }
-
     @Override
     public Type visit(IntValue value) {
         return new IntType();
     }
 
-    @Override
-    public Type visit(FloatType value) {
-        return new FloatType();
-    }
-
-    @Override
-    public Type visit(BooleanType value) {
-        return new BooleanType();
-    }
-
-    @Override
-    public Type visit(IntType value) {return new IntType();}
 }

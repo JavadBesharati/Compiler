@@ -119,7 +119,8 @@ public class TypeAnalyzer extends Visitor<Void> {
         }
 
         SymbolTable.pop();
-        SymbolTable.pop(); // pop twice to change the top to the previous top
+
+        //SymbolTable.pop(); // pop twice to change the top to the previous top
         SymbolTable.push(SymbolTable.top); // .top = previous so push it once again
 
         return null;
@@ -180,6 +181,14 @@ public class TypeAnalyzer extends Visitor<Void> {
     public Void visit(ArrayDecStmt arrayDecStmt) {
         try {
             SymbolTable.top.put(new ArrayItem(arrayDecStmt.getIdentifier().getName(), arrayDecStmt.getType()));
+
+            /*for (var a :arrayDecStmt.getInitialValues()) {
+                if (a.getType() != arrayDecStmt.getType()) {
+                    typeErrors.add(new UnsupportedOperandType(arrayDecStmt.getLine(), BinaryOperator.assign.name()));
+                    return  null;
+                }
+            }*/
+
         } catch (ItemAlreadyExistsException ignored) {}
         return null;
     }
@@ -190,9 +199,12 @@ public class TypeAnalyzer extends Visitor<Void> {
         if(!(implicationCondition instanceof BooleanType || implicationCondition instanceof NoType)) {
             typeErrors.add(new ConditionTypeNotBool(implicationStmt.getLine()));
         }
+//??????
+        SymbolTable.push(new SymbolTable(SymbolTable.top, SymbolTable.top.name));
         for (Statement statement : implicationStmt.getStatements()) {
             statement.accept(this);
         }
+        SymbolTable.pop();
         return null;
     }
 }
