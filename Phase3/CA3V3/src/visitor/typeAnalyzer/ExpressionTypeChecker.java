@@ -143,7 +143,7 @@ public class ExpressionTypeChecker extends Visitor<Type> {
             // ++
             if (tl instanceof  NoType || tr instanceof  NoType) {
                 return
-                         new NoType();
+                        new NoType();
             }
             //???
             return tr;
@@ -151,7 +151,7 @@ public class ExpressionTypeChecker extends Visitor<Type> {
 
         // >, <, <=, >=:
         else if (operator.equals(BinaryOperator.lt) || operator.equals(BinaryOperator.gt) ||
-            (operator.equals(BinaryOperator.lte)) || (operator.equals(BinaryOperator.gte))) {
+                (operator.equals(BinaryOperator.lte)) || (operator.equals(BinaryOperator.gte))) {
             if (tl instanceof IntType && tr instanceof IntType) {
                 return new BooleanType();
             }
@@ -160,8 +160,8 @@ public class ExpressionTypeChecker extends Visitor<Type> {
             }
             // Can we also compare Float with int? No, as Ali Imam Zadeh told
             if (tl instanceof NoType && (tr instanceof FloatType || tr instanceof IntType)
-                || ((tl instanceof FloatType || tl instanceof IntType) && tr instanceof NoType)
-                || (tl instanceof NoType && tr instanceof NoType)) {
+                    || ((tl instanceof FloatType || tl instanceof IntType) && tr instanceof NoType)
+                    || (tl instanceof NoType && tr instanceof NoType)) {
                 return new NoType();
             }
         }
@@ -187,7 +187,7 @@ public class ExpressionTypeChecker extends Visitor<Type> {
                 return new IntType();
             }
             if ((tl instanceof NoType && tr instanceof IntType) ||
-            (tl instanceof IntType && tr instanceof NoType) ||
+                    (tl instanceof IntType && tr instanceof NoType) ||
                     (tl instanceof NoType && tr instanceof NoType)) {
                 return new NoType();
             }
@@ -229,12 +229,12 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         // TODO:
         try {
             FunctionItem functionItem = (FunctionItem) SymbolTable.root.get(FunctionItem.STARTKEY +
-                                        functionCall.getUFuncName().getName());
+                    functionCall.getUFuncName().getName());
             //args :
             for (Expression expression: functionCall.getArgs()) {
                 expression.accept(this);
             }
-             return functionItem.getHandlerDeclaration().getType();
+            return functionItem.getHandlerDeclaration().getType();
 
         } catch (ItemNotFoundException itemNotFoundException) {
             typeErrors.add(new FunctionNotDeclared(functionCall.getLine(), functionCall.getUFuncName().getName()));

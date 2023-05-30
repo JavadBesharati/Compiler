@@ -53,7 +53,7 @@ public class TypeAnalyzer extends Visitor<Void> {
         }
         program.getMain().accept(this);
         return null;
-        }
+    }
 
     @Override
     public Void visit(FuncDeclaration funcDeclaration) {
@@ -91,9 +91,9 @@ public class TypeAnalyzer extends Visitor<Void> {
     @Override
     public Void visit(MainDeclaration mainDeclaration) {
         var mainItem = new MainItem(mainDeclaration);
-        var mainSymbolTable = new SymbolTable(SymbolTable.top, "main");
+        var mainSymbolTable = new SymbolTable(null, "main");
         mainItem.setMainItemSymbolTable(mainSymbolTable);
-
+//        mainItem.getMainItemSymbolTable().pre = null;
         SymbolTable.push(mainItem.getMainItemSymbolTable());
 
         for (var stmt : mainDeclaration.getMainStatements()) {
@@ -182,14 +182,28 @@ public class TypeAnalyzer extends Visitor<Void> {
         try {
             SymbolTable.top.put(new ArrayItem(arrayDecStmt.getIdentifier().getName(), arrayDecStmt.getType()));
 
-            /*for (var a :arrayDecStmt.getInitialValues()) {
-                if (a.getType() != arrayDecStmt.getType()) {
-                    typeErrors.add(new UnsupportedOperandType(arrayDecStmt.getLine(), BinaryOperator.assign.name()));
-                    return  null;
-                }
-            }*/
-
         } catch (ItemAlreadyExistsException ignored) {}
+
+        boolean is_valid_initializer = true;
+        int wrongTypesCount = 0;
+
+        for(Expression expression : arrayDecStmt.getInitialValues()){
+            Type initVerifyer = expression.accept(expressionTypeChecker);
+            if(initVerifyer instanceof NoType) {
+                // nothing needed to be done
+            }
+            else if(!arrayDecStmt.getType().toString().equals(initVerifyer.toString())) {
+                is_valid_initializer = false;
+                wrongTypesCount ++;
+            }
+        }
+
+        if(!is_valid_initializer) {
+            for (var i = 0; i < wrongTypesCount; i++) {
+                typeErrors.add(new UnsupportedOperandType(arrayDecStmt.getLine(), BinaryOperator.assign.name()));
+            }
+//            typeErrors.add(new UnsupportedOperandType(arrayDecStmt.getLine(), BinaryOperator.assign.name()));
+        }
         return null;
     }
 
@@ -200,7 +214,8 @@ public class TypeAnalyzer extends Visitor<Void> {
             typeErrors.add(new ConditionTypeNotBool(implicationStmt.getLine()));
         }
 //??????
-        SymbolTable.push(new SymbolTable(SymbolTable.top, SymbolTable.top.name));
+        SymbolTable.push(new SymbolTable(null, SymbolTable.top.name));
+//        SymbolTable.push(new SymbolTable(SymbolTable.top, SymbolTable.top.name));
         for (Statement statement : implicationStmt.getStatements()) {
             statement.accept(this);
         }
