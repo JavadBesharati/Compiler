@@ -239,9 +239,9 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         } catch (ItemNotFoundException itemNotFoundException) {
             typeErrors.add(new FunctionNotDeclared(functionCall.getLine(), functionCall.getUFuncName().getName()));
             //args :
-            for (Expression expression: functionCall.getArgs()) {
-                expression.accept(this);
-            }
+            //for (Expression expression: functionCall.getArgs()) {
+            //    expression.accept(this);
+            //}
             return new NoType();
         }
 
@@ -275,7 +275,6 @@ public class ExpressionTypeChecker extends Visitor<Type> {
             queryExpression.getVar().accept(this);
             return new BooleanType();
         }
-
     }
 
     @Override
@@ -290,5 +289,4 @@ public class ExpressionTypeChecker extends Visitor<Type> {
     public Type visit(IntValue value) {
         return new IntType();
     }
-
 }

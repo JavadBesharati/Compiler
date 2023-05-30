@@ -1,0 +1,93 @@
+# var after for can't use
+
+#in main                        DONE
+#in funcDec                     DONE
+#in funcCall                    DONE
+#funcCall                       ! variable??????
+    #args                       (no need)
+    #returns?                   DONE
+#in predicate                   (no need)
+#in implication ()=>(;)         DONE
+#in for loop                    DONE
+#in print                       DONE
+#in query type 1 [?Even(a)]     DONE (in print and in implication)
+#id                             DONE
+#arr                            DONE
+#expresion...                   *
+#_____________________________________________________________________________________
+# error:
+# var in func in implication:   DONE
+#float a ... (q8)               (no need)
+#int[4] ar2=[2.0,true,2,2];     DONE
+#use before dec                 DONE
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function f(int a) : boolean {
+    return true;
+}
+function fint(int a) : int {
+    #int a ;
+    #a = 2.0;
+    #a = 2.0 * 2 / 4.0 + 3.0  - 2 * ar[2] - gs;
+    #int[4] ar;
+    #a = ar[3];
+    #float b;
+    #b = ar[3];
+    #ar[3] = b;
+    #int[4] ar22 = [2, 3, 2, 2];
+    #int gs;
+
+                                 #funcCall:
+   #int a11;
+   #dd = randf(a11);
+   #boolean v = f(true);
+   #c = i(aaa[3]);
+
+                                    #query:
+                                    #implicatiton:
+    #([?Ev(t)]) => (return;)
+    #(3) => (return 4;)
+    #int a;
+    #(f(a) || true ) => (return 44;)
+    #(fint(s) || true ) => (return 33;)
+#imp:
+    #([?Ev(a)] + 2) => (return f33; print(ss);)
+
+
+
+                                    #for loop
+   int arr0;
+   for (a : arr0) {
+        int bfor1;
+                                    #query:
+                                    #implicatiton:
+        ([?Ev(t)]) => (for ( d: arr0) { for (f : ff) { return tt; int bfor2; } int bfor3; } )
+
+        #(3) => (return 4;)
+        #int a;
+        #(f(a) || true ) => (return d44;)
+        #(fint(s) || true ) => (return 33;)
+   #imp:
+        #([?Ev(a)] + 2) => (return f33; print(ss);)
+
+                                      #print:
+        #int a1;
+        #print(a1);
+        #print(g);
+        #print([?Ev(g)]);
+        #print([Ev(?)]);
+
+   }
+    a1 = 3;
+   bfor1 = 0;
+   bfor2 = 0;
+   bfor3 = 0;
+    return true;
+}
+
+main {
+return;
+
+}
+
+

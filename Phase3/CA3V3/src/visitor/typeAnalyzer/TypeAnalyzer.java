@@ -1,13 +1,18 @@
+//scope for and implication =  main/func scope (even after for and implication)
+// => line : 126 - 127 - 144 deleted
+
+//error for use before dec: 68/69/101/102 -> delete!
+
+
 // To be implemented:
 // ArgDeclaration           done
 // ArrayDecStmt             done
 // AssignStmt:              done
 // ForloopStmt:             done
 // ImplicationStmt          done
-// PrintStmt
-// ReturnStmt
+// PrintStmt                *
+// ReturnStmt               *
 // VarDecStmt               done
-
 // FuncDeclaration          done
 // MainDeclaration          done
 
@@ -59,6 +64,10 @@ public class TypeAnalyzer extends Visitor<Void> {
     public Void visit(FuncDeclaration funcDeclaration) {
         try {
             FunctionItem functionItem = (FunctionItem)  SymbolTable.root.get(FunctionItem.STARTKEY + funcDeclaration.getName().getName());
+
+            var funSymolTable = new SymbolTable(null, funcDeclaration.getName().toString());
+            functionItem.setFunctionSymbolTable((funSymolTable));
+
             SymbolTable.push((functionItem.getFunctionSymbolTable()));
         } catch (ItemNotFoundException e) {
             //unreachable
@@ -75,7 +84,6 @@ public class TypeAnalyzer extends Visitor<Void> {
         SymbolTable.pop();
         return null;
     }
-
     @Override
     public Void visit(ArgDeclaration argDeclaration) {
         try {
@@ -87,13 +95,12 @@ public class TypeAnalyzer extends Visitor<Void> {
 
         return null;
     }
-
     @Override
     public Void visit(MainDeclaration mainDeclaration) {
         var mainItem = new MainItem(mainDeclaration);
         var mainSymbolTable = new SymbolTable(null, "main");
         mainItem.setMainItemSymbolTable(mainSymbolTable);
-//        mainItem.getMainItemSymbolTable().pre = null;
+
         SymbolTable.push(mainItem.getMainItemSymbolTable());
 
         for (var stmt : mainDeclaration.getMainStatements()) {
@@ -117,15 +124,27 @@ public class TypeAnalyzer extends Visitor<Void> {
         for(Statement stmt : forloopStmt.getStatements()) {
             stmt.accept(this);
         }
-
-        SymbolTable.pop();
-
-        //SymbolTable.pop(); // pop twice to change the top to the previous top
+        //128 undo !
+        // SymbolTable.pop();
+        // SymbolTable.pop(); // pop twice to change the top to the previous top
         SymbolTable.push(SymbolTable.top); // .top = previous so push it once again
 
         return null;
     }
-
+    @Override
+    public Void visit(ImplicationStmt implicationStmt) {
+        Type implicationCondition = implicationStmt.getCondition().accept(expressionTypeChecker);
+        if(!(implicationCondition instanceof BooleanType || implicationCondition instanceof NoType)) {
+            typeErrors.add(new ConditionTypeNotBool(implicationStmt.getLine()));
+        }
+       // SymbolTable.push(new SymbolTable(null, SymbolTable.top.name));
+        SymbolTable.push(new SymbolTable(SymbolTable.top, SymbolTable.top.name));
+        for (Statement statement : implicationStmt.getStatements()) {
+            statement.accept(this);
+        }
+        //SymbolTable.pop();
+        return null;
+    }
     @Override
     public Void visit(AssignStmt assignStmt) {
         Type tl = assignStmt.getLValue().accept(expressionTypeChecker);
@@ -142,8 +161,6 @@ public class TypeAnalyzer extends Visitor<Void> {
 
         return null;
     }
-
-
     @Override
     public Void visit(VarDecStmt varDecStmt) {
         if (varDecStmt.getInitialExpression() != null) {
@@ -183,10 +200,9 @@ public class TypeAnalyzer extends Visitor<Void> {
             SymbolTable.top.put(new ArrayItem(arrayDecStmt.getIdentifier().getName(), arrayDecStmt.getType()));
 
         } catch (ItemAlreadyExistsException ignored) {}
-
         boolean is_valid_initializer = true;
         int wrongTypesCount = 0;
-
+        //check arr initial values (DONE)
         for(Expression expression : arrayDecStmt.getInitialValues()){
             Type initVerifyer = expression.accept(expressionTypeChecker);
             if(initVerifyer instanceof NoType) {
@@ -197,29 +213,12 @@ public class TypeAnalyzer extends Visitor<Void> {
                 wrongTypesCount ++;
             }
         }
-
         if(!is_valid_initializer) {
             for (var i = 0; i < wrongTypesCount; i++) {
                 typeErrors.add(new UnsupportedOperandType(arrayDecStmt.getLine(), BinaryOperator.assign.name()));
             }
 //            typeErrors.add(new UnsupportedOperandType(arrayDecStmt.getLine(), BinaryOperator.assign.name()));
         }
-        return null;
-    }
-
-    @Override
-    public Void visit(ImplicationStmt implicationStmt) {
-        Type implicationCondition = implicationStmt.getCondition().accept(expressionTypeChecker);
-        if(!(implicationCondition instanceof BooleanType || implicationCondition instanceof NoType)) {
-            typeErrors.add(new ConditionTypeNotBool(implicationStmt.getLine()));
-        }
-//??????
-        SymbolTable.push(new SymbolTable(null, SymbolTable.top.name));
-//        SymbolTable.push(new SymbolTable(SymbolTable.top, SymbolTable.top.name));
-        for (Statement statement : implicationStmt.getStatements()) {
-            statement.accept(this);
-        }
-        SymbolTable.pop();
         return null;
     }
 }
