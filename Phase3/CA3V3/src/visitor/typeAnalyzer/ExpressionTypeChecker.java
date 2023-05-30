@@ -120,13 +120,17 @@ public class ExpressionTypeChecker extends Visitor<Type> {
 
         // &&, ||:
         if (operator.equals(BinaryOperator.and) || operator.equals(BinaryOperator.or)) {
+            if (tl instanceof NoType
+                    || tr instanceof NoType) {
+                return new NoType();
+            }
             if (tl instanceof BooleanType && tr instanceof BooleanType) {
                 return new BooleanType();
             }
-            if ((tl instanceof NoType && tr instanceof BooleanType) || (tl instanceof BooleanType && tr instanceof NoType)
-                    || (tl instanceof NoType && tr instanceof NoType)) {
-                return new NoType();
-            }
+            //if ((tl instanceof NoType && tr instanceof BooleanType) || (tl instanceof BooleanType && tr instanceof NoType)
+           //         || (tl instanceof NoType && tr instanceof NoType)) {
+            //    return new NoType();
+           // }
         }
 
         // =
@@ -152,6 +156,11 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         // >, <, <=, >=:
         else if (operator.equals(BinaryOperator.lt) || operator.equals(BinaryOperator.gt) ||
                 (operator.equals(BinaryOperator.lte)) || (operator.equals(BinaryOperator.gte))) {
+            if (tl instanceof NoType
+                    || tr instanceof NoType) {
+                return new NoType();
+            }
+
             if (tl instanceof IntType && tr instanceof IntType) {
                 return new BooleanType();
             }
@@ -159,11 +168,11 @@ public class ExpressionTypeChecker extends Visitor<Type> {
                 return new BooleanType();
             }
             // Can we also compare Float with int? No, as Ali Imam Zadeh told
-            if (tl instanceof NoType && (tr instanceof FloatType || tr instanceof IntType)
-                    || ((tl instanceof FloatType || tl instanceof IntType) && tr instanceof NoType)
-                    || (tl instanceof NoType && tr instanceof NoType)) {
-                return new NoType();
-            }
+            //if (tl instanceof NoType && (tr instanceof FloatType || tr instanceof IntType)
+           //         || ((tl instanceof FloatType || tl instanceof IntType) && tr instanceof NoType)
+            //        || (tl instanceof NoType && tr instanceof NoType)) {
+            //    return new NoType();
+           // }
         }
 
         // ==, != :
@@ -183,6 +192,10 @@ public class ExpressionTypeChecker extends Visitor<Type> {
         }
 
         else { // *, /, +, -, %
+            if (tl instanceof NoType
+                    || tr instanceof NoType) {
+                return new NoType();
+            }
             if (tl instanceof IntType && tr instanceof IntType) {
                 return new IntType();
             }
@@ -194,10 +207,10 @@ public class ExpressionTypeChecker extends Visitor<Type> {
             if (tl instanceof FloatType && tr instanceof FloatType) {
                 return new FloatType();
             }
-            if ((tl instanceof NoType && tr instanceof FloatType) ||
-                    (tl instanceof FloatType && tr instanceof NoType)) {
-                return new NoType();
-            }
+            //if ((tl instanceof NoType && tr instanceof FloatType) ||
+            //        (tl instanceof FloatType && tr instanceof NoType)) {
+            //    return new NoType();
+           // }
         }
 
         typeErrors.add(new UnsupportedOperandType(l.getLine(), operator.name()));
