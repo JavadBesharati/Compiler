@@ -15,10 +15,6 @@ import ast.node.expression.values.IntValue;
 import ast.node.statement.AssignStmt;
 import ast.node.statement.ReturnStmt;
 import ast.node.statement.VarDecStmt;
-import symbolTable.SymbolTable;
-import symbolTable.itemException.ItemNotFoundException;
-import symbolTable.symbolTableItems.FunctionItem;
-import symbolTable.symbolTableItems.MainItem;
 import visitor.Visitor;
 import ast.node.expression.operators.UnaryOperator;
 
