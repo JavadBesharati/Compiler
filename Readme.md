@@ -8,7 +8,7 @@
 
 ### Description:
 During 4 phases, a compiler for LogicPL language has been implemented.
-What is LogicPL? It is a simple programming language that we were asked to design a compiler for in the course of Compiler Design and Programming Languages at Tehran University - Spring 2023
+What is LogicPL? It is a simple programming language that we were asked to design a compiler for in the course of Compiler Design and Programming Languages at University of Tehran - Spring 2023
 
 ---
 
